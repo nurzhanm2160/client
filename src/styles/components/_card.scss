@@ -1,0 +1,54 @@
+.card {
+	border-radius: 20px;
+	border: 2px solid #4F4F4F;
+	overflow: hidden;
+	color: #fff;
+	box-shadow: 5px 25px 25px rgba(114, 10, 219, 0.1);
+
+	.card-header {
+		padding: 20px 15px;
+
+		.icon {
+			width: 30px;
+			height: 30px;
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+
+		.badge {
+			padding: 2px 6px;
+			border-radius: 10px;
+			overflow: hidden;
+			font-weight: 500;
+		}
+
+		.badge-white {
+			background: #fff;
+		}
+
+		.subtitle {
+			font-weight: bold;
+		}
+
+	}
+
+	.card-body {
+		padding: 30px 15px;
+		background: rgba(46, 46, 46, 0.4);
+
+		.btn {
+			padding: 6px 35px;
+			display: block;
+			width: 100%;
+			text-align: center;
+			font-size: 16px;
+			letter-spacing: 1px;
+			margin-top: 30px;
+		}
+
+	}
+
+}

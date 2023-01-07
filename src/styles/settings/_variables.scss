@@ -1,0 +1,28 @@
+// Colors
+$purple: #720adb;
+$pink: #ff748f;
+$lightBlue: #ff748f;
+$darkBlue: #4568dc;
+$orange: #e79470;
+$gradientColor: linear-gradient(111.42deg, #720ADB 9.98%, #FF4B2B 102.99%);
+$red: #FF4B2B;
+$green: #0fbd00;
+$textColor: #BABABA;
+$primaryBoxShadow: 5px 25px 25px rgba(114, 10, 219, 0.05);
+
+// Fonts
+$lineHeight: 1.65;
+$fontFamily: 'Roboto', sans-serif;
+$fontSize: 16px;
+$system: -apple-system, BlinkMacSystemFont, Arial, sans-serif; // System Font Family
+
+//Radius
+$borderRadius: 20px;
+
+// Container
+$container-max-widths: (
+	sm: 720px,
+	md: 960px,
+	lg: 1140px,
+	xl: 1400px
+);

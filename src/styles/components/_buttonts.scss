@@ -1,0 +1,60 @@
+.btn {
+	padding: 9px 30px;
+	border-radius: 10px;
+	font-weight: 400;
+	text-transform: uppercase;
+	display: inline-block;
+	margin: 0;
+	text-align: center;
+	font-size: 14px;
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.btn-gradient {
+	position: relative;
+	color: #fff;
+	overflow: hidden;
+	background-image: $gradientColor;
+	background-size: 100% 100%;
+	transition: all .4s ease-out;
+	will-change: background-size, background-position;
+
+	&:hover {
+		color: #fff;
+		background-position: 100% 0;
+		background-size: 200% 100%;
+	}
+}
+
+.btn-primary {
+	background: #0577F2;
+	color: #fff;
+}
+
+.btn-outline {
+	background: transparent;
+	border-radius: 10px;
+	color: #ffffff;
+}
+
+.btn-outline-white {
+	border: 2px solid #ffffff;
+	color: #fff;
+
+	&:hover {
+		color: #fff;
+	}
+}
+
+.btn-outline-red {
+	border: 2px solid #FF4B2B;
+	color: #FF4B2B
+}
+
+.btn-outline-primary {
+	border: 2px solid #0577F2;
+	color: #0577F2
+}

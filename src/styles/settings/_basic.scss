@@ -1,0 +1,88 @@
+@import './variables';
+
+::placeholder {
+	color: #666
+}
+
+::selection {
+	background-color: $purple;
+	color: #fff;
+}
+
+input, textarea {
+	outline: none
+}
+
+html, body {
+	height: 100%;
+	overflow-x: hidden;
+	min-width: 320px;
+}
+
+body {
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	position: relative;
+	line-height: $lineHeight;
+	color: $textColor;
+	background: linear-gradient(144.39deg, #0A0E14 7.13%, #060B2D 42.17%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	display: block;
+	line-height: 1.2;
+}
+
+b, strong {
+	font-weight: bold;
+}
+
+header, section {
+	position: relative;
+}
+
+h1 {
+	font-size: 96px;
+	font-weight: 900;
+}
+
+h2 {
+	font-size: 48px;
+	font-weight: 900;
+}
+
+h3 {
+	font-size: 32px;
+	font-weight: 500;
+}
+
+h4 {
+	font-size: 24px;
+	font-weight: 500;
+}
+
+h5 {
+	font-size: 18px;
+	font-weight: 500;
+}
+
+h6 {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+ul, li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	outline: none;
+	cursor: pointer;
+	border: none;
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+}
