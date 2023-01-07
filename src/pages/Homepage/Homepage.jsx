@@ -10,6 +10,7 @@ import gift from '../../assets/img/icons/gift-icon.svg'
 import { Footer } from '../../components/Footer/Footer'
 import { Video } from '../../components/Video/Video'
 import { Price } from '../../components/Price/Price'
+import { Advantages } from '../../components/Advantages/Advantages'
 
 const headerItems = [
     {
@@ -85,6 +86,7 @@ export const Homepage = () => {
             </header>
             <Video />
             <Price />
+            <Advantages />
             <Footer />
         </>
     )
