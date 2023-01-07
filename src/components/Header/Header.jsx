@@ -1,48 +1,37 @@
 import React from 'react'
 import './Header.scss'
+import {NavLink} from "react-router-dom";
 
 export const Header = () => {
     return (
-        <div class="wrapper">
-			<main class="main">
-				<div class="top-line">
-					<div class="container">
-						<div class="row align-items-center">
-							<div class="col-md-2">
-								<a href="/" class="top-line__brand">Shorta.</a>
-							</div>
-							{/* <!-- /.col-md-2 --> */}
-							<div class="col-md-7">
-								<nav class="top-line__nav">
-									<a href="#prices" class="nav-link">Prices</a>
-									<a href="#about_us" class="nav-link">ABOUT US</a>
-									<a href="#news" class="nav-link">NEWS</a>
-									<a href="#contacts" class="nav-link">CONTACTS</a>
-									<a href="#specials" class="nav-link">SPECIALS</a>
-									<a href="#faq" class="nav-link">FAQ</a>
-								</nav>
-								{/* <!-- /.top-line__nav --> */}
-							</div>
-							{/* <!-- /.col-md-6 --> */}
-							<div class="col-md-3">
-								<div class="top-line__account">
-									<a href="/login" class="btn btn-outline-white">Login</a>
-									<a href="/register" class="btn btn-gradient"><span>Register</span></a>
-								</div>
-							</div>
-							{/* <!-- /.col-md-4 --> */}
-						</div>
-						{/* <!-- /.row --> */}
-					</div>
-					{/* <!-- /.container --> */}
-				</div>
-				{/* <!-- /.top-line --> */}
-				{/* <router-outlet></router-outlet> */}
-
-			</main>
-
-	{/* <!-- /.main-footer --> */}
-
-</div>
+        <div className="wrapper">
+            <main className="main">
+                <div className="top-line">
+                    <div className="container">
+                        <div className="row align-items-center">
+                            <div className="col-md-2">
+                                <NavLink to="/" className="top-line__brand">Shorta.</NavLink>
+                            </div>
+                            <div className="col-md-7">
+                                <nav className="top-line__nav">
+                                    <NavLink to="/prices" className="nav-link">Prices</NavLink>
+                                    <NavLink to="/about_us" className="nav-link">ABOUT US</NavLink>
+                                    <NavLink to="/news" className="nav-link">NEWS</NavLink>
+                                    <NavLink to="/contacts" className="nav-link">CONTACTS</NavLink>
+                                    <NavLink to="/specials" className="nav-link">SPECIALS</NavLink>
+                                    <NavLink to="/faq" className="nav-link">FAQ</NavLink>
+                                </nav>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="top-line__account">
+                                    <NavLink to="/login" className="btn btn-outline-white">Login</NavLink>
+                                    <NavLink to="/register" className="btn btn-gradient"><span>Register</span></NavLink>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
     )
 }
