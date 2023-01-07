@@ -43,7 +43,6 @@ const headerItems = [
 export const Homepage = () => {
     return (
         <>
-            <Header />
             <header className="main-header">
                 <div className="container">
                     <div className="row align-items-center">
