@@ -15,6 +15,7 @@ import { News } from '../../components/News/News'
 import { Transactions } from '../../components/Transactions/Transactions'
 import { Faq } from '../../components/Faq/Faq'
 import { Calculator } from '../../components/Calculator/Calculator'
+import { Stats } from '../../components/Stats/Stats'
 
 const headerItems = [
     {
@@ -95,6 +96,7 @@ export const Homepage = () => {
             <Transactions />
             <Faq />
             <Calculator />
+            <Stats />
             <Footer />
         </>
     )
