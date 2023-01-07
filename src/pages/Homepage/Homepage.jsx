@@ -9,6 +9,7 @@ import litecoin from '../../assets/img/icons/litecoin-icon.svg'
 import gift from '../../assets/img/icons/gift-icon.svg'
 import { Footer } from '../../components/Footer/Footer'
 import { Video } from '../../components/Video/Video'
+import { Price } from '../../components/Price/Price'
 
 const headerItems = [
     {
@@ -68,10 +69,10 @@ export const Homepage = () => {
                                 <div className="row">
                                     <div className="col-lg-6">
                                         {headerItems.map(item => (
-                                            <div className="header-right__item">
-                                            <div className="icon"><img src={item.iconLink} alt={item.title} /></div>
-                                            <h4 className="title">{item.title}</h4>
-                                            <p className="description">{item.description}</p>
+                                            <div className="header-right__item" key={item.title}>
+                                                <div className="icon"><img src={item.iconLink} alt={item.title} /></div>
+                                                <h4 className="title">{item.title}</h4>
+                                                <p className="description">{item.description}</p>
                                             </div>
                                         ))}
                                     </div>
@@ -83,6 +84,7 @@ export const Homepage = () => {
                 </div>
             </header>
             <Video />
+            <Price />
             <Footer />
         </>
     )
