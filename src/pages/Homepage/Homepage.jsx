@@ -12,6 +12,9 @@ import { Video } from '../../components/Video/Video'
 import { Price } from '../../components/Price/Price'
 import { Advantages } from '../../components/Advantages/Advantages'
 import { News } from '../../components/News/News'
+import { Transactions } from '../../components/Transactions/Transactions'
+import { Faq } from '../../components/Faq/Faq'
+import { Calculator } from '../../components/Calculator/Calculator'
 
 const headerItems = [
     {
@@ -89,6 +92,9 @@ export const Homepage = () => {
             <Price />
             <Advantages />
             <News />
+            <Transactions />
+            <Faq />
+            <Calculator />
             <Footer />
         </>
     )
