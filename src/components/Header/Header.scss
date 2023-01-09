@@ -1,73 +1,83 @@
-.top-line {
-  height: 100px;
+.wrapper {
   display: flex;
   align-items: center;
+  min-height: 100px;
+  height: auto;
   background-color: rgba(33, 33, 33, 0.7);
+}
 
-  &__brand {
+.brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 65px;
+  background-color: #720adb;
+  border-radius: 10px;
+  font-weight: 900;
+  font-size: 35px;
+  color: #ffffff;
+  text-transform: uppercase;
+  transition: .4s ease-out;
+
+
+  &:hover {
+    width: 190px;
     text-decoration: none;
-    padding: 12px 10px;
-    background-color: #720adb;
+    letter-spacing: 1px;
+    color: white;
+  }
+}
+
+.nav-link{
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: .4s ease-out;
+  margin-left: 10px;
+
+  &:hover {
+    color: white;
+    background-color: #720ADB;
+  }
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .login {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    color: white;
+    border: white 2px solid;
     border-radius: 10px;
-    font-weight: 900;
-    font-size: 22px;
-    color: #ffffff;
-    font-style: normal;
-    letter-spacing: normal;
-    line-height: normal;
+    font-size: 20px;
     text-transform: uppercase;
-    display: inline-block;
-    transition: .4s ease-out;
 
     &:hover {
-      text-decoration: none;
-      letter-spacing: 1px;
-      color: #fff;
+      color: silver;
+      border-color: silver;
+      transition: .2s ease-out;
     }
   }
-
-  &__nav {
+  .register{
+    margin-left: 15px;
+    width: 150px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-
-    .nav-link {
-      color: #ffffff;
-      margin-bottom: 0;
-      font-weight: 500;
-      text-transform: uppercase;
-      display: block;
-      padding: 8px 12px;
-      transition: .4s ease-out;
-      border-radius: 10px;
-
-      &:hover {
-        background-color: #720adb;
-        text-decoration: none;
-      }
-    }
+    height: 55px;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
   }
-
-  &__account {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-	  .btn {
-		  color: white;
-		  margin-left: 15px;
-	  }
-  }
-
-}
-
-.wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.main {
-  flex: 1 1 auto;
 }
 
 .main-footer {

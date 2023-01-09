@@ -25,7 +25,7 @@ body {
 	position: relative;
 	line-height: $lineHeight;
 	color: $textColor;
-	background: linear-gradient(144.39deg, #0A0E14 7.13%, #060B2D 42.17%);
+	background-image:url("../../../src/assets/img/Background.png"), linear-gradient(144.39deg, #0A0E14 7.13%, #060B2D 42.17%)
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -40,6 +40,11 @@ b, strong {
 header, section {
 	position: relative;
 }
+
+.main {
+	min-height: 620px;
+}
+
 
 h1 {
 	font-size: 96px;

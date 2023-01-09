@@ -1,5 +1,4 @@
 import React from 'react'
-import { Header } from '../../components/Header/Header'
 
 import "./Headerpage.scss"
 
@@ -7,7 +6,6 @@ import discount from '../../assets/img/icons/discount-icon.svg'
 import affiliate from '../../assets/img/icons/affiliate-icon.svg'
 import litecoin from '../../assets/img/icons/litecoin-icon.svg'
 import gift from '../../assets/img/icons/gift-icon.svg'
-import { Footer } from '../../components/Footer/Footer'
 import { Video } from '../../components/Video/Video'
 import { Price } from '../../components/Price/Price'
 import { Advantages } from '../../components/Advantages/Advantages'
@@ -16,6 +14,7 @@ import { Transactions } from '../../components/Transactions/Transactions'
 import { Faq } from '../../components/Faq/Faq'
 import { Calculator } from '../../components/Calculator/Calculator'
 import { Stats } from '../../components/Stats/Stats'
+import s from "../Home/Home.module.scss";
 
 const headerItems = [
     {
@@ -52,7 +51,7 @@ export const Homepage = () => {
                                 <p className="header-text">Cloud mining platform for BNB, TRX, LTC and DOGE</p>
                                 <form >
                                     <div className="d-flex align-items-center justify-content-lg-between">
-                                        <input type="email" className="input" placeholder="Enter your Email address" formControlName="email" />
+                                        <input type="email" className="input" placeholder="Enter your Email address" />
                                         <button className="btn btn-gradient" type="submit">Register</button>
 
                                         {/* TODO: Реализовать вывод ошибок */}
@@ -96,7 +95,26 @@ export const Homepage = () => {
             <Faq />
             <Calculator />
             <Stats />
-            <Footer />
         </>
     )
 }
+
+function Home(props) {
+    return (
+        <div className={s.home}>
+            <div className="container">
+                <div className={s.header_block}>
+                    <div className="row">
+                        <div className="col-lg-6">
+                        </div>
+                        <div className="col-lg-6">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Home;
