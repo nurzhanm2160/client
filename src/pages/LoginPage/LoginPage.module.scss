@@ -14,6 +14,7 @@
 
 .description {
   margin-top: 2px;
+  margin-bottom: 15px;
   color: white;
   font-size: 25px;
 }
@@ -54,6 +55,11 @@
 .link {
   width: auto;
   color: white;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
 }
 
 .reg_link {

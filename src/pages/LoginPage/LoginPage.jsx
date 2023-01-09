@@ -2,9 +2,17 @@ import React from 'react';
 import s from "./LoginPage.module.scss"
 import img from "../../assets/img/login/login-img.png"
 import {NavLink} from "react-router-dom";
+import {useForm} from "react-hook-form";
 
 
 const LoginPage = () => {
+
+    const {register, handleSubmit} = useForm()
+
+    const onSubmit = (data) => {
+        console.log(data)
+    }
+
     return (
         <div className={s.login}>
             <div className="container">
@@ -15,9 +23,9 @@ const LoginPage = () => {
                             <span className={s.description}>Login to get all the best benefits of our project!</span>
                         </div>
                         <div className="row">
-                            <form className={s.form}>
-                                <div><input placeholder="Enter your EMail adress"/></div>
-                                <div><input placeholder="Enter your password"/></div>
+                            <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+                                <div><input type="text" placeholder="Enter your EMail address" {...register("login", {required: true})}/></div>
+                                <div><input type="text" placeholder="Enter your password" {...register("password", {required: true})}/></div>
                                 <div className="row">
                                     <div className="col-lg-6">
                                         <button className="btn-gradient">SIGN IN</button>

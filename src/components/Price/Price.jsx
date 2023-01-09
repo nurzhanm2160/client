@@ -44,22 +44,22 @@ const plans = [
 ]
 
 export const Price = () => {
-    return <section class="s-prices">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-4">
-                    <h2 class="section-headline">PRICES</h2>
-                    <p class="section-subhead">Choose ideal plan for yourself!</p>
+    return <section className="s-prices">
+        <div className="container">
+            <div className="row align-items-center">
+                <div className="col-lg-4">
+                    <h2 className="section-headline">PRICES</h2>
+                    <p className="section-subhead">Choose ideal plan for yourself!</p>
                 </div>
-                <div class="col-lg-8 d-flex align-items-center">
-                    <button class="btn btn-primary mr-5">Standart</button>
-                    <button class="btn btn-outline btn-outline-red">Ultimate</button>
+                <div className="col-lg-8 d-flex align-items-center justify-content-center">
+                    <button className="btn btn-primary mr-5">Standart</button>
+                    <button className="btn btn-outline btn-outline-red">Ultimate</button>
                 </div>
             </div>
 
-            <div class="row mt-5">
+            <div className="row mt-5">
                 {plans.map(plan => 
-                    <div class="col-lg-3">
+                    <div className="col-lg-3">
                         <CardPlan plan={plan} />
                     </div>
                 )}
