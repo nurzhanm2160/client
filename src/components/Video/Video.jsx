@@ -6,8 +6,8 @@ export const Video = () => {
         <section className={s.video_main}>
             <div className="container">
                 <div className={`row`}>
-                    <h2>VIDEO PRESENTATION</h2>
-                    <p>Checkout our video presentation!</p>
+                    <h2 className='section-headline'>VIDEO PRESENTATION</h2>
+                    <p className='section-subhead'>Checkout our video presentation!</p>
                 </div>
                 <div className="row">
                     <div className="col-12 d-flex justify-content-center">

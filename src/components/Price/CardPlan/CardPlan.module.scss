@@ -1,0 +1,48 @@
+.card {
+  height: 380px;
+  color: white;
+  border-radius: 23px;
+  border: 2px solid #4F4F4F;
+  font-weight: bold;
+  background-color: rgba(46, 46, 46, 0.7);
+
+}
+
+.card_header {
+  padding: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  h4 {
+    font-size: 32px;
+  }
+  span {
+    font-size: 24px;
+  }
+}
+
+.badge{
+  padding: 7px 15px;
+  border-radius: 10px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.card_body {
+  font-size: 24px;
+  height: auto;
+  padding: 30px;
+
+  button {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 191px;
+    height: 65px;
+    border-radius: 10px;
+  }
+}
