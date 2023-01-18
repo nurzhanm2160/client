@@ -12,7 +12,7 @@ export const Price = () => {
                     <h2 className="section-headline">PRICES</h2>
                     <p className="section-subhead">Choose ideal plan for yourself!</p>
                 </div>
-                <div className="col-lg-8 d-flex align-items-center">
+                <div className="col-lg-4 d-flex justify-content-center">
                     <button className={s.btn1}>STANDART</button>
                     <button className={s.btn2}>ULTIMATE</button>
                 </div>

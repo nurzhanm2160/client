@@ -3,6 +3,8 @@ import s from "./LoginPage.module.scss"
 import img from "../../assets/img/login/login-img.png"
 import {NavLink} from "react-router-dom";
 import {useForm} from "react-hook-form";
+import Header from "../../components/Header/Header";
+import {Footer} from "../../components/Footer/Footer";
 
 
 const LoginPage = () => {
@@ -14,8 +16,11 @@ const LoginPage = () => {
     }
 
     return (
-        <div className={s.login}>
-            <div className="container">
+        <>
+            <header>
+                <Header/>
+            </header>
+            <div className={`container ${s.login}`}>
                 <div className="row align-items-center">
                     <div className="col-lg-6">
                         <div className="row">
@@ -24,8 +29,12 @@ const LoginPage = () => {
                         </div>
                         <div className="row">
                             <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-                                <div><input type="text" placeholder="Enter your EMail address" {...register("login", {required: true})}/></div>
-                                <div><input type="text" placeholder="Enter your password" {...register("password", {required: true})}/></div>
+                                <div><input type="text"
+                                            placeholder="Enter your EMail address" {...register("login", {required: true})}/>
+                                </div>
+                                <div><input type="text"
+                                            placeholder="Enter your password" {...register("password", {required: true})}/>
+                                </div>
                                 <div className="row">
                                     <div className="col-lg-6">
                                         <button className="btn-gradient">SIGN IN</button>
@@ -47,7 +56,10 @@ const LoginPage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+            <footer>
+                <Footer/>
+            </footer>
+        </>
     );
 }
 

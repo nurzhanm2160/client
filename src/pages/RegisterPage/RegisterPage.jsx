@@ -3,8 +3,10 @@ import s from "./RegisterPage.module.scss"
 import {NavLink} from "react-router-dom";
 import img from "../../assets/img/login/login-img.png";
 import {useForm} from "react-hook-form";
+import Header from "../../components/Header/Header";
+import {Footer} from "../../components/Footer/Footer";
 
-function RegisterPage(props) {
+const RegisterPage = () => {
 
     const {register, handleSubmit} = useForm()
 
@@ -13,8 +15,11 @@ function RegisterPage(props) {
     }
 
     return (
-        <div className={s.register}>
-            <div className="container">
+        <>
+            <header>
+                <Header/>
+            </header>
+            <div className={`container ${s.register}`}>
                 <div className="row align-items-center">
                     <div className="col-lg-6">
                         <div className="row">
@@ -45,7 +50,10 @@ function RegisterPage(props) {
                     </div>
                 </div>
             </div>
-        </div>
+            <footer>
+                <Footer/>
+            </footer>
+        </>
     );
 }
 

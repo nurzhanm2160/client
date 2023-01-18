@@ -1,3 +1,6 @@
+.title {
+}
+
 .header_block {
   display: flex;
   justify-content: center;
@@ -59,10 +62,9 @@
 }
 
 .item {
-  margin-left: 80px;
   width: 250px;
-  margin-bottom: 50px;
-  margin-top: 50px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 
   .icon {
     width: 44px;
@@ -76,6 +78,7 @@
   }
 
   .title {
+    background: none;
     color: white;
     font-weight: 900;
     margin-bottom: 10px;

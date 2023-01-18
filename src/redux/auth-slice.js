@@ -14,6 +14,7 @@ export const authSlice = createSlice({
         [register.pending]: (state, action) => {
         },
         [register.fulfilled]: (state, action) => {
+            console.log()
         },
         [register.rejected]: (state, action) => {
         }

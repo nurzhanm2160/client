@@ -34,7 +34,7 @@ export const plans = [
         days: '180 days',
         vhs: 10000,
         colors: '#E79470',
-        description: ['2% per day', '180 VH/s bonus'],
+        description: ['3% per day', '180 VH/s bonus'],
         free: false,
         price: 250
     },

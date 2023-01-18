@@ -1,0 +1,21 @@
+.nav {
+  padding: 40px 40px;
+  grid-area: n;
+  background-color: #212121B2;
+
+  p {
+    font-weight: bold;
+    font-size: 32px;
+    color: white;
+  }
+
+  a {
+    font-size: 24px;
+    padding-bottom: 60px;
+  }
+}
+
+.item {
+  text-decoration: none;
+  color: white;
+}

@@ -1,31 +1,33 @@
 import React from 'react'
-import './Header.scss'
+import './Header.module.scss'
 import {NavLink} from "react-router-dom";
+import s from "./Header.module.scss"
+import logo from "../../assets/img/Logotype.png"
 
 const Header = () => {
     return (
-        <div className="wrapper">
+        <div className={s.wrapper}>
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-2 d-flex justify-content-center">
                         <NavLink to="/" className="text-decoration-none">
-                            <div className="brand">Shorta.</div>
+                            <img src={logo}/>
                         </NavLink>
                     </div>
                     <div className="col-lg-7">
                         <nav className="nav">
-                            <NavLink to="/prices" className="text-decoration-none"><div className="nav-link">PRICE</div></NavLink>
-                            <NavLink to="/about_us" className="nav-link">ABOUT US</NavLink>
-                            <NavLink to="/news" className="nav-link">NEWS</NavLink>
-                            <NavLink to="/contacts" className="nav-link">CONTACTS</NavLink>
-                            <NavLink to="/specials" className="nav-link">SPECIALS</NavLink>
-                            <NavLink to="/faq" className="nav-link">FAQ</NavLink>
+                            <NavLink to="/prices" className = { navData => navData.isActive ? s.active : s.nav_link }>PRICE</NavLink>
+                            <NavLink to="/about_us" className = { navData => navData.isActive ? s.active : s.nav_link }>ABOUT US</NavLink>
+                            <NavLink to="/news" className = { navData => navData.isActive ? s.active : s.nav_link }>NEWS</NavLink>
+                            <NavLink to="/contacts" className = { navData => navData.isActive ? s.active : s.nav_link }>CONTACTS</NavLink>
+                            <NavLink to="/specials" className = { navData => navData.isActive ? s.active : s.nav_link }>SPECIALS</NavLink>
+                            <NavLink to="/faq" className = { navData => navData.isActive ? s.active : s.nav_link }>FAQ</NavLink>
                         </nav>
                     </div>
                     <div className="col-lg-3">
-                        <div className="account">
-                            <NavLink to="/login" className="text-decoration-none"><div className="login">Login</div></NavLink>
-                            <NavLink to="/register" className="text-decoration-none"><div className="register btn-gradient">Register</div></NavLink>
+                        <div className={s.account}>
+                            <NavLink to="/login" className="text-decoration-none"><div className={s.login}>Login</div></NavLink>
+                            <NavLink to="/register" className="text-decoration-none"><div className={`btn-gradient ${s.register}`}>Register</div></NavLink>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,43 @@
+.faq {
+  margin-top: 90px;
+  margin-bottom: 90px;
+}
+
+.account {
+  margin-top: 80px;
+}
+
+.title{
+  padding-left: 40px;
+  color: white;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.questions_block {
+  margin-top: 30px;
+  border: 2px solid #4F4F4F;
+  background: #2E2E2EB2;
+  border-radius: 20px;
+}
+
+.items {
+  padding: 30px 30px;
+  border-bottom: 2px solid #4F4F4F;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  span {
+    display: block;
+  }
+}
+
+.diposit {
+  margin-top: 80px;
+}
+
+.accountLast {
+  margin-top: 80px;
+}

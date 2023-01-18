@@ -1,0 +1,54 @@
+.header {
+  grid-area: h;
+}
+
+.title {
+  color: white;
+
+  span {
+    display: block;
+    font-size: 22px;
+  }
+}
+
+.account {
+  height: 100px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .confirmed {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: #0FBD00;
+
+    &:hover {
+      background-color: rgba(36,169,85,0.91);
+    }
+  }
+
+  .logout {
+    margin-left: 15px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+}
