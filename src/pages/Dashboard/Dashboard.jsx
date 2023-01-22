@@ -11,15 +11,19 @@ import DashHeader from "../../components/DashHeader/DashHeader";
 function Dashboard() {
     return (
         <div className={s.dashboard}>
-            <DashNavbar/>
-            <DashHeader/>
-            <div className={s.content}>
-                <Routes>
-                    <Route path="/mining" element={<Mining/>}/>
-                    <Route path="/deposit" element={<Deposit/>}/>
-                    <Route path="/affiliate" element={<Affiliate/>}/>
-                    <Route path="/bonuses" element={<Bonuses/>}/>
-                </Routes>
+            <div className="row">
+                <div className="col-lg-3">
+                    <DashNavbar/>
+                </div>
+                <div className="col-lg-9">
+                    <DashHeader/>
+                    <Routes>
+                        <Route path="/mining" element={<Mining/>}/>
+                        <Route path="/deposit" element={<Deposit/>}/>
+                        <Route path="/affiliate" element={<Affiliate/>}/>
+                        <Route path="/bonuses" element={<Bonuses/>}/>
+                    </Routes>
+                </div>
             </div>
         </div>
     )

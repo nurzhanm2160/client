@@ -1,4 +1,7 @@
 .header {
+  display: flex;
+  align-items: center;
+  height: 120px;
   grid-area: h;
 }
 
@@ -12,9 +15,8 @@
 }
 
 .account {
-  height: 100px;
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
 
   a {
@@ -41,7 +43,7 @@
 
   .logout {
     margin-left: 15px;
-    width: 150px;
+    width: 168px;
     display: flex;
     justify-content: center;
     align-items: center;
