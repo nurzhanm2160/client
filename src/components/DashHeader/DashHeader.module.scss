@@ -1,11 +1,10 @@
 .header {
   display: flex;
-  align-items: center;
-  height: 120px;
-  grid-area: h;
+  min-height: 120px;
 }
 
 .title {
+  align-content: center;
   color: white;
 
   span {
@@ -19,30 +18,8 @@
   justify-content: center;
   align-items: center;
 
-  a {
-    color: white;
-    text-decoration: none;
-  }
 
-  .confirmed {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    color: white;
-    border-radius: 10px;
-    font-size: 20px;
-    text-transform: uppercase;
-    background-color: #0FBD00;
-
-    &:hover {
-      background-color: rgba(36,169,85,0.91);
-    }
-  }
-
-  .logout {
-    margin-left: 15px;
+  button {
     width: 168px;
     display: flex;
     justify-content: center;

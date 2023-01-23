@@ -1,32 +1,36 @@
-.mining {
-  margin-top: 60px;
-}
-
-
-.coins {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  .coin {
-    margin-left: 30px;
-    background-color: #720ADB;
-
-    &:first-child {
-    margin-left: auto;
-    }
-
-  }
+.powers {
+  align-content: center;
+  height: 500px;
 }
 
 .power {
+  border-radius: 20px;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,76,255,1) 0%, rgba(61,36,200,1) 0%, rgba(105,8,161,1) 88%);
 }
 
+
 .head {
-  background-color: #720ADB;
+  padding: 15px 20px;
   color: white;
   font-size: 24px;
   font-weight: bold;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    span {
+      margin-left: 10px;
+    }
+
+    img {
+      width: 55px;
+    }
+  }
+
+  span {
+    display: block;
+  }
 
   .badge {
     padding: 7px 15px;
@@ -37,8 +41,22 @@
     justify-content: center;
     background: #F0B90B;
   }
+}
 
-  img {
-    width: 55px;
+.average {
+  background: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+}
+
+.earned {
+  padding: 15px 20px;
+  span {
+    color: white;
+    font-size: 24px;
+    display: block;
   }
 }
