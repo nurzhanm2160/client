@@ -1,0 +1,17 @@
+.video_main {
+  padding: 80px 0 120px;
+}
+
+.video {
+  width: 1150px;
+  height: 650px;
+  margin-top: 60px;
+  border-radius: 20px;
+  overflow: hidden;
+
+  iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+  }
+}

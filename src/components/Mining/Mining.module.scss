@@ -1,0 +1,44 @@
+.mining {
+  margin-top: 60px;
+}
+
+
+.coins {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .coin {
+    margin-left: 30px;
+    background-color: #720ADB;
+
+    &:first-child {
+    margin-left: auto;
+    }
+
+  }
+}
+
+.power {
+}
+
+.head {
+  background-color: #720ADB;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+
+  .badge {
+    padding: 7px 15px;
+    border-radius: 10px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #F0B90B;
+  }
+
+  img {
+    width: 55px;
+  }
+}

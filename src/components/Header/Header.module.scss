@@ -1,0 +1,77 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 100px;
+  height: auto;
+  background: #212121B2;
+}
+
+.nav_link {
+  padding: 5px 10px;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: .4s ease-out;
+  margin-left: 20px;
+
+  &:hover {
+    color: white;
+    background-color: #720ADB;
+  }
+}
+
+.active {
+  padding: 5px 10px;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: .4s ease-out;
+  margin-left: 20px;
+  background-color: #720ADB;
+
+  &:hover {
+    color: white;
+    background-color: #720ADB;
+  }
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .login {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    color: white;
+    border: white 2px solid;
+    border-radius: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+
+    &:hover {
+      color: silver;
+      border-color: silver;
+      transition: .2s ease-out;
+    }
+  }
+
+  .register {
+    margin-left: 15px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+}
+

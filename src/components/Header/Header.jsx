@@ -1,37 +1,39 @@
 import React from 'react'
-import './Header.scss'
+import './Header.module.scss'
 import {NavLink} from "react-router-dom";
+import s from "./Header.module.scss"
+import logo from "../../assets/img/Logotype.png"
 
-export const Header = () => {
+const Header = () => {
     return (
-        <div className="wrapper">
-            <main className="main">
-                <div className="top-line">
-                    <div className="container">
-                        <div className="row align-items-center">
-                            <div className="col-md-2">
-                                <NavLink to="/" className="top-line__brand">Shorta.</NavLink>
-                            </div>
-                            <div className="col-md-7">
-                                <nav className="top-line__nav">
-                                    <NavLink to="/prices" className="nav-link">Prices</NavLink>
-                                    <NavLink to="/about_us" className="nav-link">ABOUT US</NavLink>
-                                    <NavLink to="/news" className="nav-link">NEWS</NavLink>
-                                    <NavLink to="/contacts" className="nav-link">CONTACTS</NavLink>
-                                    <NavLink to="/specials" className="nav-link">SPECIALS</NavLink>
-                                    <NavLink to="/faq" className="nav-link">FAQ</NavLink>
-                                </nav>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="top-line__account">
-                                    <NavLink to="/login" className="btn btn-outline-white">Login</NavLink>
-                                    <NavLink to="/register" className="btn btn-gradient"><span>Register</span></NavLink>
-                                </div>
-                            </div>
+        <div className={s.wrapper}>
+            <div className="container">
+                <div className="row align-items-center">
+                    <div className="col-lg-2 d-flex justify-content-center">
+                        <NavLink to="/" className="text-decoration-none">
+                            <img src={logo}/>
+                        </NavLink>
+                    </div>
+                    <div className="col-lg-7">
+                        <nav className="nav">
+                            <NavLink to="/prices" className = { navData => navData.isActive ? s.active : s.nav_link }>PRICE</NavLink>
+                            <NavLink to="/about_us" className = { navData => navData.isActive ? s.active : s.nav_link }>ABOUT US</NavLink>
+                            <NavLink to="/news" className = { navData => navData.isActive ? s.active : s.nav_link }>NEWS</NavLink>
+                            <NavLink to="/contacts" className = { navData => navData.isActive ? s.active : s.nav_link }>CONTACTS</NavLink>
+                            <NavLink to="/specials" className = { navData => navData.isActive ? s.active : s.nav_link }>SPECIALS</NavLink>
+                            <NavLink to="/faq" className = { navData => navData.isActive ? s.active : s.nav_link }>FAQ</NavLink>
+                        </nav>
+                    </div>
+                    <div className="col-lg-3">
+                        <div className={s.account}>
+                            <NavLink to="/login" className="text-decoration-none"><div className={s.login}>Login</div></NavLink>
+                            <NavLink to="/register" className="text-decoration-none"><div className={`btn-gradient ${s.register}`}>Register</div></NavLink>
                         </div>
                     </div>
                 </div>
-            </main>
+            </div>
         </div>
     )
 }
+
+export default Header

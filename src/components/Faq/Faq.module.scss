@@ -1,0 +1,42 @@
+.faq {
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  .card {
+    border: 2px solid #4F4F4F;;
+    border-radius: 20px;
+    margin-top: 60px;
+    background: rgba(46, 46, 46, 0.4);
+
+    .card_items {
+      padding: 20px 40px;
+      border-bottom: 2px solid #4F4F4F;
+      color: white;
+
+      h4 {
+        text-transform: uppercase;
+        font-size: 32px;
+        font-weight: 900;
+      }
+
+      p {
+        font-size: 21px;
+        font-weight: 300;
+        line-height: 28px;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .btn {
+    text-transform: uppercase;
+    font-size: 24px;
+    border-radius: 10px;
+    height: 65px;
+    margin-top: 30px;
+    width: 100%;
+  }
+}

@@ -1,0 +1,37 @@
+.starts {
+  padding-top: 60px;
+
+  .items {
+    width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+
+    strong {
+      font-size: 80px;
+      font-weight: 900;
+      background: linear-gradient(111.42deg, #720ADB 9.98%, #FF4B2B 102.99%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      justify-content: center;
+      font-weight: 500;
+      color: #fff;
+      font-size: 40px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.partners_items {
+  margin-left: auto;
+  margin-right: auto;
+  width: 460px;
+
+  img {
+    padding-top: 20px;
+    width: 320px
+  }
+}
+
