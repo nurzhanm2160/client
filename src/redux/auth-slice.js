@@ -15,6 +15,18 @@ export const registerThunk = createAsyncThunk(
     }
 )
 
+export const loginThunk = createAsyncThunk(
+    'auth/login',
+    async (payload, {rejectWithValue}) => {
+        try {
+            const {login, password} = payload
+            const response = await authApi.login(login, password)
+        } catch (e) {
+            return rejectWithValue('Opps there seems to be an error')
+        }
+    }
+)
+
 export const authSlice = createSlice({
     name: "auth",
     initialState: {
@@ -26,25 +38,20 @@ export const authSlice = createSlice({
         my_referal_link: null,
     },
     reducers: {
-        login: (state) => {
-            state.isAuth = true
-        },
         logout: (state) => {
             state.isAuth = false
         }
     },
     extraReducers: {
-        [registerThunk.pending]: (state, action) => {
-        },
-        [registerThunk.fulfilled]: (state, action) => {
-            console.log()
-        },
-        [registerThunk.rejected]: (state, action) => {
+        // [registerThunk.pending]: (state, action) => {
+        // },
+        // [registerThunk.fulfilled]: (state, action) => {
+        //     console.log()
+        // },
+        // [registerThunk.rejected]: (state, action) => {
+        // }
+        [loginThunk.fulfilled]: (state, action) => {
+            state.isAuth = true
         }
     }
 })
-
-export const { login, logout } = authSlice.actions
-
-
-export default authSlice.reducer

@@ -7,6 +7,8 @@ import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
 import {authApi} from "../../api/authApi";
 import axios from "axios";
+import {useDispatch} from "react-redux";
+import {loginThunk} from "../../redux/auth-slice";
 
 
 const LoginPage = () => {
@@ -19,13 +21,14 @@ const LoginPage = () => {
     //     }
     // }, [isAuth])
 
+    const dispatch = useDispatch()
+
     const {register, handleSubmit} = useForm()
 
     const onSubmit = async (formData) => {
-        console.log(formData.login)
         const {login, password} = formData
         const {data} = await authApi.login(login, password)
-        console.log(data)
+        dispatch(loginThunk({login, password}))
 
         localStorage.clear();
         localStorage.setItem('access_token', data.tokens.access);
