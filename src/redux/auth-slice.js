@@ -1,32 +1,50 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {authApi} from "../api/authApi";
+
+export const registerThunk = createAsyncThunk(
+    'auth/register',
+    async (payload, {rejectWithValue}) => {
+        try {
+            const {login, password} = payload
+            const response = await authApi.register(login, password)
+            console.log(response)
+        } catch (e) {
+            return rejectWithValue('Opps there seems to be an error')
+        }
+
+    }
+)
 
 export const authSlice = createSlice({
     name: "auth",
     initialState: {
+        isAuth: false,
         userId: null,
         email: "",
         username: null,
         referral_code: null,
         my_referal_link: null,
     },
-    reducers: {},
-    extraReducers: {
-        [register.pending]: (state, action) => {
+    reducers: {
+        login: (state) => {
+            state.isAuth = true
         },
-        [register.fulfilled]: (state, action) => {
+        logout: (state) => {
+            state.isAuth = false
+        }
+    },
+    extraReducers: {
+        [registerThunk.pending]: (state, action) => {
+        },
+        [registerThunk.fulfilled]: (state, action) => {
             console.log()
         },
-        [register.rejected]: (state, action) => {
+        [registerThunk.rejected]: (state, action) => {
         }
     }
 })
 
-export const register = createAsyncThunk(
-    'auth/register',
-    async () => {
-        const response = await
-    }
-)
+export const { login, logout } = authSlice.actions
 
 
 export default authSlice.reducer

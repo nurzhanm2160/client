@@ -6,5 +6,11 @@ export const authApi = {
             email,
             password
         })
+    },
+    register: (email, password) => {
+        return instance.post('auth/register/', {
+            email,
+            password
+        })
     }
 }
