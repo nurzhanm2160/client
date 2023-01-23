@@ -31,6 +31,9 @@ const Mining = () => {
                                         <span>YOU EARNED:</span>
                                         <span>{item.earned}</span>
                                     </div>
+                                    <div className={s.deposit}>
+                                        <button className="btn-gradient">DEPOSIT</button>
+                                    </div>
                                 </div>
                             </div>
                         )}
