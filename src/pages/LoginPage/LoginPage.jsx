@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
+import {authApi} from "../../api/authApi";
 
 
 const LoginPage = () => {
@@ -12,7 +13,8 @@ const LoginPage = () => {
     const {register, handleSubmit} = useForm()
 
     const onSubmit = (data) => {
-        console.log(data)
+        console.log(data.login)
+        authApi.login(data.login, data.password).then(response => console.log(response))
     }
 
     return (
