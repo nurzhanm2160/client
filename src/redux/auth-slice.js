@@ -38,6 +38,9 @@ export const authSlice = createSlice({
         my_referal_link: null,
     },
     reducers: {
+        login: (state, action) => {
+            state.isAuth = action.payload
+        },
         logout: (state) => {
             state.isAuth = false
         }
@@ -55,3 +58,5 @@ export const authSlice = createSlice({
         }
     }
 })
+
+export const {reducer: authReducer, actions: authActions} = authSlice

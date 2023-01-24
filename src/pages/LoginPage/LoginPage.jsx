@@ -7,19 +7,15 @@ import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
 import {authApi} from "../../api/authApi";
 import axios from "axios";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {loginThunk} from "../../redux/auth-slice";
 
 
 const LoginPage = () => {
-    // TODO: вынести это в блоки, где нужна проверка авторизованного пользователя!!!
-    // const [isAuth, setIsAuth] = useState(false)
-    //
-    // useEffect(() => {
-    //     if (localStorage.getItem('access_token') !== null) {
-    //         setIsAuth(true)
-    //     }
-    // }, [isAuth])
+    const isAuth = useSelector(state => state.auth.isAuth)
+    if (isAuth) {
+        window.location.href = '/dashboard'
+    }
 
     const dispatch = useDispatch()
 

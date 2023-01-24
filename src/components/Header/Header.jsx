@@ -1,10 +1,43 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Header.module.scss'
 import {NavLink} from "react-router-dom";
 import s from "./Header.module.scss"
 import logo from "../../assets/img/Logotype.png"
+import {useDispatch, useSelector} from "react-redux";
+import {authActions} from "../../redux/auth-slice";
+import axios from "axios";
+import {instance} from "../../api/api";
 
 const Header = () => {
+    const dispatch = useDispatch()
+    const isAuth = useSelector(state => state.auth.isAuth)
+
+    useEffect(() => {
+        if (localStorage.getItem('access_token') !== null) {
+            dispatch(authActions.login(true))
+        }
+    }, [isAuth]);
+
+    const logoutHandle = () => {
+        const refresh_token = localStorage.getItem('refresh_token')
+        instance.post('auth/logout/', {refresh_token,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + localStorage.getItem('refresh_token'),
+            },
+        })
+            .then(response => {
+                console.log(response)
+                localStorage.clear()
+                axios.defaults.headers.common['Authorization'] = null;
+                window.location.href = '/login'
+            })
+            .catch(error => {
+                // handle error
+                console.log(error);
+            });
+    }
+
     return (
         <div className={s.wrapper}>
             <div className="container">
@@ -26,8 +59,19 @@ const Header = () => {
                     </div>
                     <div className="col-lg-3">
                         <div className={s.account}>
-                            <NavLink to="/login" className="text-decoration-none"><div className={s.login}>Login</div></NavLink>
-                            <NavLink to="/register" className="text-decoration-none"><div className={`btn-gradient ${s.register}`}>Register</div></NavLink>
+                            {isAuth ?
+                                <div
+                                    className={`btn-gradient ${s.register}`}
+                                    onClick={() => logoutHandle()}
+                                >
+                                    LOGOUT
+                                </div>
+                                :
+                                <>
+                                    <NavLink to="/login" className="text-decoration-none"><div className={s.login}>Login</div></NavLink>
+                                    <NavLink to="/register" className="text-decoration-none"><div className={`btn-gradient ${s.register}`}>Register</div></NavLink>
+                                </>
+                            }
                         </div>
                     </div>
                 </div>
