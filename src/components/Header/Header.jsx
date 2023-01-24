@@ -6,7 +6,7 @@ import logo from "../../assets/img/Logotype.png"
 import {useDispatch, useSelector} from "react-redux";
 import {authActions} from "../../redux/auth-slice";
 import axios from "axios";
-import {instance} from "../../api/api";
+import {API} from "../../api/api";
 
 const Header = () => {
     const dispatch = useDispatch()
@@ -18,24 +18,41 @@ const Header = () => {
         }
     }, [isAuth]);
 
-    const logoutHandle = () => {
-        const refresh_token = localStorage.getItem('refresh_token')
-        instance.post('auth/logout/', {refresh_token,
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Token ' + localStorage.getItem('refresh_token'),
-            },
-        })
-            .then(response => {
-                console.log(response)
-                localStorage.clear()
-                axios.defaults.headers.common['Authorization'] = null;
-                window.location.href = '/login'
-            })
-            .catch(error => {
-                // handle error
-                console.log(error);
-            });
+    API.interceptors.request.use(
+        config => {
+            config.headers.authorization = `Bearer ${localStorage.getItem('access_token')}`
+            console.log('сработал intercepter')
+            return config
+        },
+        error => {
+            return Promise.reject(error)
+        }
+    )
+
+    const logoutHandle = async () => {
+        const refresh_token = localStorage.getItem('refresh_token');
+        // API.post('auth/logout/', {refresh_token}, {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Authorization': `Token ${localStorage.getItem('access_token')}`
+        //     },
+        // })
+        //     .then(response => {
+        //         // handle success
+        //         localStorage.clear()
+        //         // window.location.href = '/login'
+        //     })
+        //     .catch(error => {
+        //         // handle error
+        //         console.log(error);
+        //     });
+        try {
+            const result = await API.get('auth/my-profile/')
+            console.log(result)
+        } catch (e) {
+            console.log(e)
+        }
+
     }
 
     return (

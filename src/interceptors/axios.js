@@ -1,19 +1,21 @@
 import axios from 'axios';
+import {API} from "../api/api";
 
 let refresh = false;
 
-axios.interceptors.response.use(resp => resp, async error => {
+API.interceptors.response.use(resp => resp, async error => {
+    console.log('интерцептер')
     if(error.response.status === 401 && !refresh) {
         refresh = true;
         console.log(localStorage.getItem('refresh_token'))
-        const response = await axios.post('http://localhost:8000/token/refresh/',
+        const response = await API.post('auth/token/refresh/',
             {refresh: localStorage.getItem('refresh_token')},
             {withCredentials: true}
         )
 
         if (response.status === 200) {
-            axios.defaults.headers.common['Authorization'] = `Bearer 
-            ${response.data['access']}`;
+            console.log(response)
+            axios.defaults.headers.common['Authorization'] = `Token ${response.data['access']}`;
             localStorage.setItem('access_token', response.data.access);
             localStorage.setItem('refresh_token', response.data.refresh);
             return axios(error.config);

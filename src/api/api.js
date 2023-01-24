@@ -1,5 +1,10 @@
 import axios from 'axios'
 
-export const instance = axios.create({
+export const API = axios.create({
     baseURL: 'http://localhost:8000/',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+    },
+    withCredentials: true
 })
