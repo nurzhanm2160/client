@@ -16,6 +16,9 @@ export const authApi = {
     },
     logout: (refresh_token) => {
         return API.post('auth/logout/', {refresh_token})
+    },
+    getUserData: () => {
+        return API.get('auth/my-profile/')
     }
 }
 

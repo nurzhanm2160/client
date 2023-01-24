@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import s from "./Header.module.scss"
 import logo from "../../assets/img/Logotype.png"
 import {useDispatch, useSelector} from "react-redux";
-import {logoutThunk} from "../../redux/auth-slice";
+import {getUserData, logoutThunk} from "../../redux/auth-slice";
 
 
 
@@ -12,6 +12,15 @@ import {logoutThunk} from "../../redux/auth-slice";
 const Header = () => {
     const dispatch = useDispatch()
     const isAuth = useSelector(state => state.auth.isAuth)
+    console.log('isAuth', isAuth)
+
+    useEffect(() => {
+        if(!isAuth) {
+            return
+        }
+        dispatch(getUserData())
+    }, [isAuth])
+
 
     const logoutHandle = async () => {
         const refreshToken = localStorage.getItem('refresh_token');

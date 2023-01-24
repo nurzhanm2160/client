@@ -44,6 +44,17 @@ export const logoutThunk = createAsyncThunk(
     }
 )
 
+export const getUserData = createAsyncThunk(
+    'auth/myProfile',
+    async () => {
+        try {
+            const {data} = await authApi.getUserData()
+            return data
+        } catch(e) {
+            return Promise.reject(e)
+        }
+    }
+)
 
 export const authSlice = createSlice({
     name: "auth",
@@ -60,7 +71,7 @@ export const authSlice = createSlice({
         },
         logout: (state) => {
             state.isAuth = false
-        }
+        },
     },
     extraReducers: {
         [loginThunk.fulfilled]: (state) => {
@@ -68,6 +79,13 @@ export const authSlice = createSlice({
         },
         [logoutThunk.fulfilled]: (state) => {
             state.isAuth = false
+        },
+        [getUserData.fulfilled]: (state, action) => {
+            const {id, email, referral_code, my_referal_link} = action.payload
+            state.userId = id
+            state.email = email
+            state.referral_code = referral_code
+            state.my_referal_link = my_referal_link
         }
     }
 })
