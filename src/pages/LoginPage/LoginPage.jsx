@@ -9,13 +9,11 @@ import {authApi} from "../../api/authApi";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {loginThunk} from "../../redux/auth-slice";
+import {API} from "../../api/api";
 
 
 const LoginPage = () => {
     const isAuth = useSelector(state => state.auth.isAuth)
-    if (isAuth) {
-        window.location.href = '/dashboard'
-    }
 
     const dispatch = useDispatch()
 
@@ -23,14 +21,7 @@ const LoginPage = () => {
 
     const onSubmit = async (formData) => {
         const {login, password} = formData
-        const {data} = await authApi.login(login, password)
         dispatch(loginThunk({login, password}))
-
-        localStorage.clear();
-        localStorage.setItem('access_token', data.tokens.access);
-        localStorage.setItem('refresh_token', data.tokens.refresh);
-        axios.defaults.headers.common['Authorization'] =
-            `Bearer ${data['access']}`;
     }
 
     return (

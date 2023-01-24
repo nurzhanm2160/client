@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import Deshboard from "./pages/Dashboard/Dashboard";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import './interceptors/axios';
 import {Provider} from "react-redux";
 import {store} from "./redux/store";
 

@@ -14,14 +14,8 @@ export const authApi = {
             password
         })
     },
-    logout: (refreshToken) => {
-        return API.post('auth/logout/', {
-            refresh_token: refreshToken,
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Token ' + localStorage.getItem('refresh_token'),
-            }
-        })
+    logout: (refresh_token) => {
+        return API.post('auth/logout/', {refresh_token})
     }
 }
 

@@ -4,55 +4,18 @@ import {NavLink} from "react-router-dom";
 import s from "./Header.module.scss"
 import logo from "../../assets/img/Logotype.png"
 import {useDispatch, useSelector} from "react-redux";
-import {authActions} from "../../redux/auth-slice";
-import axios from "axios";
-import {API} from "../../api/api";
+import {logoutThunk} from "../../redux/auth-slice";
+
+
+
 
 const Header = () => {
     const dispatch = useDispatch()
     const isAuth = useSelector(state => state.auth.isAuth)
 
-    useEffect(() => {
-        if (localStorage.getItem('access_token') !== null) {
-            dispatch(authActions.login(true))
-        }
-    }, [isAuth]);
-
-    API.interceptors.request.use(
-        config => {
-            config.headers.authorization = `Bearer ${localStorage.getItem('access_token')}`
-            console.log('сработал intercepter')
-            return config
-        },
-        error => {
-            return Promise.reject(error)
-        }
-    )
-
     const logoutHandle = async () => {
-        const refresh_token = localStorage.getItem('refresh_token');
-        // API.post('auth/logout/', {refresh_token}, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': `Token ${localStorage.getItem('access_token')}`
-        //     },
-        // })
-        //     .then(response => {
-        //         // handle success
-        //         localStorage.clear()
-        //         // window.location.href = '/login'
-        //     })
-        //     .catch(error => {
-        //         // handle error
-        //         console.log(error);
-        //     });
-        try {
-            const result = await API.get('auth/my-profile/')
-            console.log(result)
-        } catch (e) {
-            console.log(e)
-        }
-
+        const refreshToken = localStorage.getItem('refresh_token');
+        dispatch(logoutThunk({refreshToken}))
     }
 
     return (
