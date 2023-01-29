@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from "./Mining.module.scss"
 import {miningItems} from "./miningData/miningData"
 import DashHeader from "../DashHeader/DashHeader";
+import ModalDeposit from "../ModalDeposit/ModalDeposit";
 
 
 const Mining = () => {
+    const [modalActive, setModalActive] = useState(false)
+
     return (
         <>
             <div className="container">
@@ -31,11 +34,12 @@ const Mining = () => {
                                     <span>{item.earned}</span>
                                 </div>
                                 <div className={s.deposit}>
-                                    <button className="btn-gradient">DEPOSIT</button>
+                                    <button onClick={()=> setModalActive(true)} className="btn-gradient">DEPOSIT</button>
                                 </div>
                             </div>
                         </div>
                     )}
+                    <ModalDeposit active={modalActive} setActive={setModalActive}/>
                 </div>
             </div>
         </>
