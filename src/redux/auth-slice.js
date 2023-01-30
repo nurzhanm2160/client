@@ -1,32 +1,93 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {authApi} from "../api/authApi";
+import {API} from "../api/api";
+
+export const registerThunk = createAsyncThunk(
+    'auth/register',
+    async ({login, password}, {rejectWithValue}) => {
+        try {
+            const response = await authApi.register(login, password)
+            console.log(response)
+        } catch (e) {
+            return rejectWithValue('Opps there seems to be an error')
+        }
+
+    }
+)
+
+export const loginThunk = createAsyncThunk(
+    'auth/login',
+    async ({login, password}, {rejectWithValue}) => {
+        try {
+            const {data} = await authApi.login(login, password)
+            console.log(data)
+            localStorage.clear();
+            localStorage.setItem('access_token', data.tokens.access);
+            localStorage.setItem('refresh_token', data.tokens.refresh);
+            API.defaults.headers.authorization = `Bearer ${data.tokens['access']}`;
+        } catch (e) {
+            return rejectWithValue('Opps there seems to be an error')
+        }
+    }
+)
+
+export const logoutThunk = createAsyncThunk(
+    'auth/logout',
+    async ({refreshToken}, {rejectWithValue}) => {
+        try {
+            const response = await authApi.logout(refreshToken)
+            API.defaults.headers.authorization = null
+            localStorage.clear()
+        } catch (e) {
+            return rejectWithValue('Opps there seems to be an error')
+        }
+    }
+)
+
+export const getUserData = createAsyncThunk(
+    'auth/myProfile',
+    async () => {
+        try {
+            const {data} = await authApi.getUserData()
+            return data
+        } catch(e) {
+            return Promise.reject(e)
+        }
+    }
+)
 
 export const authSlice = createSlice({
     name: "auth",
     initialState: {
+        isAuth: false,
         userId: null,
         email: "",
-        username: null,
         referral_code: null,
         my_referal_link: null,
     },
-    reducers: {},
+    reducers: {
+        login: (state, action) => {
+            state.isAuth = action.payload
+        },
+        logout: (state) => {
+            state.isAuth = false
+        },
+    },
     extraReducers: {
-        [register.pending]: (state, action) => {
+        [loginThunk.fulfilled]: (state) => {
+            state.isAuth = true
         },
-        [register.fulfilled]: (state, action) => {
-            console.log()
+        [logoutThunk.fulfilled]: (state) => {
+            state.isAuth = false
         },
-        [register.rejected]: (state, action) => {
+        [getUserData.fulfilled]: (state, action) => {
+            const {id, email, referral_code, my_referal_link} = action.payload
+            state.userId = id
+            state.email = email
+            state.referral_code = referral_code
+            state.my_referal_link = my_referal_link
         }
     }
 })
 
-export const register = createAsyncThunk(
-    'auth/register',
-    async () => {
-        const response = await
-    }
-)
-
-
-export default authSlice.reducer
+export const {reducer: authReducer, actions: authActions} = authSlice

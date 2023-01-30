@@ -1,10 +1,32 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Header.module.scss'
 import {NavLink} from "react-router-dom";
 import s from "./Header.module.scss"
 import logo from "../../assets/img/Logotype.png"
+import {useDispatch, useSelector} from "react-redux";
+import {getUserData, logoutThunk} from "../../redux/auth-slice";
+
+
+
 
 const Header = () => {
+    const dispatch = useDispatch()
+    const isAuth = useSelector(state => state.auth.isAuth)
+    console.log('isAuth', isAuth)
+
+    useEffect(() => {
+        if(!isAuth) {
+            return
+        }
+        dispatch(getUserData())
+    }, [isAuth])
+
+
+    const logoutHandle = async () => {
+        const refreshToken = localStorage.getItem('refresh_token');
+        dispatch(logoutThunk({refreshToken}))
+    }
+
     return (
         <div className={s.wrapper}>
             <div className="container">
@@ -26,8 +48,19 @@ const Header = () => {
                     </div>
                     <div className="col-lg-3">
                         <div className={s.account}>
-                            <NavLink to="/login" className="text-decoration-none"><div className={s.login}>Login</div></NavLink>
-                            <NavLink to="/register" className="text-decoration-none"><div className={`btn-gradient ${s.register}`}>Register</div></NavLink>
+                            {isAuth ?
+                                <div
+                                    className={`btn-gradient ${s.register}`}
+                                    onClick={() => logoutHandle()}
+                                >
+                                    LOGOUT
+                                </div>
+                                :
+                                <>
+                                    <NavLink to="/login" className="text-decoration-none"><div className={s.login}>Login</div></NavLink>
+                                    <NavLink to="/register" className="text-decoration-none"><div className={`btn-gradient ${s.register}`}>Register</div></NavLink>
+                                </>
+                            }
                         </div>
                     </div>
                 </div>

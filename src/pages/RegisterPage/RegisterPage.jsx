@@ -5,13 +5,17 @@ import img from "../../assets/img/login/login-img.png";
 import {useForm} from "react-hook-form";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
+import {registerThunk} from "../../redux/auth-slice";
+import {useDispatch} from "react-redux";
 
 const RegisterPage = () => {
+    const dispatch = useDispatch()
 
     const {register, handleSubmit} = useForm()
 
     const onSubmit = (data) => {
-        alert(data)
+        const {login, password} = data
+        dispatch(registerThunk({login, password}))
     }
 
     return (
@@ -31,6 +35,9 @@ const RegisterPage = () => {
                             <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
                                 <div><input type="text"
                                             placeholder="Enter your EMail address" {...register("login", {required: true})}/>
+                                </div>
+                                <div><input type="password"
+                                            placeholder="Enter your password" {...register("password", {required: true})}/>
                                 </div>
                                 <div className="row">
                                     <div className="col-lg-6">

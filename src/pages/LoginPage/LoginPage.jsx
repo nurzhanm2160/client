@@ -1,18 +1,27 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import s from "./LoginPage.module.scss"
 import img from "../../assets/img/login/login-img.png"
 import {NavLink} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
+import {authApi} from "../../api/authApi";
+import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import {loginThunk} from "../../redux/auth-slice";
+import {API} from "../../api/api";
 
 
 const LoginPage = () => {
+    const isAuth = useSelector(state => state.auth.isAuth)
+
+    const dispatch = useDispatch()
 
     const {register, handleSubmit} = useForm()
 
-    const onSubmit = (data) => {
-        console.log(data)
+    const onSubmit = async (formData) => {
+        const {login, password} = formData
+        dispatch(loginThunk({login, password}))
     }
 
     return (
@@ -29,11 +38,11 @@ const LoginPage = () => {
                         </div>
                         <div className="row">
                             <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-                                <div><input type="text"
+                                <div><input type="email"
                                             placeholder="Enter your EMail address" {...register("login", {required: true})}/>
                                 </div>
-                                <div><input type="text"
-                                            placeholder="Enter your password" {...register("password", {required: true})}/>
+                                <div><input type="password"
+                                            placeholder="Enter your password" {...register("password", {required: true})} />
                                 </div>
                                 <div className="row">
                                     <div className="col-lg-6">
@@ -52,7 +61,7 @@ const LoginPage = () => {
                         </div>
                     </div>
                     <div className="col-lg-6 d-flex justify-content-end">
-                        <img className={s.img} src={img}/>
+                        <img className={s.img} src={img} alt="Login" />
                     </div>
                 </div>
             </div>
