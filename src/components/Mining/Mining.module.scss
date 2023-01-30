@@ -1,32 +1,37 @@
-.mining {
-  margin-top: 60px;
-}
-
-
-.coins {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  .coin {
-    margin-left: 30px;
-    background-color: #720ADB;
-
-    &:first-child {
-    margin-left: auto;
-    }
-
-  }
+.powers {
+  align-content: center;
+  margin-top: 20px;
 }
 
 .power {
+  margin-top: 65px;
+  border-radius: 20px;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,76,255,1) 0%, rgba(61,36,200,1) 0%, rgba(105,8,161,1) 88%);
 }
 
+
 .head {
-  background-color: #720ADB;
+  padding: 15px 20px;
   color: white;
   font-size: 24px;
   font-weight: bold;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    span {
+      margin-left: 10px;
+    }
+
+    img {
+      width: 55px;
+    }
+  }
+
+  span {
+    display: block;
+  }
 
   .badge {
     padding: 7px 15px;
@@ -37,8 +42,39 @@
     justify-content: center;
     background: #F0B90B;
   }
+}
 
-  img {
-    width: 55px;
+.average {
+  background: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+}
+
+.earned {
+  padding: 15px 20px;
+  span {
+    color: white;
+    font-size: 24px;
+    display: block;
+  }
+}
+
+.deposit {
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    height: 55px;
+    width: 200px;
+    border-radius: 10px;
+    font-size: 24px;
+    color: white;
+    background: linear-gradient(111.42deg, #FF4B2B 9.98%, #E4C107 102.99%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
   }
 }

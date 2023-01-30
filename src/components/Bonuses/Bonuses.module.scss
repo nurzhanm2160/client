@@ -1,0 +1,67 @@
+.bounty {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.info {
+  border: 2px solid #4F4F4F;
+  padding: 45px 40px;
+  border-radius: 20px;
+  background-color: #2E2E2E66;
+
+  span {
+    color: white;
+    margin-top: 40px;
+    font-size: 18px;
+  }
+  
+  .pl {
+    padding-left: 20px;
+  }
+}
+
+.referral {
+  margin-bottom: 40px;
+}
+.referral_block {
+  border: 2px solid #4F4F4F;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.title {
+  background: #2E2E2E66;
+  padding: 20px 40px;
+}
+
+
+.table {
+  width: 100%;
+  overflow: hidden;
+
+  tr {
+    padding-left: 20px;
+    border-bottom: 2px solid #4F4F4F;
+
+    th {
+      font-size: 24px;
+      color: #fff;
+      padding-left:  40px;
+      background: #0577F2;
+    }
+
+    td {
+      padding-left: 40px;
+
+      button {
+        border-radius: 10px;
+        color: white;
+        width: 150px;
+      }
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}

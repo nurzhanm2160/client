@@ -5,8 +5,7 @@ import img from "../../assets/img/Telegram.png";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
 
-const InboxCheckPage = () =>{
-
+const InboxCheckPage = () => {
     return (
         <>
             <header>

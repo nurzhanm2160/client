@@ -1,29 +1,48 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from "./Mining.module.scss"
 import {miningItems} from "./miningData/miningData"
-import maining from "../../assets/img/icons/maining.svg";
+import DashHeader from "../DashHeader/DashHeader";
+import ModalDeposit from "../ModalDeposit/ModalDeposit";
 
 
 const Mining = () => {
+    const [modalActive, setModalActive] = useState(false)
+
     return (
-        <div className={s.mining}>
+        <>
             <div className="container">
-                <div className="row d-flex justify-content-center">
+                <header>
+                    <DashHeader/>
+                </header>
+                <div className={`row ${s.powers}`}>
                     {miningItems.coins.map(item =>
-                        <div className="col-lg-3 bg-gradient">
-                            <div className={s.head}>
-                                <img src={item.img}/>
-                                <span>{item.coin}</span>
-                                <p>{item.earned}</p>
-                                <span className={s.badge}>{item.power}</span>
-                            </div>
-                            <div className={s.average}>
+                        <div className="col-lg-3">
+                            <div className={s.power}>
+                                <div className={s.head}>
+                                    <div className={s.logo}>
+                                        <img src={item.img}/>
+                                        <span>{item.coin}</span>
+                                    </div>
+                                    <span>{item.earned}</span>
+                                    <span className={s.badge}>{item.power}</span>
+                                </div>
+                                <div className={s.average}>
+                                    <span>Average of power:</span>
+                                </div>
+                                <div className={s.earned}>
+                                    <span>YOU EARNED:</span>
+                                    <span>{item.earned}</span>
+                                </div>
+                                <div className={s.deposit}>
+                                    <button onClick={()=> setModalActive(true)} className="btn-gradient">DEPOSIT</button>
+                                </div>
                             </div>
                         </div>
                     )}
+                    <ModalDeposit active={modalActive} setActive={setModalActive}/>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
