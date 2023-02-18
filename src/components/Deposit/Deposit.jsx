@@ -1,7 +1,7 @@
 import React from 'react';
 import s from "./Deposit.module.scss"
 import DashHeader from "../DashHeader/DashHeader";
-import coin from "../../assets/img/coins/5.svg";
+import coin from "../../assets/img/coins/4.svg";
 import {depositData} from "./depositData/depositData";
 
 const Deposit = () => {

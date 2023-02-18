@@ -5,9 +5,11 @@ import {useClipboard} from "use-clipboard-copy";
 import affiliate from "../../assets/img/icons/affiliane.png"
 import unpower from "../../assets/img/icons/unpower.png"
 import {NavLink} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const Affiliate = () => {
 
+    const referrals = useSelector(state => state.referrals)
     const [copy, setCopy] = useState(false)
     const clipboard = useClipboard({
         onSuccess() {

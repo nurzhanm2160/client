@@ -1,5 +1,4 @@
 import {API} from "./api";
-import axios from "axios";
 
 export const authApi = {
     login: (email, password) => {
@@ -19,6 +18,6 @@ export const authApi = {
     },
     getUserData: () => {
         return API.get('auth/my-profile/')
-    }
+    },
 }
 

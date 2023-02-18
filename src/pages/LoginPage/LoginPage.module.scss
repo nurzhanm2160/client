@@ -2,7 +2,8 @@
 
 
 .login {
-  margin-top: 100px;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 .title {
@@ -49,6 +50,7 @@
   span {
     color: white;
     font-size: 20px;
+    margin-left: 20px;
   }
 }
 
@@ -68,4 +70,16 @@
 
 .img {
   width: 450px;
+}
+
+
+@media  (max-width: 992px){
+    .img {
+      display: none;
+    }
+
+  .form_block {
+    display: flex;
+    justify-content: center;
+  }
 }
