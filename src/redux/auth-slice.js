@@ -1,8 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {authApi} from "../api/authApi";
-import {API} from "../api/api";
 
-export const registerThunk = createAsyncThunk(
+export const register = createAsyncThunk(
     'auth/register',
     async ({login, password}, {rejectWithValue}) => {
         try {
@@ -15,7 +14,7 @@ export const registerThunk = createAsyncThunk(
     }
 )
 
-export const loginThunk = createAsyncThunk(
+export const login = createAsyncThunk(
     'auth/login',
     async ({login, password}, {rejectWithValue}) => {
         try {
@@ -31,27 +30,41 @@ export const loginThunk = createAsyncThunk(
     }
 )
 
-export const logoutThunk = createAsyncThunk(
-    'auth/logout',
-    async ({refreshToken}, {rejectWithValue}) => {
+export const logout = createAsyncThunk(
+    'logout',
+    async (_, {rejectWithValue}) => {
         try {
-            const response = await authApi.logout(refreshToken)
-            API.defaults.headers.authorization = null
-            localStorage.clear()
+            const refresh = localStorage.getItem('refresh_token')
+            const response = await authApi.logout(refresh)
         } catch (e) {
-            return rejectWithValue('Opps there seems to be an error')
+            return rejectWithValue('Не удалось вылогиниться')
         }
     }
 )
 
+export const checkAuth = createAsyncThunk(
+    'checkAuth',
+    async (_, { rejectWithValue }) => {
+        try {
+            const refresh = localStorage.getItem('refresh_token');
+            const response = await authApi.checkAuth(refresh);
+
+            localStorage.setItem('access_token', response.data.access);
+            localStorage.getItem('access_token')
+        } catch (error) {
+            return rejectWithValue('Something went wrong while checking authentication');
+        }
+    }
+);
+
 export const getUserData = createAsyncThunk(
     'auth/myProfile',
-    async () => {
+    async (_, {rejectWithValue}) => {
         try {
             const {data} = await authApi.getUserData()
             return data
         } catch(e) {
-            return Promise.reject(e)
+            return rejectWithValue('Не удалось получить данные пользователя')
         }
     }
 )
@@ -73,20 +86,21 @@ export const authSlice = createSlice({
             state.isAuth = false
         },
     },
-    extraReducers: {
-        [loginThunk.fulfilled]: (state) => {
-            state.isAuth = true
-        },
-        [logoutThunk.fulfilled]: (state) => {
-            state.isAuth = false
-        },
-        [getUserData.fulfilled]: (state, action) => {
-            const {id, email, referral_code, my_referal_link} = action.payload
-            state.userId = id
-            state.email = email
-            state.referral_code = referral_code
-            state.my_referal_link = my_referal_link
-        }
+    extraReducers: (builder) => {
+        builder.addCase(login)
+        // [loginThunk.fulfilled]: (state) => {
+        //     state.isAuth = true
+        // },
+        // [logoutThunk.fulfilled]: (state) => {
+        //     state.isAuth = false
+        // },
+        // [getUserData.fulfilled]: (state, action) => {
+        //     const {id, email, referral_code, my_referal_link} = action.payload
+        //     state.userId = id
+        //     state.email = email
+        //     state.referral_code = referral_code
+        //     state.my_referal_link = my_referal_link
+        // }
     }
 })
 

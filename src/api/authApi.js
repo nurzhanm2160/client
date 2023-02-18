@@ -1,24 +1,28 @@
-import {API} from "./api";
-import axios from "axios";
+import axios, {apiInstance} from "axios";
 
 export const authApi = {
     login: (email, password) => {
-        return API.post('auth/login/', {
+        return apiInstance.post('auth/login/', {
             email,
             password
         })
     },
     register: (email, password) => {
-        return API.post('auth/register/', {
+        return apiInstance.post('auth/register/', {
             email,
             password
         })
     },
     logout: (refresh_token) => {
-        return API.post('auth/logout/', {refresh_token})
+        return apiInstance.post('auth/logout/', {refresh_token})
+    },
+    checkAuth: (refresh) => {
+        return apiInstance.post('auth/token/refresh/', { refresh }, {
+            withCredentials: true
+        });
     },
     getUserData: () => {
-        return API.get('auth/my-profile/')
+        return apiInstance.get('auth/my-profile/')
     }
 }
 
