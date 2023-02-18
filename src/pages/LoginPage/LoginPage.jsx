@@ -31,36 +31,34 @@ const LoginPage = () => {
             </header>
             <div className={`container ${s.login}`}>
                 <div className="row align-items-center">
-                    <div className="col-lg-6">
-                        <div className="row">
-                            <span className={s.title}>LOGIN</span>
-                            <span className={s.description}>Login to get all the best benefits of our project!</span>
-                        </div>
-                        <div className="row">
-                            <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-                                <div><input type="email"
-                                            placeholder="Enter your EMail address" {...register("login", {required: true})}/>
-                                </div>
-                                <div><input type="password"
-                                            placeholder="Enter your password" {...register("password", {required: true})} />
-                                </div>
-                                <div className="row">
-                                    <div className="col-lg-6">
-                                        <button className="btn-gradient">SIGN IN</button>
+                    <div className={`col-lg-6 ${s.form_block}`}>
+                        <div>
+                            <div className="row">
+                                <span className={s.title}>LOGIN</span>
+                                <span className={s.description}>Login to get all the best benefits of our project!</span>
+                            </div>
+                            <div className="row">
+                                <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+                                    <div><input type="email"
+                                                placeholder="Enter your EMail address" {...register("login", {required: true})}/>
                                     </div>
-                                    <div className="col-lg-6 d-flex justify-content-lg-end">
-                                        <span>Forgot password?</span>
+                                    <div><input type="password"
+                                                placeholder="Enter your password" {...register("password", {required: true})} />
                                     </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div className="row mt-4">
-                            <NavLink to="/register" className={s.link}>
-                                <span className={s.reg_link}>Already don’t have an account? Register!</span>
-                            </NavLink>
+                                    <div className="d-flex justify-content-between align-items-center">
+                                            <button className="btn-gradient w-1/2">SIGN IN</button>
+                                            <span className="w-1/2">Forgot password?</span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div className="row mt-4">
+                                <NavLink to="/register" className={s.link}>
+                                    <span className={s.reg_link}>Already don’t have an account? Register!</span>
+                                </NavLink>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-lg-6 d-flex justify-content-end">
+                    <div className={`col-lg-6 d-flex justify-content-end`}>
                         <img className={s.img} src={img} alt="Login" />
                     </div>
                 </div>

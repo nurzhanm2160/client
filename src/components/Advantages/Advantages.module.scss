@@ -5,6 +5,14 @@
 }
 
 .advantages_wrapper {
+
+}
+
+
+.items {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   padding: 40px 0;
 }
 
@@ -26,6 +34,17 @@
 
   .description {
     margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 1100px){
+  .advantages_wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .items {
+    width: auto;
+    display: block;
   }
 }
 

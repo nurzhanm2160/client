@@ -1,5 +1,6 @@
 import React from 'react'
 import s from "./Faq.module.scss"
+import {NavLink} from "react-router-dom";
 
 export const Faq = () => {
     return <section className={s.faq}>
@@ -35,7 +36,7 @@ export const Faq = () => {
                 </div>
             </div>
             <div className={s.card_items}>
-                <button className={`btn-gradient ${s.btn}`}>Read more</button>
+                <NavLink to="faq"><button className={`btn-gradient ${s.btn}`}>Read more</button></NavLink>
             </div>
         </div>
     </section>

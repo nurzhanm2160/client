@@ -7,7 +7,7 @@ import trustpilot from '../../assets/img/trustpilot.png'
 
 export const Stats = () => {
     return (
-        <section className={s.starts}>
+        <section className={s.status}>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-8">

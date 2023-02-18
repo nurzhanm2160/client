@@ -10,6 +10,7 @@ import {Faq} from "../../components/Faq/Faq";
 import {Stats} from "../../components/Stats/Stats";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
+import Calc from "../../components/Calc/Calc";
 
 
 const Home = () => {
@@ -26,6 +27,7 @@ const Home = () => {
                 <News/>
                 <Transactions />
                 <Faq />
+                <Calc />
                 <Stats />
             </div>
             <footer>
