@@ -6,6 +6,14 @@ export const apiInstance = axios.create({
     baseURL: url,
 })
 
+apiInstance.interceptors.request.use((config) => {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
+
 apiInstance.interceptors.response.use(
     (response) => {
         return response;
@@ -26,7 +34,7 @@ apiInstance.interceptors.response.use(
 
                 if (refreshToken) {
                     return axios
-                        .post(`${url}auth/token/refresh/`, { refresh_token: refreshToken }, {
+                        .post(`${url}auth/token/refresh/`, { refresh: refreshToken }, {
                             headers: {
                                 Authorization: `Bearer ${refreshToken}`
                             }

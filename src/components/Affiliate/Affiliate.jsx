@@ -6,13 +6,17 @@ import affiliate from "../../assets/img/icons/affiliane.png"
 import unpower from "../../assets/img/icons/unpower.png"
 import {NavLink, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {logout} from "../../redux/auth-slice";
+import { getAllReferrals, checkAuth } from "../../redux/user-slice"
 
 const Affiliate = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const isAuth = useSelector(state => state.auth.isAuth)
-    const referrals = useSelector(state => state.referrals)
+    const isAuth = useSelector(state => state.user.isAuth)
+    // const userId = useSelector(state => state.user.userId)
+    const referral_code = useSelector(state => state.user.referral_code)
+    const first_level_referrals = useSelector(state => state.user.first_level_referrals)
+    const second_level_referrals = useSelector(state => state.user.second_level_referrals)
+
     const [copy, setCopy] = useState(false)
     const clipboard = useClipboard({
         onSuccess() {
@@ -21,16 +25,18 @@ const Affiliate = () => {
     })
 
     useEffect(() => {
-        if (!isAuth) {
-            navigate('/login')
-        }
+        // dispatch(checkAuth())
+        dispatch(getAllReferrals())
+    }, [])
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (!isAuth) {
+                navigate('/login')
+            }
+        }, 3000)
         return
     }, [isAuth])
-
-    const handleLogout = () => {
-        dispatch(logout())
-    }
-
 
     return (
         <div className={s.affiliate}>
@@ -58,7 +64,7 @@ const Affiliate = () => {
                             <div className="row d-flex">
                                 <div className="col-lg-10 p-2">
                                     <input ref={clipboard.target} className={s.link}
-                                           value="https://shorta.cc/?ref=010101"/>
+                                           value={`https://shorta.cc/register?${referral_code}`}/>
                                 </div>
                                 <div className="col-lg-2 d-flex justify-content-center p-2">
                                     <button onClick={clipboard.copy} className={`btn-gradient ${s.copy}`}>
@@ -80,7 +86,7 @@ const Affiliate = () => {
                                             <span className={s.badge} style={{color: "#E79470"}}>12% each</span>
                                         </div>
                                     </div>
-                                    <div className={s.persons}>0 person invited</div>
+                                    <div className={s.persons}>{first_level_referrals.length} person invited</div>
                                 </div>
                             </div>
                             <div className="col-lg-4">
@@ -95,7 +101,7 @@ const Affiliate = () => {
                                             <span className={s.badge} style={{color: "#720ADB"}}>2% each</span>
                                         </div>
                                     </div>
-                                    <div className={s.persons}>0 person invited</div>
+                                    <div className={s.persons}>{second_level_referrals.length} person invited</div>
                                 </div>
                             </div>
                             <div className="col-lg-4">

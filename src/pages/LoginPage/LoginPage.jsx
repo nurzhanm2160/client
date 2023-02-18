@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import s from "./LoginPage.module.scss"
 import img from "../../assets/img/login/login-img.png"
 import {NavLink} from "react-router-dom";
@@ -6,13 +6,13 @@ import {useForm} from "react-hook-form";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
 import {useDispatch, useSelector} from "react-redux";
-import {loginThunk} from "../../redux/auth-slice";
+import {loginThunk} from "../../redux/user-slice"
 import {useNavigate} from "react-router-dom";
 
 
 
 const LoginPage = () => {
-    const isAuth = useSelector(state => state.auth.isAuth)
+    const isAuth = useSelector(state => state.user.isAuth)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 

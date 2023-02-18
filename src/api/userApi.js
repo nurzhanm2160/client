@@ -1,6 +1,6 @@
 import {apiInstance} from "./axios";
 
-export const authApi = {
+export const userApi = {
     login: (email, password) => {
         return apiInstance.post('auth/login/', {
             email,
@@ -26,7 +26,18 @@ export const authApi = {
         });
     },
     getUserData: () => {
-        return apiInstance.get('auth/my-profile/')
+        return apiInstance.get('auth/my-profile/', {
+            headers: {
+                Authorization: 'Bearer '+ localStorage.getItem('access_token')
+            }
+        })
+    },
+    getAllReferrals: () => {
+        return apiInstance.post('auth/referrals/', {
+            headers: {
+                Authorization: 'Bearer '+ localStorage.getItem('access_token')
+            }
+        })
     }
 }
 

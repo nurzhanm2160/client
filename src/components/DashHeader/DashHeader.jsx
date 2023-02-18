@@ -1,7 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from "./DashHeader.module.scss"
+import {getUserData, logout} from "../../redux/user-slice";
+import {useDispatch} from "react-redux";
 
 const DashHeader = () => {
+    const dispatch = useDispatch()
+
+    const handleLogout = () => {
+        dispatch(logout())
+    }
+
+    useEffect(() => {
+        dispatch(getUserData())
+    }, [])
+
     return (
         <div className={`row ${s.header}`}>
             <div className="col-lg-10 d-flex align-items-center">
@@ -11,7 +23,12 @@ const DashHeader = () => {
                 </div>
             </div>
             <div className={`col-lg-2 ${s.account}`}>
-                <button className="btn-gradient">LOGOUT</button>
+                <button
+                    onClick={() => handleLogout()}
+                    className="btn-gradient"
+                >
+                    LOGOUT
+                </button>
             </div>
         </div>
     )

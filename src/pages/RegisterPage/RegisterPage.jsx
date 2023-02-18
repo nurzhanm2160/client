@@ -5,7 +5,7 @@ import img from "../../assets/img/login/login-img.png";
 import {useForm} from "react-hook-form";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
-import {registerThunk} from "../../redux/auth-slice";
+import {registerThunk} from "../../redux/user-slice";
 import {useDispatch} from "react-redux";
 
 const RegisterPage = () => {
@@ -53,7 +53,7 @@ const RegisterPage = () => {
                         </div>
                     </div>
                     <div className="col-lg-6 d-flex justify-content-end">
-                        <img className={s.img} src={img}/>
+                        <img className={s.img} src={img} alt="img"/>
                     </div>
                 </div>
             </div>

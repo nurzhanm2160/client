@@ -4,25 +4,18 @@ import {NavLink} from "react-router-dom";
 import s from "./Header.module.scss"
 import logo from "../../assets/img/Logotype.png"
 import {useDispatch, useSelector} from "react-redux";
-import {checkAuth, getUserData, logout} from "../../redux/auth-slice";
+import {checkAuth, logout, getUserData} from "../../redux/user-slice";
 import {FiMenu, FiX} from "react-icons/fi";
 
 
 const Header = () => {
     const [hamburger, setHamburger] = useState(false)
     const dispatch = useDispatch()
-    const isAuth = useSelector(state => state.auth.isAuth)
+    const isAuth = useSelector(state => state.user.isAuth)
 
     useEffect(() => {
         dispatch(checkAuth())
     }, [])
-
-    // useEffect(() => {
-    //     if (!isAuth) {
-    //         return
-    //     }
-    //     dispatch(getUserData())
-    // }, [isAuth])
 
 
     const logoutHandle = async () => {
@@ -35,7 +28,7 @@ const Header = () => {
                 <div className="row align-items-center">
                     <div className="col-lg-2 d-flex justify-content-center">
                         <NavLink to="/" className="text-decoration-none">
-                            <img src={logo}/>
+                            <img src={logo} alt="logo"/>
                         </NavLink>
                     </div>
                     <div className="col-lg-7">

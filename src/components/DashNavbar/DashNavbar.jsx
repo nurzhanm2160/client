@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from "./DashNavbar.module.scss"
 import {NavLink} from "react-router-dom";
 import logo from "../../assets/img/Logotype.png"
@@ -8,6 +8,7 @@ import affiliateImg from "../../assets/img/dashboardNav/affiliateLogo.png"
 import bonusesImg from "../../assets/img/dashboardNav/bonusesLogo.png"
 
 const DashNavbar = () => {
+
     return (
         <div className={s.navbar}>
             <div className={s.logo}>
