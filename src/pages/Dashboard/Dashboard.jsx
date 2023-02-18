@@ -7,12 +7,14 @@ import DashNavbar from "../../components/DashNavbar/DashNavbar";
 import Affiliate from "../../components/Affiliate/Affiliate";
 import Deposit from "../../components/Deposit/Deposit";
 import {Footer} from "../../components/Footer/Footer";
+import {useNavigate} from 'react-router-dom'
 
 function Dashboard() {
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (localStorage.getItem('access_token') === null) {
-            window.location.href = '/login'
+            navigate('/login')
         }
         // TODO: сделать try catch. И слать запрос за данными для dashboard
     }, [])

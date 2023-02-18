@@ -26,7 +26,7 @@ apiInstance.interceptors.response.use(
 
                 if (refreshToken) {
                     return axios
-                        .post(`${url}auth/token/refresh`, { refresh_token: refreshToken }, {
+                        .post(`${url}auth/token/refresh/`, { refresh_token: refreshToken }, {
                             headers: {
                                 Authorization: `Bearer ${refreshToken}`
                             }

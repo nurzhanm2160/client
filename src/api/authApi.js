@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import axios, {apiInstance} from "axios";
-=======
-import {API} from "./api";
->>>>>>> refs/remotes/origin/main
+import {apiInstance} from "./axios";
 
 export const authApi = {
     login: (email, password) => {
@@ -18,7 +14,11 @@ export const authApi = {
         })
     },
     logout: (refresh_token) => {
-        return apiInstance.post('auth/logout/', {refresh_token})
+        return apiInstance.post('auth/logout/', {refresh_token}, {
+            headers: {
+                Authorization: 'Bearer '+ localStorage.getItem('access_token')
+            }
+        })
     },
     checkAuth: (refresh) => {
         return apiInstance.post('auth/token/refresh/', { refresh }, {
@@ -26,12 +26,7 @@ export const authApi = {
         });
     },
     getUserData: () => {
-<<<<<<< HEAD
         return apiInstance.get('auth/my-profile/')
     }
-=======
-        return API.get('auth/my-profile/')
-    },
->>>>>>> refs/remotes/origin/main
 }
 

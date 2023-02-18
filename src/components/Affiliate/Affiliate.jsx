@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import s from "./Affiliate.module.scss"
 import DashHeader from "../DashHeader/DashHeader";
 import {useClipboard} from "use-clipboard-copy";
 import affiliate from "../../assets/img/icons/affiliane.png"
 import unpower from "../../assets/img/icons/unpower.png"
-import {NavLink} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {NavLink, useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../../redux/auth-slice";
 
 const Affiliate = () => {
-
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const isAuth = useSelector(state => state.auth.isAuth)
     const referrals = useSelector(state => state.referrals)
     const [copy, setCopy] = useState(false)
     const clipboard = useClipboard({
@@ -16,6 +19,17 @@ const Affiliate = () => {
             setCopy(true)
         }
     })
+
+    useEffect(() => {
+        if (!isAuth) {
+            navigate('/login')
+        }
+        return
+    }, [isAuth])
+
+    const handleLogout = () => {
+        dispatch(logout())
+    }
 
 
     return (

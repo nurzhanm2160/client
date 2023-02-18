@@ -5,17 +5,16 @@ import {NavLink} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
-import {authApi} from "../../api/authApi";
-import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {loginThunk} from "../../redux/auth-slice";
-import {API} from "../../api/api";
+import {useNavigate} from "react-router-dom";
+
 
 
 const LoginPage = () => {
     const isAuth = useSelector(state => state.auth.isAuth)
-
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const {register, handleSubmit} = useForm()
 
@@ -23,6 +22,12 @@ const LoginPage = () => {
         const {login, password} = formData
         dispatch(loginThunk({login, password}))
     }
+
+    useEffect(() => {
+        if (isAuth) {
+            navigate("/dashboard/affiliate")
+        }
+    }, [isAuth])
 
     return (
         <>
