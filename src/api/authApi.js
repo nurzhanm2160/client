@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import axios, {apiInstance} from "axios";
+=======
+import {API} from "./api";
+>>>>>>> refs/remotes/origin/main
 
 export const authApi = {
     login: (email, password) => {
@@ -22,7 +26,12 @@ export const authApi = {
         });
     },
     getUserData: () => {
+<<<<<<< HEAD
         return apiInstance.get('auth/my-profile/')
     }
+=======
+        return API.get('auth/my-profile/')
+    },
+>>>>>>> refs/remotes/origin/main
 }
 

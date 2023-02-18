@@ -1,11 +1,25 @@
 .title {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  height: 680px;
+  width: 50%;
 }
 
 .header_block {
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 715px;
+
+  .header_text {
+    user-select: none;
+    font-size: 25px;
+    color: white;
+  }
 
   h1 {
     color: white;
@@ -13,16 +27,63 @@
   }
 }
 
-.header_text {
-  font-size: 25px;
-  color: white;
+.items_block {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  .items {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+
+    .item {
+      width: 250px;
+      margin-bottom: 30px;
+      margin-top: 30px;
+
+      .icon {
+        width: 44px;
+        height: 44px;
+        margin-bottom: 18px;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .description {
+        color: #BABABA;
+        line-height: 1.2;
+      }
+    }
+
+    .child {
+      &:last-child {
+        margin-top: 100px;
+      }
+    }
+  }
 }
 
-.form input {
-  width: 400px;
-  height: 50px;
-  margin-right: 20px;
+
+.form {
+  display: flex;
+
+  input {
+    display: block;
+    width: 400px;
+    height: 50px;
+    margin-right: 20px;
+  }
+
+  button {
+    display: block;
+  }
 }
+
 
 .register {
   width: 180px;
@@ -38,6 +99,7 @@
 
 .header_sub {
   margin-top: 17px;
+
   a {
     color: white;
   }
@@ -52,41 +114,35 @@
   justify-content: center;
   background: #FF4B2B;
 
-  &.badge-success {
-
-  }
 
   &.badge-error {
     background: #FF4B2B;
   }
 }
 
-.item {
-  width: 250px;
-  margin-bottom: 30px;
-  margin-top: 30px;
 
-  .icon {
-    width: 44px;
-    height: 44px;
-    margin-bottom: 18px;
+@media screen and (max-width: 1200px){
+  .title {
+    display: block;
 
-    img {
+    .header {
       width: 100%;
-      height: auto;
+    }
+
+    .items_block {
+      display: flex;
+      justify-content: center;
     }
   }
-
-  .title {
-    background: none;
-    color: white;
-    font-weight: 900;
-    margin-bottom: 10px;
+  .form {
     display: block;
-  }
 
-  .description {
-    color: #BABABA;
-    line-height: 1.2;
+    button {
+      margin-top: 20px;
+    }
   }
+}
+
+@media screen and (max-width: 1000px){
+
 }

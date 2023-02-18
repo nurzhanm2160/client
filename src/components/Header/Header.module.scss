@@ -38,9 +38,10 @@
 }
 
 .account {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
 
   .login {
     width: 150px;
@@ -75,4 +76,15 @@
   }
 }
 
+.mobile {
+  display: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1000px){
+  .account {
+    display: flex;
+    justify-content: center;
+  }
+}
 

@@ -1,4 +1,4 @@
-.starts {
+.status {
   padding-top: 60px;
 
   .items {
@@ -32,6 +32,12 @@
   img {
     padding-top: 20px;
     width: 320px
+  }
+}
+
+@media screen and (max-width: 992px){
+  .status {
+    padding-bottom: 40px;
   }
 }
 

@@ -14,16 +14,14 @@ export const Advantages = () => {
                         opportunities for earning and multiplying capital in record time!</p>
                 </div>
                 <div className={s.advantages_wrapper}>
-                    <div className="row d-flex justify-content-between">
+                    <div className={s.items}>
                         {advantagesItems.map(item =>
-                            <div className="col-lg-3">
-                                <div className={s.advantages_item}>
-                                    <div className={s.icon}>
-                                        <img src={item.icon} alt={item.title}/>
-                                    </div>
-                                    <h4>{item.title}</h4>
-                                    <div className={s.description}>{item.description}</div>
+                            <div className={s.advantages_item}>
+                                <div className={s.icon}>
+                                    <img src={item.icon} alt={item.title}/>
                                 </div>
+                                <h4>{item.title}</h4>
+                                <div className={s.description}>{item.description}</div>
                             </div>
                         )}
                     </div>
