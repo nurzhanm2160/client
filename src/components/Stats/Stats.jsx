@@ -1,11 +1,24 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import s from "./Starts.module.scss"
 
 import binance from '../../assets/img/binance.png'
 import paykassa from "../../assets/img/paykassa.png"
 import trustpilot from '../../assets/img/trustpilot.png'
+import {useDispatch, useSelector} from "react-redux";
+import {getDepositsSum, getUsersCount, getWithdrawsSum} from "../../redux/deposit-slice";
 
 export const Stats = () => {
+    const dispatch = useDispatch()
+    const usersCount = useSelector(state => state.deposit.usersCount)
+    const depositsSum = useSelector(state => state.deposit.depositsSum)
+    const withDrawsSum = useSelector(state => state.deposit.withDrawsSum)
+
+    useEffect(() => {
+        dispatch(getUsersCount())
+        dispatch(getDepositsSum())
+        dispatch(getWithdrawsSum())
+    }, [])
+
     return (
         <section className={s.status}>
             <div className="container">
@@ -23,7 +36,7 @@ export const Stats = () => {
                             </div>
                             <div className="col-lg-6">
                                 <div className={s.items}>
-                                    <strong>584,134</strong>
+                                    <strong>{usersCount}</strong>
                                     <p>active users</p>
                                 </div>
                             </div>
@@ -31,13 +44,13 @@ export const Stats = () => {
                         <div className="row d-flex justify-content-center">
                             <div className="col-lg-6">
                                 <div className={s.items}>
-                                    <strong>$223,328</strong>
+                                    <strong>${depositsSum}</strong>
                                     <p>was invested</p>
                                 </div>
                             </div>
                             <div className="col-lg-6">
                                 <div className={s.items}>
-                                    <strong>$676,765</strong>
+                                    <strong>${withDrawsSum}</strong>
                                     <p>paid out</p>
                                 </div>
                             </div>
