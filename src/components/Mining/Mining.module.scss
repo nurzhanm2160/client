@@ -44,15 +44,6 @@
   }
 }
 
-.average {
-  background: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 24px;
-}
-
 .earned {
   padding: 15px 20px;
   span {
@@ -63,7 +54,7 @@
 }
 
 .deposit {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,5 +67,28 @@
     color: white;
     background: linear-gradient(111.42deg, #FF4B2B 9.98%, #E4C107 102.99%),
     linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  }
+}
+
+.withdrow {
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    height: 55px;
+    width: 200px;
+    border-radius: 10px;
+    font-size: 24px;
+    color: white;
+    background: inherit;
+    border: 2px solid #FFFFFF;
+    transition: .2s ease-out;
+
+    &:hover {
+      border: 2px solid silver;
+      color: silver;
+    }
   }
 }

@@ -1,0 +1,115 @@
+.withdrow_modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+}
+
+.active {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1);
+}
+
+.modal_content {
+  padding: 40px 40px;
+  border-radius: 20px;
+  background: linear-gradient(0deg, #2E2E2E, #2E2E2E), linear-gradient(0deg, #4F4F4F, #4F4F4F);
+  transform: scale(0.5);
+}
+
+.modal_content_active {
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(0deg, #2E2E2E, #2E2E2E), linear-gradient(0deg, #4F4F4F, #4F4F4F);
+  height: 530px;
+  width: 700px;
+  transform: scale(1);
+  transition: 0.5s;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-bottom: 20px;
+  height: 250px;
+
+
+  .span {
+    padding-top: 15px;
+    font-size: 20px;
+  }
+
+  span{
+    display: block;
+  }
+
+  img {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+
+.close {
+  padding-top: 40px;
+  padding-right: 40px;
+  padding-left: 100px;
+  background-image:  url("../../assets/img/Ellipse 2.png");
+  background-repeat: no-repeat;
+}
+
+.form {
+  position: relative;
+  bottom: 70px;
+  padding-left: 40px;
+
+  span {
+    font-size: 20px;
+  }
+
+  input {
+    width: 420px;
+    margin-top: 10px;
+    height: 50px;
+    border-radius: 10px;
+    background: inherit;
+    border: 2px solid white;
+    color: white;
+    padding-left: 20px;
+    font-size: 20px;
+  }
+
+  button {
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 160px;
+    height: 50px;
+  }
+}
+
+.qr {
+  position: relative;
+  bottom: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
+
+  span {
+    font-size: 20px;
+  }
+}
