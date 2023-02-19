@@ -79,6 +79,18 @@ export const getAllReferrals = createAsyncThunk(
     }
 )
 
+export const getUserWallets = createAsyncThunk(
+    'getUserWallets',
+    async (_, {rejectWithValue}) => {
+        try {
+            const response = await userApi.getUserWallets()
+            return response.data
+        } catch (e) {
+            return rejectWithValue('Не удалось получить кошельки пользователя')
+        }
+    }
+)
+
 
 
 const initialState = {
@@ -88,7 +100,8 @@ const initialState = {
     referral_code: "",
     my_referal_link: "",
     first_level_referrals: [],
-    second_level_referrals: []
+    second_level_referrals: [],
+    userWallets: []
 }
 
 export const userSlice = createSlice({
@@ -115,7 +128,9 @@ export const userSlice = createSlice({
             state.first_level_referrals = action.payload.first_level_referrals
             state.second_level_referrals = action.payload.second_level_referrals
         })
-
+        builder.addCase(getUserWallets.fulfilled, (state, action) => {
+            state.userWallets = action.payload
+        })
     }
 })
 

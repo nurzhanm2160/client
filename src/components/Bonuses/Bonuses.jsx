@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from "./Bonuses.module.scss"
 import DashHeader from "../DashHeader/DashHeader";
 import {referralItems} from "./referralData/referralData";
+import {useDispatch, useSelector} from "react-redux";
+import {getAllReferrals} from "../../redux/user-slice";
 
-const Bonuses = () => (
+const Bonuses = () => {
+    const dispatch = useDispatch()
+    const first_level_referrals = useSelector(state => state.user.first_level_referrals)
+    const second_level_referrals = useSelector(state => state.user.second_level_referrals)
+    const referralsItems = [...first_level_referrals, ...second_level_referrals]
+
+    useEffect(() => {
+        dispatch(getAllReferrals())
+    }, [])
+
+    return (
         <div className={s.bonuses}>
             <div className="container">
                 <header>
@@ -35,16 +47,14 @@ const Bonuses = () => (
                             <table className={s.table}>
                                 <tr>
                                     <th>Type</th>
-                                    <th>Time</th>
-                                    <th>Power</th>
-                                    <th>Comment</th>
+                                    <th>Email</th>
+                                    <th>referral code</th>
                                 </tr>
-                                {referralItems.map(item =>
+                                {referralsItems.map(referral =>
                                     <tr>
-                                        <td>{item.type}</td>
-                                        <td>{item.time.toLocaleString()}</td>
-                                        <td>{item.power} VH/s</td>
-                                        <td>{item.comment}</td>
+                                        <td>registration</td>
+                                        <td>{referral.email}</td>
+                                        <td>{referral.referral_code}</td>
                                     </tr>
                                 )}
                             </table>
@@ -54,7 +64,7 @@ const Bonuses = () => (
             </div>
         </div>
     )
-;
+}
 
-export default Bonuses;
+export default Bonuses
 

@@ -1,12 +1,35 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from "./Mining.module.scss"
-import {miningItems} from "./miningData/miningData"
+// import {miningItems} from "./miningData/miningData"
 import DashHeader from "../DashHeader/DashHeader";
 import ModalDeposit from "../ModalDeposit/ModalDeposit";
+import {useDispatch, useSelector} from "react-redux";
+import {getUserWallets} from "../../redux/user-slice";
+import {convertWalletData} from "../../utils/convertWalletData";
 
 
 const Mining = () => {
     const [modalActive, setModalActive] = useState(false)
+    const dispatch = useDispatch()
+    const userWallets = useSelector(state => state.user.userWallets)
+    const filteredBTC = userWallets.filter(wallet => wallet.coin === "BTC")
+    const filteredLTC = userWallets.filter(wallet => wallet.coin === "LTC")
+    const filteredTRX = userWallets.filter(wallet => wallet.coin === "TRX")
+    const filteredDOGE = userWallets.filter(wallet => wallet.coin === "DOGE")
+
+    const BTC = convertWalletData(filteredBTC, "BTC")
+    const LTC = convertWalletData(filteredLTC, "LTC")
+    const TRX = convertWalletData(filteredTRX, "TRX")
+    const DOGE = convertWalletData(filteredDOGE, "DOGE")
+
+    const miningItems = [].concat(BTC, LTC, TRX, DOGE)
+    console.log(miningItems)
+
+
+    useEffect(() => {
+        dispatch(getUserWallets())
+    }, [])
+
 
     return (
         <>
@@ -15,23 +38,23 @@ const Mining = () => {
                     <DashHeader/>
                 </header>
                 <div className={`row ${s.powers}`}>
-                    {miningItems.coins.map(item =>
+                    {miningItems.map(item =>
                         <div className="col-lg-3">
                             <div className={s.power}>
                                 <div className={s.head}>
                                     <div className={s.logo}>
-                                        <img src={item.img}/>
+                                        <img src={item.img} alt="coin"/>
                                         <span>{item.coin}</span>
                                     </div>
-                                    <span>{item.earned}</span>
-                                    <span className={s.badge}>{item.power}</span>
+                                    <span>{item.deposit_income}</span>
+                                    <span className={s.badge}>{item.vhs_power} VHS</span>
                                 </div>
                                 <div className={s.average}>
                                     <span>Average of power:</span>
                                 </div>
                                 <div className={s.earned}>
                                     <span>YOU EARNED:</span>
-                                    <span>{item.earned}</span>
+                                    <span>{item.deposit_income}</span>
                                 </div>
                                 <div className={s.deposit}>
                                     <button onClick={()=> setModalActive(true)} className="btn-gradient">DEPOSIT</button>

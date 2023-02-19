@@ -38,6 +38,13 @@ export const userApi = {
                 Authorization: 'Bearer '+ localStorage.getItem('access_token')
             }
         })
+    },
+    getUserWallets: () => {
+        return apiInstance.get('auth/my_wallets/', {
+            headers: {
+                Authorization: 'Bearer '+ localStorage.getItem('access_token')
+            }
+        })
     }
 }
 
