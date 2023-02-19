@@ -4,9 +4,9 @@ import {userApi} from "../api/userApi";
 
 export const registerThunk = createAsyncThunk(
     'auth/register',
-    async ({login, password}, {rejectWithValue}) => {
+    async ({login, password, code = ''}, {rejectWithValue}) => {
         try {
-            await userApi.register(login, password)
+            await userApi.register(login, password, code)
         } catch (e) {
             return rejectWithValue('Opps there seems to be an error')
         }

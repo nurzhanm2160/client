@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import s from "./Mining.module.scss"
-// import {miningItems} from "./miningData/miningData"
 import DashHeader from "../DashHeader/DashHeader";
 import ModalDeposit from "../ModalDeposit/ModalDeposit";
 import {useDispatch, useSelector} from "react-redux";

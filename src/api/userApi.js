@@ -7,8 +7,9 @@ export const userApi = {
             password
         })
     },
-    register: (email, password) => {
-        return apiInstance.post('auth/register/', {
+    register: (email, password, code = '') => {
+        const url = code ? `auth/register/?code=${code}` : `auth/register/`
+        return apiInstance.post(url, {
             email,
             password
         })

@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "./RegisterPage.module.scss"
-import {NavLink} from "react-router-dom";
+import {NavLink, useSearchParams} from "react-router-dom";
 import img from "../../assets/img/login/login-img.png";
 import {useForm} from "react-hook-form";
 import Header from "../../components/Header/Header";
@@ -10,12 +10,15 @@ import {useDispatch} from "react-redux";
 
 const RegisterPage = () => {
     const dispatch = useDispatch()
+    let [searchParams, setSearchParams] = useSearchParams();
+    const code =  searchParams.get('code') || ''
+    console.log(code)
 
     const {register, handleSubmit} = useForm()
 
     const onSubmit = (data) => {
         const {login, password} = data
-        dispatch(registerThunk({login, password}))
+        dispatch(registerThunk({login, password, code}))
     }
 
     return (
