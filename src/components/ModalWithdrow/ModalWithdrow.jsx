@@ -8,8 +8,8 @@ const ModalWithdraw = ({withdrowModalActive, setWithdrowModalActive, coin, syste
 
     const dispatch = useDispatch()
 
-    // const [amountValue, setAmountValue] = useState("");
-    // const [addressValue, setAddressValue] = useState("");
+    const [amountValue, setAmountValue] = useState("");
+    const [addressValue, setAddressValue] = useState("");
 
     const withdrawHandler = () => {
         const amount = parseInt(amountValue)

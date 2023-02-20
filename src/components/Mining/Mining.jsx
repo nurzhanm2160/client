@@ -71,7 +71,7 @@ const Mining = () => {
                             </div>
                         </div>
                     )}
-                    <ModalDeposit depositModalActive={depositModalActive} setDepositModalActive={setDepositModalActive}/>
+                    {/*<ModalDeposit depositModalActive={depositModalActive} setDepositModalActive={setDepositModalActive}/>*/}
                     <ModalWithdraw
                         withdrowModalActive={withdrawModalActive}
                         setWithdrowModalActive={setWithdrawModalActive}
