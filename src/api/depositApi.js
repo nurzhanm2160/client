@@ -16,5 +16,12 @@ export const depositApi = {
                 Authorization: 'Bearer '+ localStorage.getItem('access_token')
             }
         })
+    },
+    deposit: (amount, currency, system, term, comment='test') => {
+        return apiInstance.post('coin/generate_address/', {amount, currency, system, term, comment}, {
+            headers: {
+                Authorization: 'Bearer '+ localStorage.getItem('access_token')
+            }
+        })
     }
 }

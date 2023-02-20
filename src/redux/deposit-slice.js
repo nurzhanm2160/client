@@ -6,7 +6,11 @@ const initialState = {
     deposits: [],
     usersCount: 0,
     depositsSum: 0,
-    withDrawsSum: 0
+    withDrawsSum: 0,
+    amount: 0,
+    wallet: "",
+    url: "",
+    isDeposit: false
 }
 
 export const getUsersCount = createAsyncThunk(
@@ -57,6 +61,18 @@ export const withdraw = createAsyncThunk(
     }
 )
 
+export const deposit = createAsyncThunk(
+    'deposit',
+    async ({amount, currency, system, term}, {rejectWithValue}) => {
+        try {
+            const response = await depositApi.deposit(amount, currency, system, term)
+            return response.data
+        } catch (e) {
+            return rejectWithValue('Что-то пошло не так во время пополнения')
+        }
+    }
+)
+
 const depositSlice = createSlice({
     name: 'depositSlice',
     initialState,
@@ -71,6 +87,12 @@ const depositSlice = createSlice({
         builder.addCase(getWithdrawsSum.fulfilled, (state, action) => {
             state.withDrawsSum = action.payload
         })
+        builder.addCase(deposit.fulfilled, (state, action) => {
+            state.url = action.payload.url
+            state.amount = action.payload.amount
+            state.wallet = action.payload.wallet
+            state.isDeposit = true
+        })
         // TODO: если удалось вывести средства, то добавить сюда логику
         // builder.addCase(withdraw.fulfilled, (state, action) => {
         //
@@ -78,6 +100,16 @@ const depositSlice = createSlice({
 
         // TODO: если не удалось вывести средства, то вывести ошибку
         // builder.addCase(withdraw.rejected, (state, action) => {
+        //
+        // })
+
+        // TODO: если удалось пополнить средства, то добавить сюда логику
+        // builder.addCase(deposit.fulfilled, (state, action) => {
+        //
+        // })
+
+        // TODO: если не удалось пополнить средства, то вывести ошибку
+        // builder.addCase(deposit.rejected, (state, action) => {
         //
         // })
     }

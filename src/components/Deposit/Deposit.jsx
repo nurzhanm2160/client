@@ -3,6 +3,7 @@ import s from "./Deposit.module.scss"
 import DashHeader from "../DashHeader/DashHeader";
 import coin from "../../assets/img/coins/4.svg";
 import {depositData} from "./depositData/depositData";
+import Calc from "../Calc/Calc";
 
 const Deposit = () => {
     return (
@@ -11,6 +12,7 @@ const Deposit = () => {
                 <header>
                     <DashHeader/>
                 </header>
+                <Calc />
                 <div className="row">
                     <div className={s.contracts}>
                         <div className={s.contracts_block}>

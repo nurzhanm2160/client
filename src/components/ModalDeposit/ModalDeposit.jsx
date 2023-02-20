@@ -9,8 +9,9 @@ import {
     SuccessModalMessage,
     WarningModalMessage
 } from "../DepositMessages/DepositMessages/DepositMessages";
+import {useSelector} from "react-redux";
 
-const ModalDeposit = ({depositModalActive, setDepositModalActive}) => {
+const ModalDeposit = ({depositModalActive, setDepositModalActive, coin}) => {
 
     const [copyAmount, setCopyAmount] = useState(false)
     const [copyAddress, setCopyAddress] = useState(false)
@@ -18,6 +19,11 @@ const ModalDeposit = ({depositModalActive, setDepositModalActive}) => {
     const [infoModalMessageActive, setInfoModalMessageActive] = useState(false)
     const [warningModalMessageActive, setWarningModalMessageActive] = useState(false)
     const [errorModalMessageActive, setErrorModalMessageActive] = useState(false)
+    // const [depositAmount, setDepositAmount] = useState(0)
+    // const [paymentAddress, setPaymentAddress] = useState("")
+
+    const amount = useSelector(state => state.deposit.amount)
+    const wallet = useSelector(state => state.deposit.wallet)
 
     const clipboardAmount = useClipboard({
         onSuccess() {
@@ -37,7 +43,7 @@ const ModalDeposit = ({depositModalActive, setDepositModalActive}) => {
                 <div className={s.head}>
                     <div>
                         <span className="section-headline pt-4">DEPOSIT</span>
-                        <span className={`section-headline ${s.span}`}>Payment coin:<br/>TRX (TRС20)</span>
+                        <span className={`section-headline ${s.span}`}>Payment coin:<br/>{coin}</span>
                         <span className={`section-headline ${s.span}`}>Get power (with current exchange rate):<br/>1 000 VH/s</span>
                     </div>
                     <div className={s.close}>
@@ -47,7 +53,7 @@ const ModalDeposit = ({depositModalActive, setDepositModalActive}) => {
                 <div className={`row pt-2 ${s.form}`}>
                     <span className="section-headline">Payment coin amount:</span>
                     <div className="col-lg-8">
-                        <input ref={clipboardAmount.target} value="405.95"/>
+                        <input ref={clipboardAmount.target} value={amount}/>
                     </div>
                     <div className="col-lg-4">
                         <button onClick={clipboardAmount.copy}
@@ -57,7 +63,7 @@ const ModalDeposit = ({depositModalActive, setDepositModalActive}) => {
                 <div className={`row pt-4 ${s.form}`}>
                     <span className="section-headline">Payment address:</span>
                     <div className="col-lg-8">
-                        <input ref={clipboardAddress.target} value="TQcPUM1xRdvRXEAi7uXPPRFSuzgUN66vfo"/>
+                        <input ref={clipboardAddress.target} value={wallet}/>
                     </div>
                     <div className="col-lg-4">
                         <button onClick={clipboardAddress.copy}
