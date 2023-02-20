@@ -3,11 +3,21 @@ import s from "./ModalDeposit.module.scss"
 import close from "../../assets/img/Vector.png"
 import qr from "../../assets/img/miningPage/qr.png"
 import {useClipboard} from "use-clipboard-copy";
+import {
+    ErrorModalMessage,
+    InfoModalMessage,
+    SuccessModalMessage,
+    WarningModalMessage
+} from "../DepositMessages/DepositMessages/DepositMessages";
 
 const ModalDeposit = ({depositModalActive, setDepositModalActive}) => {
 
     const [copyAmount, setCopyAmount] = useState(false)
     const [copyAddress, setCopyAddress] = useState(false)
+    const [successModalMessageActive, setSuccessModalMessageActive] = useState(false)
+    const [infoModalMessageActive, setInfoModalMessageActive] = useState(false)
+    const [warningModalMessageActive, setWarningModalMessageActive] = useState(false)
+    const [errorModalMessageActive, setErrorModalMessageActive] = useState(false)
 
     const clipboardAmount = useClipboard({
         onSuccess() {
@@ -31,7 +41,7 @@ const ModalDeposit = ({depositModalActive, setDepositModalActive}) => {
                         <span className={`section-headline ${s.span}`}>Get power (with current exchange rate):<br/>1 000 VH/s</span>
                     </div>
                     <div className={s.close}>
-                        <img onClick={() => setDepositModalActive(false)} src={close}/>
+                        <img onClick={() => setDepositModalActive(false)} src={close} alt="close"/>
                     </div>
                 </div>
                 <div className={`row pt-2 ${s.form}`}>
@@ -40,7 +50,8 @@ const ModalDeposit = ({depositModalActive, setDepositModalActive}) => {
                         <input ref={clipboardAmount.target} value="405.95"/>
                     </div>
                     <div className="col-lg-4">
-                        <button onClick={clipboardAmount.copy} className={`btn-gradient ${s.copy}`}>{copyAmount ? "COPIED" : "COPY"}</button>
+                        <button onClick={clipboardAmount.copy}
+                                className={`btn-gradient ${s.copy}`}>{copyAmount ? "COPIED" : "COPY"}</button>
                     </div>
                 </div>
                 <div className={`row pt-4 ${s.form}`}>
@@ -49,7 +60,8 @@ const ModalDeposit = ({depositModalActive, setDepositModalActive}) => {
                         <input ref={clipboardAddress.target} value="TQcPUM1xRdvRXEAi7uXPPRFSuzgUN66vfo"/>
                     </div>
                     <div className="col-lg-4">
-                        <button onClick={clipboardAddress.copy} className={`btn-gradient ${s.copy}`}>{copyAddress ? "COPIED" : "COPY"}</button>
+                        <button onClick={clipboardAddress.copy}
+                                className={`btn-gradient ${s.copy}`}>{copyAddress ? "COPIED" : "COPY"}</button>
                     </div>
                 </div>
                 <div className={`row pt-4 ${s.qr}`}>
@@ -60,10 +72,18 @@ const ModalDeposit = ({depositModalActive, setDepositModalActive}) => {
                         </span>
                     </div>
                     <div className="col-lg-4">
-                        <img src={qr}/>
+                        <img src={qr} alt="qr"/>
                     </div>
                 </div>
             </div>
+            <SuccessModalMessage successModalMessageActive={successModalMessageActive}
+                                 setSuccessModalMessageActive={setSuccessModalMessageActive}/>
+            <InfoModalMessage infoModalMessageActive={infoModalMessageActive}
+                              setInfoModalMessageActive={setInfoModalMessageActive}/>
+            <WarningModalMessage warningModalMessageActive={warningModalMessageActive}
+                                 setWarningModalMessageActive={setWarningModalMessageActive}/>
+            <ErrorModalMessage errorModalMessageActive={errorModalMessageActive}
+                               setErrorModalMessageActive={setErrorModalMessageActive}/>
         </div>
     )
 }
