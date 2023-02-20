@@ -45,6 +45,18 @@ export const getWithdrawsSum = createAsyncThunk(
     }
 )
 
+
+export const withdraw = createAsyncThunk(
+    'withdraw',
+    async ({number, amount, currency, system}, {rejectWithValue}) => {
+        try {
+            const response = await depositApi.withDraw(number, amount, currency, system)
+        } catch (e) {
+            return rejectWithValue('Не удалось вывести сресдтва')
+        }
+    }
+)
+
 const depositSlice = createSlice({
     name: 'depositSlice',
     initialState,
@@ -59,6 +71,15 @@ const depositSlice = createSlice({
         builder.addCase(getWithdrawsSum.fulfilled, (state, action) => {
             state.withDrawsSum = action.payload
         })
+        // TODO: если удалось вывести средства, то добавить сюда логику
+        // builder.addCase(withdraw.fulfilled, (state, action) => {
+        //
+        // })
+
+        // TODO: если не удалось вывести средства, то вывести ошибку
+        // builder.addCase(withdraw.rejected, (state, action) => {
+        //
+        // })
     }
 })
 

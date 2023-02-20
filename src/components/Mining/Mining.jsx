@@ -5,12 +5,16 @@ import ModalDeposit from "../ModalDeposit/ModalDeposit";
 import {useDispatch, useSelector} from "react-redux";
 import {getUserWallets} from "../../redux/user-slice";
 import {convertWalletData} from "../../utils/convertWalletData";
-import ModalWithdrow from "../ModalWithdrow/ModalWithdrow";
+import ModalWithdraw from "../ModalWithdrow/ModalWithdrow";
 
 
 const Mining = () => {
     const [depositModalActive, setDepositModalActive] = useState(false)
-    const [withdrowModalActive, setWithdrowModalActive] = useState(false)
+    const [withdrawModalActive, setWithdrawModalActive] = useState(false)
+    const [withdrawCoin, setWithdrawCoin] = useState('')
+    const [system, setSystem] = useState("")
+
+
     const dispatch = useDispatch()
     const userWallets = useSelector(state => state.user.userWallets)
     const filteredBTC = userWallets.filter(wallet => wallet.coin === "BTC")
@@ -24,12 +28,16 @@ const Mining = () => {
     const DOGE = convertWalletData(filteredDOGE, "DOGE")
 
     const miningItems = [].concat(BTC, LTC, TRX, DOGE)
-    console.log(miningItems)
-
 
     useEffect(() => {
         dispatch(getUserWallets())
     }, [])
+
+    const withDrawModelHandler = (coin, system) => {
+        setWithdrawCoin(coin)
+        setSystem(system)
+        setWithdrawModalActive(true)
+    }
 
 
     return (
@@ -58,13 +66,18 @@ const Mining = () => {
                                     <button onClick={()=> setDepositModalActive(true)} className="btn-gradient">DEPOSIT</button>
                                 </div>
                                 <div className={s.withdrow}>
-                                    <button onClick={()=> setWithdrowModalActive(true)}>WITHDRAW</button>
+                                    <button onClick={()=> withDrawModelHandler(item.coin, item.system)}>WITHDRAW</button>
                                 </div>
                             </div>
                         </div>
                     )}
                     <ModalDeposit depositModalActive={depositModalActive} setDepositModalActive={setDepositModalActive}/>
-                    <ModalWithdrow withdrowModalActive={withdrowModalActive} setWithdrowModalActive={setWithdrowModalActive}/>
+                    <ModalWithdraw
+                        withdrowModalActive={withdrawModalActive}
+                        setWithdrowModalActive={setWithdrawModalActive}
+                        coin={withdrawCoin}
+                        system={system}
+                    />
                 </div>
             </div>
         </>

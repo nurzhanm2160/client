@@ -12,7 +12,6 @@ const RegisterPage = () => {
     const dispatch = useDispatch()
     let [searchParams, setSearchParams] = useSearchParams();
     const code =  searchParams.get('code') || ''
-    console.log(code)
 
     const {register, handleSubmit} = useForm()
 

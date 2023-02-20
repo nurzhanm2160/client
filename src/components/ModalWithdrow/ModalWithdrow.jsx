@@ -1,11 +1,21 @@
 import React, {useState} from 'react';
 import s from "./ModalWithdrow.module.scss"
 import close from "../../assets/img/Vector.png";
+import {useDispatch} from "react-redux";
+import {withdraw} from "../../redux/deposit-slice";
 
-const ModalWithdrow = ({withdrowModalActive, setWithdrowModalActive}) => {
+const ModalWithdraw = ({withdrowModalActive, setWithdrowModalActive, coin, system}) => {
+
+    const dispatch = useDispatch()
 
     const [amountValue, setAmountValue] = useState("");
     const [addressValue, setAddressValue] = useState("");
+
+    const withdrawHandler = () => {
+        const amount = parseInt(amountValue)
+        dispatch(withdraw({number: addressValue, amount, system, currency: coin}))
+
+    }
 
     const pasteAmountValue = () => {
         navigator.clipboard.readText()
@@ -28,8 +38,8 @@ const ModalWithdrow = ({withdrowModalActive, setWithdrowModalActive}) => {
                  onClick={e => e.stopPropagation()}>
                 <div className={s.head}>
                     <div>
-                        <span className="section-headline pt-4">WITHDROW</span>
-                        <span className={`section-headline ${s.span}`}>WITHDRAW coin:<br/>TRX (TRС20)</span>
+                        <span className="section-headline pt-4">WITHDRAW</span>
+                        <span className={`section-headline ${s.span}`}>WITHDRAW coin:<br/>{coin}</span>
                     </div>
                     <div className={s.close}>
                         <img onClick={() => setWithdrowModalActive(false)} src={close}/>
@@ -54,6 +64,11 @@ const ModalWithdrow = ({withdrowModalActive, setWithdrowModalActive}) => {
                     <div className="col-lg-4">
                         <button onClick={pasteAddressValue} className="btn-gradient">PASTE</button>
                     </div>
+                    <div className="col">
+                        <button onClick={() => withdrawHandler()}
+                                className="btn-gradient">WITHDRAW
+                        </button>
+                    </div>
                 </div>
                 <div className={`row ${s.qr}`}>
                         <span className={`section-headline`}>
@@ -66,4 +81,4 @@ const ModalWithdrow = ({withdrowModalActive, setWithdrowModalActive}) => {
     )
 }
 
-export default ModalWithdrow;
+export default ModalWithdraw;

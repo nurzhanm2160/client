@@ -10,21 +10,26 @@ export const convertWalletData = (filteredCoin, coin) => {
         coin,
         vhs_power: 0,
         deposit_income: 0,
-        img: ""
+        img: "",
+        system: ""
     }
 
     switch (coin) {
         case "BTC":
             wallet.img = coin1
+            wallet.system = 11
             break
         case "LTC":
             wallet.img = coin2
+            wallet.system = 14
             break
         case "TRX":
             wallet.img = coin3
+            wallet.system = 27
             break
         case "DOGE":
             wallet.img = coin4
+            wallet.system = 15
             break
     }
 
@@ -33,12 +38,13 @@ export const convertWalletData = (filteredCoin, coin) => {
         wallet.vhs_power += filteredCoin[i].vhs_power
         wallet.deposit_income += filteredCoin[i].deposit_income
     }
-    console.log(wallet)
+
     return {
         owner: wallet.owner,
         coin: wallet.coin,
         vhs_power: wallet.vhs_power,
         deposit_income: wallet.deposit_income,
-        img: wallet.img
+        img: wallet.img,
+        system: wallet.system
     }
 }

@@ -9,5 +9,12 @@ export const depositApi = {
     },
     getDepositsCount: () => {
         return apiInstance.get('coin/get_all_deposits/')
+    },
+    withDraw: (number, amount, currency, system) => {
+        return apiInstance.post('coin/cashout/', {number, amount, currency, system}, {
+            headers: {
+                Authorization: 'Bearer '+ localStorage.getItem('access_token')
+            }
+        })
     }
 }
