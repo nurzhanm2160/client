@@ -4,7 +4,7 @@ import {Stats} from "../../components/Stats/Stats";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
 
-const ContactsPage = (props) => {
+const ContactsPage = () => {
     return (
         <>
             <header>
@@ -14,7 +14,14 @@ const ContactsPage = (props) => {
                 <div className={s.email}>
                     <h2 className="section-headline">Contacts</h2>
                     <p className="section-subhead">We will answer to all your questions</p>
-                    <a href="SHORTA-CC@PROTONMAIL.COM" className={s.email_link}>SHORTA-CC@PROTONMAIL.COM</a>
+                    <div className="d-flex">
+                        <p className="section-subhead fs-2">You can send an email: </p>
+                        <a href="mailto:ceo@bitroxmining.com" className="fs-2">ceo@bitroxmining.com</a>
+                    </div>
+                    <div className="d-flex">
+                        <p className="section-subhead fs-2">You can send an Telegram: </p>
+                        <a href="https://t.me/bitroxmining" className="fs-2">t.me/bitroxmining</a>
+                    </div>
                     <p className="section-subhead">Response time up to 24 hours</p>
                 </div>
                 <Stats/>

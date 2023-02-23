@@ -23,5 +23,12 @@ export const depositApi = {
                 Authorization: 'Bearer '+ localStorage.getItem('access_token')
             }
         })
+    },
+    getTransactions: () => {
+        return apiInstance.get('coin/transactions/', {
+            headers: {
+                Authorization: 'Bearer '+ localStorage.getItem('access_token')
+            }
+        })
     }
 }

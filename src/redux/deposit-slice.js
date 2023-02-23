@@ -73,6 +73,18 @@ export const deposit = createAsyncThunk(
     }
 )
 
+export const getAllTransaction = createAsyncThunk(
+    'getAllTransaction',
+    async (_, {rejectWithValue}) => {
+        try {
+            const response = await depositApi.getTransactions()
+            return response.data
+        } catch (e) {
+            return rejectWithValue('Не удалось получить все транзакций')
+        }
+    }
+)
+
 const depositSlice = createSlice({
     name: 'depositSlice',
     initialState,
@@ -92,6 +104,9 @@ const depositSlice = createSlice({
             state.amount = action.payload.amount
             state.wallet = action.payload.wallet
             state.isDeposit = true
+        })
+        builder.addCase(getAllTransaction.fulfilled, (state, action) => {
+            state.transactions = action.payload.deposits
         })
         // TODO: если удалось вывести средства, то добавить сюда логику
         // builder.addCase(withdraw.fulfilled, (state, action) => {

@@ -1,4 +1,4 @@
-.contacts{
+.contacts {
   margin-top: 90px;
 }
 
@@ -7,10 +7,13 @@
   margin-bottom: 100px;
 
   a {
-    font-size: 80px;
-    font-weight: bold;
-    background: linear-gradient(111.42deg, #720ADB 9.98%, #FF4B2B 102.99%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent
+    margin-left: 15px;
+    display: flex;
+    color: mediumorchid;
+
+    &:hover {
+      color: #720ADB;
+      transition: 0.3s;
+    }
   }
 }
