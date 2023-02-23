@@ -5,18 +5,20 @@ import binance from '../../assets/img/binance.png'
 import paykassa from "../../assets/img/paykassa.png"
 import trustpilot from '../../assets/img/trustpilot.png'
 import {useDispatch, useSelector} from "react-redux";
-import {getDepositsSum, getUsersCount, getWithdrawsSum} from "../../redux/deposit-slice";
+import {getDays, getDepositsSum, getUsersCount, getWithdrawsSum} from "../../redux/deposit-slice";
 
 export const Stats = () => {
     const dispatch = useDispatch()
     const usersCount = useSelector(state => state.deposit.usersCount)
     const depositsSum = useSelector(state => state.deposit.depositsSum)
     const withDrawsSum = useSelector(state => state.deposit.withDrawsSum)
+    const days = useSelector(state => state.deposit.days)
 
     useEffect(() => {
         dispatch(getUsersCount())
         dispatch(getDepositsSum())
         dispatch(getWithdrawsSum())
+        dispatch(getDays())
     }, [])
 
     return (
@@ -30,7 +32,7 @@ export const Stats = () => {
                         <div className="row d-flex justify-content-center">
                             <div className="col-lg-6">
                                 <div className={s.items}>
-                                    <strong>91</strong>
+                                    <strong>{days}</strong>
                                     <p>days in work</p>
                                 </div>
                             </div>

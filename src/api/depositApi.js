@@ -1,4 +1,5 @@
 import {apiInstance} from "./axios";
+import axios from "axios";
 
 export const depositApi = {
     getUsersCount: () => {
@@ -25,10 +26,9 @@ export const depositApi = {
         })
     },
     getTransactions: () => {
-        return apiInstance.get('coin/transactions/', {
-            headers: {
-                Authorization: 'Bearer '+ localStorage.getItem('access_token')
-            }
-        })
+        return axios.get('http://localhost:8000/coin/transactions/')
+    },
+    getDays: () => {
+        return axios.get('http://localhost:8000/coin/get_days/')
     }
 }
