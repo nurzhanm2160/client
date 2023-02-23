@@ -10,9 +10,8 @@ import { getAllReferrals, checkAuth } from "../../redux/user-slice"
 
 const Affiliate = () => {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const isAuth = useSelector(state => state.user.isAuth)
-    // const userId = useSelector(state => state.user.userId)
+    // const navigate = useNavigate()
+    // const isAuth = useSelector(state => state.user.isAuth)
     const referral_code = useSelector(state => state.user.referral_code)
     const first_level_referrals = useSelector(state => state.user.first_level_referrals)
     const second_level_referrals = useSelector(state => state.user.second_level_referrals)
@@ -25,18 +24,8 @@ const Affiliate = () => {
     })
 
     useEffect(() => {
-        // dispatch(checkAuth())
         dispatch(getAllReferrals())
     }, [])
-
-    useEffect(() => {
-        setTimeout(() => {
-            if (!isAuth) {
-                navigate('/login')
-            }
-        }, 3000)
-        return
-    }, [isAuth])
 
     return (
         <div className={s.affiliate}>

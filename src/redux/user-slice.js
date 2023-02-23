@@ -35,6 +35,7 @@ export const logout = createAsyncThunk(
         try {
             const refresh = localStorage.getItem('refresh_token')
             await userApi.logout(refresh)
+            localStorage.clear()
         } catch (e) {
             return rejectWithValue('Не удалось вылогиниться')
         }

@@ -13,11 +13,6 @@ const Header = () => {
     const dispatch = useDispatch()
     const isAuth = useSelector(state => state.user.isAuth)
 
-    useEffect(() => {
-        dispatch(checkAuth())
-    }, [])
-
-
     const logoutHandle = async () => {
         dispatch(logout())
     }
