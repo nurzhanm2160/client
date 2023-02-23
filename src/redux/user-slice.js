@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {userApi} from "../api/userApi";
+import data from "bootstrap/js/src/dom/data";
 
 
 export const registerThunk = createAsyncThunk(
@@ -7,7 +8,7 @@ export const registerThunk = createAsyncThunk(
     async ({login, password, code = ''}, {rejectWithValue}) => {
         try {
             await userApi.register(login, password, code)
-        } catch (e) {
+        } catch (error) {
             return rejectWithValue('Opps there seems to be an error')
         }
 
@@ -102,7 +103,10 @@ const initialState = {
     my_referal_link: "",
     first_level_referrals: [],
     second_level_referrals: [],
-    userWallets: []
+    userWallets: [],
+    loading: false,
+    error: false,
+    success: false
 }
 
 export const userSlice = createSlice({
@@ -110,6 +114,18 @@ export const userSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
+        builder.addCase(registerThunk.pending, (state) => {
+            state.loading = true
+        })
+        builder.addCase(registerThunk.fulfilled, (state) => {
+            state.loading = false
+            state.error = false
+            state.success = true
+        })
+        builder.addCase(registerThunk.rejected, (state) => {
+            state.loading = false
+            state.error = true
+        })
         builder.addCase(loginThunk.fulfilled, (state) => {
             state.isAuth = true
         })

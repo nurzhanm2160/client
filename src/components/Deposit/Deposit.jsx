@@ -10,7 +10,9 @@ const Deposit = () => {
                 <header>
                     <DashHeader/>
                 </header>
-                <Calc />
+                <div className="row">
+                    <Calc />
+                </div>
                 {/*<div className="row">*/}
                 {/*    <div className={s.contracts}>*/}
                 {/*        <div className={s.contracts_block}>*/}

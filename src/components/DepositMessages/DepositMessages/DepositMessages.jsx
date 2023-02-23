@@ -76,3 +76,41 @@ export const ErrorModalMessage = ({errorModalMessageActive, setErrorModalMessage
         </div>
     )
 }
+
+
+export const RegisterSuccessful = ({registerSuccessful, setRegisterSuccessful}) => {
+    return (
+        <div className={registerSuccessful ? s.success_active : s.success_message}
+             onClick={() => setRegisterSuccessful(false)}>
+            <div className={registerSuccessful ? s.success_content_active : s.success_content}
+                 onClick={e => e.stopPropagation()}>
+                <div className={s.success_items}>
+                    <img src={successImg} alt="error"/>
+                    <span className={s.message_title}>Error!</span>
+                    <span className={s.message}>You have successfully registered </span>
+                    <img className={s.close} src={closeImg} alt="close"
+                         onClick={() => setRegisterSuccessful(false)}/>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+
+export const RegisterError = ({registerError, setRegisterError}) => {
+    return (
+        <div className={registerError ? s.error_active : s.error_message}
+             onClick={() => setRegisterError(false)}>
+            <div className={registerError ? s.error_content_active : s.error_content}
+                 onClick={e => e.stopPropagation()}>
+                <div className={s.error_items}>
+                    <img src={errorImg} alt="error"/>
+                    <span className={s.message_title}>Error!</span>
+                    <span className={s.message}>Try again or enter different details</span>
+                    <img className={s.close} src={closeImg} alt="close"
+                         onClick={() => setRegisterError(false)}/>
+                </div>
+            </div>
+        </div>
+    )
+}
