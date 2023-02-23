@@ -19,14 +19,14 @@ const Title = () => {
                                    placeholder="Enter your Email address"/>
                             <button className={`btn-gradient ${s.register}`}>REGISTER</button>
                         </form>
-                        <div className="row">
-                            <p className={s.header_sub}>
-                                This site is protected by hCaptcha and its <a href="#">Privacy
-                                Policy</a> and <a
-                                href="#">Terms of Service</a> apply.
-                            </p>
-                        </div>
-                        <div className="row">
+                        {/*<div className="row">*/}
+                        {/*    <p className={s.header_sub}>*/}
+                        {/*        This site is protected by hCaptcha and its <a href="#">Privacy*/}
+                        {/*        Policy</a> and <a*/}
+                        {/*        href="#">Terms of Service</a> apply.*/}
+                        {/*    </p>*/}
+                        {/*</div>*/}
+                        <div className="row mt-5">
                             <h4 className="text-white">Register now and get <span
                                 className={s.badge}>$4.5</span> for free!</h4>
                         </div>

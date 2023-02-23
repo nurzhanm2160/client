@@ -12,12 +12,7 @@ export const Price = () => {
                     <h2 className="section-headline">PRICES</h2>
                     <p className="section-subhead">Choose ideal plan for yourself!</p>
                 </div>
-                <div className="col-lg-4 d-flex justify-content-center">
-                    <button className={s.btn1}>STANDART</button>
-                    <button className={s.btn2}>ULTIMATE</button>
-                </div>
             </div>
-
             <div className="row mt-5 d-flex justify-content-center">
                 {plans.map(plan =>
                     <div className="col-lg-3">

@@ -2,9 +2,7 @@ import React from 'react';
 import s from "./Home.module.scss"
 import Title from "../../components/Title/Title";
 import {Video} from "../../components/Video/Video";
-import {Price} from "../../components/Price/Price";
 import {Advantages} from "../../components/Advantages/Advantages";
-import {News} from "../../components/News/News";
 import {Transactions} from "../../components/Transactions/Transactions";
 import {Faq} from "../../components/Faq/Faq";
 import {Stats} from "../../components/Stats/Stats";
@@ -22,9 +20,8 @@ const Home = () => {
             <div className={s.home}>
                 <Title/>
                 <Video/>
-                <Price/>
+                {/*<Price/>*/}
                 <Advantages/>
-                <News/>
                 <Transactions />
                 <Faq />
                 <Calc />

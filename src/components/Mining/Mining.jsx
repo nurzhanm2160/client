@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import s from "./Mining.module.scss"
 import DashHeader from "../DashHeader/DashHeader";
-import ModalDeposit from "../ModalDeposit/ModalDeposit";
 import {useDispatch, useSelector} from "react-redux";
 import {getUserWallets} from "../../redux/user-slice";
 import {convertWalletData} from "../../utils/convertWalletData";
@@ -62,9 +61,9 @@ const Mining = () => {
                                     <span>YOU EARNED:</span>
                                     <span>{item.deposit_income}</span>
                                 </div>
-                                <div className={s.deposit}>
-                                    <button onClick={()=> setDepositModalActive(true)} className="btn-gradient">DEPOSIT</button>
-                                </div>
+                                {/*<div className={s.deposit}>*/}
+                                {/*    <button onClick={()=> setDepositModalActive(true)} className="btn-gradient">DEPOSIT</button>*/}
+                                {/*</div>*/}
                                 <div className={s.withdrow}>
                                     <button onClick={()=> withDrawModelHandler(item.coin, item.system)}>WITHDRAW</button>
                                 </div>

@@ -4,9 +4,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import Home from "./pages/Home/Home";
-import Calc from "./components/Calc/Calc";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
-import Specials from "./pages/SpecialsPage/Specials";
 import FaqPage from "./pages/FaqPage/FaqPage";
 import ConfirmPage from "./pages/ConfirmPage/ConfirmPage";
 import InboxCheckPage from "./pages/InboxCheckPage/InboxCheckPage";
@@ -24,7 +22,7 @@ function App() {
                         <Route path="/login" element={<LoginPage/>}/>
                         <Route path="/register" element={<RegisterPage/>}/>
                         <Route path="/about_us" element={<AboutUsPage/>}/>
-                        <Route path="/specials" element={<Specials/>}/>
+                        {/*<Route path="/specials" element={<Specials/>}/>*/}
                         <Route path="/faq" element={<FaqPage/>}/>
                         <Route path="/confirm" element={<ConfirmPage/>}/>
                         <Route path="/check" element={<InboxCheckPage/>}/>

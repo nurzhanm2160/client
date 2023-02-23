@@ -37,8 +37,8 @@ const Header = () => {
                                 US</NavLink>
                             <NavLink to="/contacts"
                                      className={navData => navData.isActive ? s.active : s.nav_link}>CONTACTS</NavLink>
-                            <NavLink to="/specials"
-                                     className={navData => navData.isActive ? s.active : s.nav_link}>SPECIALS</NavLink>
+                            {/*<NavLink to="/specials"*/}
+                            {/*         className={navData => navData.isActive ? s.active : s.nav_link}>SPECIALS</NavLink>*/}
                             <NavLink to="/faq"
                                      className={navData => navData.isActive ? s.active : s.nav_link}>FAQ</NavLink>
                         </nav>
