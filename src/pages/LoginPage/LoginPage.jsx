@@ -8,7 +8,6 @@ import {Footer} from "../../components/Footer/Footer";
 import {useDispatch, useSelector} from "react-redux";
 import {loginThunk} from "../../redux/user-slice"
 import {useNavigate} from "react-router-dom";
-import {SuccessModalMessage} from "../../components/DepositMessages/DepositMessages/DepositMessages";
 
 
 

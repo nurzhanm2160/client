@@ -12,6 +12,7 @@ import Calc from "../../components/Calc/Calc";
 
 
 const Home = () => {
+
     return (
         <>
             <header>

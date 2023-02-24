@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import s from "./Header.module.scss"
 import logo from "../../assets/img/Logotype.png"
 import {useDispatch, useSelector} from "react-redux";
-import {checkAuth, logout, getUserData} from "../../redux/user-slice";
+import {checkAuth, logout} from "../../redux/user-slice";
 import {FiMenu, FiX} from "react-icons/fi";
 
 
@@ -16,6 +16,10 @@ const Header = () => {
     const logoutHandle = async () => {
         dispatch(logout())
     }
+
+    useEffect(() => {
+        dispatch(checkAuth())
+    })
 
     return (
         <div className={s.wrapper}>

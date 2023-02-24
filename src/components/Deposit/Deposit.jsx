@@ -7,6 +7,9 @@ const Deposit = () => {
     return (
         <div className={s.deposit}>
             <div className="container">
+                <head>
+                    <title>Deposits</title>
+                </head>
                 <header>
                     <DashHeader/>
                 </header>
