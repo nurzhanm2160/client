@@ -31,6 +31,6 @@ export const userApi = {
     },
     getUserWallets: () => {
         return apiInstance.get('auth/my_wallets/')
-    }
+    },
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import s from "./RegisterPage.module.scss"
 import {NavLink, useSearchParams} from "react-router-dom";
 import img from "../../assets/img/login/login-img.png";
@@ -6,14 +6,32 @@ import {useForm} from "react-hook-form";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
 import {registerThunk} from "../../redux/user-slice";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    RegisterError,
+    RegisterSuccessful,
+} from "../../components/DepositMessages/DepositMessages/DepositMessages";
 
 const RegisterPage = () => {
+    const loading = useSelector(state => state.user.loading)
+    const error = useSelector(state => state.user.error)
+    const success = useSelector(state => state.user.success)
+    const [registerSuccessful, setRegisterSuccessful] = useState(false)
+    const [registerError, setRegisterError] = useState(false)
     const dispatch = useDispatch()
     let [searchParams, setSearchParams] = useSearchParams();
-    const code =  searchParams.get('code') || ''
+    const code = searchParams.get('code') || ''
+    const {register, handleSubmit, formState: {errors}} = useForm()
 
-    const {register, handleSubmit} = useForm()
+
+    useEffect(() => {
+        if (error) {
+            setRegisterError(true)
+        } else if (success) {
+            setRegisterSuccessful(true)
+        }
+    }, [error, success])
+
 
     const onSubmit = (data) => {
         const {login, password} = data
@@ -35,10 +53,17 @@ const RegisterPage = () => {
                         </div>
                         <div className="row">
                             <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-                                <div><input type="text"
-                                            placeholder="Enter your EMail address" {...register("login", {required: true})}/>
+                                <div className="mb-3"><input style={errors.login ? {borderColor: "red"} : null} type="email"
+                                            placeholder="Enter your EMail address" {...register("login", {
+                                    required: true,
+                                    pattern: {
+                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                        message: "Invalid email address"
+                                    }
+                                })}/>
+                                    {errors.login ? <div className="text-danger fw-bold">{errors.login.message}</div> : null}
                                 </div>
-                                <div><input type="password"
+                                <div><input className="mb-4" type="password"
                                             placeholder="Enter your password" {...register("password", {required: true})}/>
                                 </div>
                                 <div className="row">
@@ -62,6 +87,10 @@ const RegisterPage = () => {
             <footer>
                 <Footer/>
             </footer>
+            <RegisterSuccessful registerSuccessful={registerSuccessful}
+                                setRegisterSuccessful={setRegisterSuccessful}/>
+            <RegisterError registerError={registerError}
+                           setRegisterError={setRegisterError}/>
         </>
     );
 }

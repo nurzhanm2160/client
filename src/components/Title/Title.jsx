@@ -1,6 +1,8 @@
 import React from 'react';
 import s from "./Title.module.scss";
 import {headerItems} from "./itemsData/ItemsData";
+import {Nav} from "react-bootstrap";
+import {NavLink} from "react-router-dom";
 
 
 const Title = () => {
@@ -17,7 +19,9 @@ const Title = () => {
                         <form className={s.form}>
                             <input type="email" className="input"
                                    placeholder="Enter your Email address"/>
-                            <button className={`btn-gradient ${s.register}`}>REGISTER</button>
+                            <NavLink to="/register">
+                                <button className={`btn-gradient ${s.register}`}>REGISTER</button>
+                            </NavLink>
                         </form>
                         {/*<div className="row">*/}
                         {/*    <p className={s.header_sub}>*/}
@@ -37,7 +41,7 @@ const Title = () => {
                 <div className={s.items}>
                     <div>
                         {headerItems.items1.map(item => (
-                            <div  className={s.child}>
+                            <div className={s.child}>
                                 <div className={s.item} key={item.title}>
                                     <div className={s.icon}><img src={item.iconLink} alt={item.title}/></div>
                                     <h4 className='text-white'>{item.title}</h4>
@@ -48,7 +52,7 @@ const Title = () => {
                     </div>
                     <div>
                         {headerItems.items2.map(item => (
-                            <div  className={s.child}>
+                            <div className={s.child}>
                                 <div className={s.item} key={item.title}>
                                     <div className={s.icon}><img src={item.iconLink} alt={item.title}/></div>
                                     <h4 className='text-white'>{item.title}</h4>

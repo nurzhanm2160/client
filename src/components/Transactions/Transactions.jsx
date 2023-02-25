@@ -51,7 +51,7 @@ export const Transactions = () => {
                             </td>
                             <td className={s.id}>
                                 <div>
-                                    {t.payment_id}
+                                    <span>{t.payment_id}</span>
                                 </div>
                             </td>
                             <td>
