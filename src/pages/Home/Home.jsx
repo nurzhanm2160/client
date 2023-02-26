@@ -28,9 +28,9 @@ const Home = () => {
                 <Calc />
                 <Stats />
             </div>
-            <footer>
-                <Footer/>
-            </footer>
+            {/*<footer>*/}
+            {/*    <Footer/>*/}
+            {/*</footer>*/}
         </>
     );
 }
