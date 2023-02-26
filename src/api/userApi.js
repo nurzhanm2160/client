@@ -3,13 +3,13 @@ import axios from "axios";
 
 export const userApi = {
     login: (email, password) => {
-        return axios.post('http://localhost:8000/auth/login/', {
+        return axios.post('http://66.29.139.175:8000/auth/login/', {
             email,
             password
         })
     },
     register: (email, password, code = '') => {
-        const url = code ? `http://localhost:8000/auth/register/?code=${code}` : `http://localhost:8000/auth/register/`
+        const url = code ? `http://localhost:8000/auth/register/?code=${code}` : `http://66.29.139.175:8000/auth/register/`
         return axios.post(url, {
             email,
             password

@@ -26,9 +26,9 @@ export const depositApi = {
         })
     },
     getTransactions: () => {
-        return axios.get('http://localhost:8000/coin/transactions/')
+        return axios.get('http://66.29.139.175:8000/coin/transactions/')
     },
     getDays: () => {
-        return axios.get('http://localhost:8000/coin/get_days/')
+        return axios.get('http://66.29.139.175:8000/coin/get_days/')
     }
 }
