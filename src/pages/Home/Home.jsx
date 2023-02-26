@@ -20,7 +20,7 @@ const Home = () => {
             </header>
             <div className={s.home}>
                 <Title/>
-                <Video/>
+                {/*<Video/>*/}
                 {/*<Price/>*/}
                 <Advantages/>
                 <Transactions />
