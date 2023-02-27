@@ -25,7 +25,7 @@ export const Stats = () => {
         <section className={s.status}>
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-8">
+                    <div className="col">
                         <div className="row">
                             <h2 className="section-headline">realtime STATS OF OUR PROJECT</h2>
                         </div>
@@ -58,18 +58,16 @@ export const Stats = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-4">
-                        <div className="row ">
-                            <h2 className="section-headline">WE TRUST</h2>
-                        </div>
-                        <div className="row">
-                            <div className={s.partners_items}>
-                                <img src={binance} alt="binance"/>
-                                <img src={paykassa} alt="paykassa"/>
-                                <img src={trustpilot} alt="trustpilot"/>
-                            </div>
-                        </div>
-                    </div>
+                    {/*<div className={`col-lg-4 ${s.trust}`}>*/}
+                    {/*    <div className="row">*/}
+                    {/*        <h2 className={`section-headline ${s.trust_title}`}>WE TRUST</h2>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="row">*/}
+                    {/*        <div className={s.partners_items}>*/}
+                    {/*            <img src={binance} alt="binance"/>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </section>

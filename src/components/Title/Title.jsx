@@ -10,30 +10,14 @@ const Title = () => {
         <div className={`container ${s.title}`}>
             <div className={s.header}>
                 <div className={s.header_block}>
-                    <div className="row">
-                        <div className="row-cols-md-1">
-                            <h1 className="user-select-none">BITROX Mining</h1>
-                            <p className={s.header_text}>Cloud mining platform for BNB, TRX, LTC and
-                                DOGE</p>
+                    <div className={s.header_items}>
+                        <h1>BITROX Mining</h1>
+                        <p className={s.header_text}>Cloud mining platform for BNB, TRX, LTC and DOGE</p>
+                        <div className={s.form}>
+                            <input placeholder="Enter your EMail adress"/>
+                            <NavLink to="/register"><button className="btn-gradient">REGISTER</button></NavLink>
                         </div>
-                        <form className={s.form}>
-                            <input type="email" className="input"
-                                   placeholder="Enter your Email address"/>
-                            <NavLink to="/register">
-                                <button className={`btn-gradient ${s.register}`}>REGISTER</button>
-                            </NavLink>
-                        </form>
-                        {/*<div className="row">*/}
-                        {/*    <p className={s.header_sub}>*/}
-                        {/*        This site is protected by hCaptcha and its <a href="#">Privacy*/}
-                        {/*        Policy</a> and <a*/}
-                        {/*        href="#">Terms of Service</a> apply.*/}
-                        {/*    </p>*/}
-                        {/*</div>*/}
-                        <div className="row mt-5">
-                            <h4 className="text-white">Register now and get <span
-                                className={s.badge}>$4.5</span> for free!</h4>
-                        </div>
+                        <span>Register now and get<span className={s.badge}>$4.5</span>for free!</span>
                     </div>
                 </div>
             </div>

@@ -14,7 +14,7 @@ export const SuccessModalMessage = ({successModalMessageActive, setSuccessModalM
                 <div className={s.success_items}>
                     <img src={successImg} alt="success"/>
                     <span className={s.message_title}>Success!</span>
-                    <span className={s.message}>Lorem ipsum sit dolor amet ave mio </span>
+                    <span className={s.message}>Transaction completed successfully!</span>
                     <img className={s.close} src={closeImg} alt="close"
                          onClick={() => setSuccessModalMessageActive(false)}/>
                 </div>
@@ -68,7 +68,7 @@ export const ErrorModalMessage = ({errorModalMessageActive, setErrorModalMessage
                 <div className={s.error_items}>
                     <img src={errorImg} alt="error"/>
                     <span className={s.message_title}>Error!</span>
-                    <span className={s.message}>Lorem ipsum sit dolor amet ave mio </span>
+                    <span className={s.message}>Something went wrong!</span>
                     <img className={s.close} src={closeImg} alt="close"
                          onClick={() => setErrorModalMessageActive(false)}/>
                 </div>
@@ -86,7 +86,7 @@ export const RegisterSuccessful = ({registerSuccessful, setRegisterSuccessful}) 
                  onClick={e => e.stopPropagation()}>
                 <div className={s.success_items}>
                     <img src={successImg} alt="error"/>
-                    <span className={s.message_title}>Error!</span>
+                    <span className={s.message_title}>Success!</span>
                     <span className={s.message}>You have successfully registered </span>
                     <img className={s.close} src={closeImg} alt="close"
                          onClick={() => setRegisterSuccessful(false)}/>

@@ -14,11 +14,11 @@ const ContactsPage = () => {
                 <div className={s.email}>
                     <h2 className="section-headline">Contacts</h2>
                     <p className="section-subhead">We will answer to all your questions</p>
-                    <div className="d-flex">
+                    <div className={s.email_inf}>
                         <p className="section-subhead fs-2">You can send an email: </p>
                         <a href="mailto:ceo@bitroxmining.com" className="fs-2">ceo@bitroxmining.com</a>
                     </div>
-                    <div className="d-flex">
+                    <div className={s.telegram_inf}>
                         <p className="section-subhead fs-2">You can send an Telegram: </p>
                         <a href="https://t.me/bitroxmining" className="fs-2">t.me/bitroxmining</a>
                     </div>

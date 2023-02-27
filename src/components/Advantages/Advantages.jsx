@@ -9,7 +9,7 @@ export const Advantages = () => {
             <div className="container">
                 <div className="row">
                     <h2 className="section-headline">Our advantages</h2>
-                    <p className="section-subhead">When you choose Shorta to build your online mining farm, you get a
+                    <p className="section-subhead">When you choose Bitrox to build your online mining farm, you get a
                         lot of
                         opportunities for earning and multiplying capital in record time!</p>
                 </div>

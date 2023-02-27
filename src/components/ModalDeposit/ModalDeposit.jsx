@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import s from "./ModalDeposit.module.scss"
 import close from "../../assets/img/Vector.png"
-import qr from "../../assets/img/miningPage/qr.png"
 import {useClipboard} from "use-clipboard-copy";
 import {
     ErrorModalMessage,
@@ -41,45 +40,34 @@ const ModalDeposit = ({depositModalActive, setDepositModalActive, coin}) => {
             <div className={depositModalActive ? s.modal_content_active : s.modal_content}
                  onClick={e => e.stopPropagation()}>
                 <div className={s.head}>
+                    <span className={`section-headline ${s.title}`}>Deposite</span>
+                    <img src={close} alt="close" onClick={() => setDepositModalActive(false)}/>
+                </div>
+                <div className={s.description}>
+                    <span className={s.span}>Payment coin:<br/>TRX (TRС20)</span>
+                    <span className={s.span}>Get power (with current exchange rate):<br/>1 000 VH/s</span>
+                </div>
+                <div className={s.forms}>
                     <div>
-                        <span className="section-headline pt-4">DEPOSIT</span>
-                        <span className={`section-headline ${s.span}`}>Payment coin:<br/>{coin}</span>
-                        <span className={`section-headline ${s.span}`}>Get power (with current exchange rate):<br/>1 000 VH/s</span>
+                        <span>Payment coin amount:</span>
+                        <div className={s.form}>
+                            <input className={s.input} ref={clipboardAmount.target} value={amount}/>
+                            <button className={`btn-gradient ${s.button}`}
+                                    onClick={clipboardAmount.copy}>{copyAmount ? "COPIED" : "COPY"}</button>
+                        </div>
                     </div>
-                    <div className={s.close}>
-                        <img onClick={() => setDepositModalActive(false)} src={close} alt="close"/>
-                    </div>
-                </div>
-                <div className={`row pt-2 ${s.form}`}>
-                    <span className="section-headline">Payment coin amount:</span>
-                    <div className="col-lg-8">
-                        <input ref={clipboardAmount.target} value={amount}/>
-                    </div>
-                    <div className="col-lg-4">
-                        <button onClick={clipboardAmount.copy}
-                                className={`btn-gradient ${s.copy}`}>{copyAmount ? "COPIED" : "COPY"}</button>
+                    <div className="mt-3">
+                        <span>Payment address:</span>
+                        <div className={s.form}>
+                            <input className={s.input} ref={clipboardAddress.target} value={wallet}/>
+                            <button className={`btn-gradient ${s.button}`}
+                                    onClick={clipboardAddress.copy}>{copyAddress ? "COPIED" : "COPY"}</button>
+                        </div>
                     </div>
                 </div>
-                <div className={`row pt-4 ${s.form}`}>
-                    <span className="section-headline">Payment address:</span>
-                    <div className="col-lg-8">
-                        <input ref={clipboardAddress.target} value={wallet}/>
-                    </div>
-                    <div className="col-lg-4">
-                        <button onClick={clipboardAddress.copy}
-                                className={`btn-gradient ${s.copy}`}>{copyAddress ? "COPIED" : "COPY"}</button>
-                    </div>
-                </div>
-                <div className={`row pt-4 ${s.qr}`}>
-                    <div className="col-lg-8">
-                        <span className={`section-headline`}>
-                            Blockchain transaction need time. Track the status of your transaction on the Checkout page.
-                            Our support ready to help you, but first of all we check explorer too.
-                        </span>
-                    </div>
-                    <div className="col-lg-4">
-                        <img src={qr} alt="qr"/>
-                    </div>
+                <div className={s.info}>
+                    Blockchain transaction need time. Track the status of your transaction on the Checkout page.
+                    Our support ready to help you, but first of all we check explorer too.
                 </div>
             </div>
             <SuccessModalMessage successModalMessageActive={successModalMessageActive}

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import s from "./Calc.module.scss"
 import img1 from "../../assets/img/coins/1.svg"
 import img2 from "../../assets/img/coins/2.svg"
@@ -8,8 +8,10 @@ import usd from "../../assets/img/coins/USD ICON.png"
 import mining from "../../assets/img/maining.svg"
 import {useDispatch, useSelector} from "react-redux";
 import {deposit} from "../../redux/deposit-slice";
-import ModalWithdraw from "../ModalWithdrow/ModalWithdrow";
 import ModalDeposit from "../ModalDeposit/ModalDeposit";
+import {useNavigate} from "react-router-dom";
+import loadingImg from "../../assets/img/spinner.svg"
+import {useForm} from "react-hook-form";
 
 const Calc = () => {
     const [coin, setCoin] = useState(img1)
@@ -21,10 +23,16 @@ const Calc = () => {
     const [system, setSystem] = useState("DOGECOIN")
     const [term, setTerm] = useState(30)
 
+
     const isDeposit = useSelector(state => state.deposit.isDeposit)
+    const loading = useSelector(state => state.deposit.loading)
 
     const [depositModalActive, setDepositModalActive] = useState(false)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const {register, formState: {isValid, isDirty}} = useForm()
+
 
     const depositHandler = () => {
         dispatch(deposit({amount: coinAmount, system, currency: coinName, term}))
@@ -48,7 +56,7 @@ const Calc = () => {
                         <div className={s.coins}>
                             <div className={s.coin}
                                  style={coinIsActive === 1 ? {background: "white"} : null}
-                                 onClick= {() => coinChangeHandler(1, img1, "BNB", "BITCOIN")}>
+                                 onClick={() => coinChangeHandler(1, img1, "BNB", "BITCOIN")}>
                                 <img src={img1}/>
                             </div>
                             <div className={s.coin}
@@ -73,23 +81,39 @@ const Calc = () => {
                         <div className={s.amounts}>
                             <div className={s.amount}
                                  style={amountIsActive === 1 ? {background: "white"} : null}
-                                 onClick={() => {setAmountIsActive(1); setTerm(30)}}>
-                                <span className="fw-bold" style={amountIsActive === 1 ? {color: "#F0B90B"} : null}>30</span>
+                                 onClick={() => {
+                                     setAmountIsActive(1);
+                                     setTerm(30)
+                                 }}>
+                                <span className="fw-bold"
+                                      style={amountIsActive === 1 ? {color: "#F0B90B"} : null}>30</span>
                             </div>
                             <div className={s.amount}
                                  style={amountIsActive === 2 ? {background: "white"} : null}
-                                 onClick={() => {setAmountIsActive(2); setTerm(60)}}>
-                                <span className="fw-bold" style={amountIsActive === 2 ? {color: "#F0B90B"} : null}>60</span>
+                                 onClick={() => {
+                                     setAmountIsActive(2);
+                                     setTerm(60)
+                                 }}>
+                                <span className="fw-bold"
+                                      style={amountIsActive === 2 ? {color: "#F0B90B"} : null}>60</span>
                             </div>
                             <div className={s.amount}
                                  style={amountIsActive === 3 ? {background: "white"} : null}
-                                 onClick={() => {setAmountIsActive(3); setTerm(90)}}>
-                                <span className="fw-bold" style={amountIsActive === 3 ? {color: "#F0B90B"} : null}>90</span>
+                                 onClick={() => {
+                                     setAmountIsActive(3);
+                                     setTerm(90)
+                                 }}>
+                                <span className="fw-bold"
+                                      style={amountIsActive === 3 ? {color: "#F0B90B"} : null}>90</span>
                             </div>
                             <div className={s.amount}
                                  style={amountIsActive === 4 ? {background: "white"} : null}
-                                 onClick={() => {setAmountIsActive(4); setTerm(120)}}>
-                                <span className="fw-bold" style={amountIsActive === 4 ? {color: "#F0B90B"} : null}>180</span>
+                                 onClick={() => {
+                                     setAmountIsActive(4);
+                                     setTerm(120)
+                                 }}>
+                                <span className="fw-bold"
+                                      style={amountIsActive === 4 ? {color: "#F0B90B"} : null}>180</span>
                             </div>
                         </div>
                     </div>
@@ -98,6 +122,8 @@ const Calc = () => {
                         <div className={s.invest}>
                             <img src={coin} alt="coinImage"/>
                             <input
+                                {...register("coinInput", {required: true})}
+                                type="number"
                                 value={`${coinAmount}`}
                                 onChange={(e) => setCoinAmount(e.target.value)}
                             />
@@ -108,6 +134,8 @@ const Calc = () => {
                         <div className={s.usd}>
                             <img src={usd}/>
                             <input
+                                {...register("usdInput", {required: true})}
+                                type="number"
                                 value={`${usdAmount}`}
                                 onChange={(e) => setUSDAmount(e.target.value)}/>
                         </div>
@@ -124,17 +152,15 @@ const Calc = () => {
                         <span className={`fw-bold ${s.count_titles}`}>POWER</span>
                         <span className={s.badge}>1 000 000 VH/s</span>
                     </div>
-                    <div className={s.profit}>
-                        <span className={`fw-bold ${s.count_titles}`}>PROFIT</span>
-                        <span className={s.badge}>$45 000,00</span>
+                    <div className={s.contract}>
+                        {loading ? <img src={loadingImg} alt="loading"/> :
+                            <button
+                                disabled={!coinAmount}
+                                className={!coinAmount ? s.disabled : "btn-gradient"}
+                                onClick={() => depositHandler()}>
+                                REGISTER CONTRACT
+                            </button>}
                     </div>
-                    <button
-                        className="btn-gradient"
-                        onClick={() => depositHandler()}
-                    >
-                        REGISTER CONTRACT
-                    </button>
-                    <p>This site is protected by hCaptcha and its <a href="#">Privacy Policy</a> and <a href="#">Terms of Service apply.</a></p>
                 </div>
             </div>
             {isDeposit && <ModalDeposit

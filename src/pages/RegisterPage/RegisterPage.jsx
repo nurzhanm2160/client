@@ -13,7 +13,6 @@ import {
 } from "../../components/DepositMessages/DepositMessages/DepositMessages";
 
 const RegisterPage = () => {
-    const loading = useSelector(state => state.user.loading)
     const error = useSelector(state => state.user.error)
     const success = useSelector(state => state.user.success)
     const [registerSuccessful, setRegisterSuccessful] = useState(false)

@@ -1,11 +1,11 @@
 .deposit_modal {
-  height: 200vh;
+  height: 100vh;
   width: 100vw;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
   left: 0;
-  bottom:0;
+  bottom: 0;
   right: 0;
   display: flex;
   align-items: center;
@@ -16,10 +16,10 @@
 .active {
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   top: 0;
   left: 0;
-  bottom:0;
+  bottom: 0;
   right: 0;
   display: flex;
   align-items: center;
@@ -29,18 +29,18 @@
 }
 
 .modal_content {
-  padding: 40px 40px;
+  padding: 30px 40px;
   border-radius: 20px;
   background: linear-gradient(0deg, #2E2E2E, #2E2E2E), linear-gradient(0deg, #4F4F4F, #4F4F4F);
   transform: scale(0.5);
 }
 
 .modal_content_active {
-  overflow: hidden;
+  padding: 30px 40px;
   border-radius: 20px;
   background: linear-gradient(0deg, #2E2E2E, #2E2E2E), linear-gradient(0deg, #4F4F4F, #4F4F4F);
-  height: 700px;
-  width: 700px;
+  height: 650px;
+  width: 650px;
   transform: scale(1);
   transition: 0.5s;
 }
@@ -48,69 +48,204 @@
 .head {
   display: flex;
   justify-content: space-between;
-  padding-left: 40px;
+  align-items: center;
 
-
-  .span {
-    padding-top: 15px;
-    font-size: 20px;
-  }
-
-  span{
-    display: block;
+  .title {
+    font-size: 30px;
   }
 
   img {
     cursor: pointer;
-    height: 30px;
-    width: 30px;
   }
 }
 
+.description {
+  margin-top: 5px;
 
-.close {
-  padding-top: 40px;
-  padding-right: 40px;
-  padding-left: 100px;
-  background-image:  url("../../assets/img/Ellipse 2.png");
-  background-repeat: no-repeat;
-}
-
-.form {
-  padding-left: 40px;
-
-  span {
-    font-size: 20px;
-  }
-
-  input {
-    width: 420px;
-    margin-top: 10px;
-    height: 50px;
-    border-radius: 10px;
-    background: inherit;
-    border: 2px solid white;
+  .span {
+    font-weight: bold;
+    display: block;
     color: white;
-    padding-left: 20px;
-    font-size: 20px;
-  }
-
-  button {
-    margin-top: 10px;
-    border-radius: 10px;
-    width: 160px;
-    height: 50px;
+    padding-top: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
   }
 }
 
-.qr {
-  padding-left: 40px;
+.forms {
+  margin-top: 20px;
 
   span {
+    text-transform: uppercase;
+    color: white;
     font-size: 20px;
   }
 
-  img {
-    width: 170px;
+  .form {
+    margin-top: 5px;
+    display: flex;
+    width: 100%;
+
+    .input {
+      width: 70%;
+      height: 55px;
+      background: linear-gradient(0deg, #222222, #222222), linear-gradient(0deg, #FFFFFF, #FFFFFF);
+      border: 4px solid #FFFFFF;
+      border-radius: 10px;
+      padding-left: 20px;
+      font-size: 20px;
+      color: white;
+    }
+
+    .button {
+      width: 30%;
+      height: 55px;
+      font-size: 20px;
+      border-radius: 10px;
+      margin-left: 20px;
+    }
+  }
+}
+
+.info {
+  margin-top: 30px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1200px) {
+  .head {
+    .title {
+      font-size: 25px;
+    }
+
+    img {
+      width: 25px;
+    }
+  }
+  .description {
+    margin-top: 0;
+  }
+  .forms{
+    .form{
+      .input {
+        height: 50px;
+        border: 3px solid white;
+      }
+      .button {
+        height: 50px;
+      }
+    }
+  }
+  .modal_content {
+    width: 600px;
+    height: 600px;
+  }
+  .modal_content_active {
+    width: 600px;
+    height: 600px;
+  }
+  .info {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .head {
+    .title {
+      font-size: 20px;
+    }
+
+    img {
+      width: 20px;
+    }
+  }
+  .description {
+    margin-top: 0;
+    .span {
+      font-size: 16px;
+    }
+  }
+  .forms{
+    margin-top: 10px;
+
+    span {
+      font-size: 16px;
+    }
+    .form{
+      display: block;
+      .input {
+        width: 100%;
+        height: 40px;
+        border: 2px solid white;
+      }
+      .button {
+        margin-top: 10px;
+        width: 30%;
+        margin-left: 0;
+        height: 40px;
+      }
+    }
+  }
+  .modal_content {
+    width: 500px;
+    height: 500px;
+  }
+  .modal_content_active {
+    width: 500px;
+    height: 560px;
+  }
+  .info {
+    margin-top: 15px;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .head {
+    .title {
+      font-size: 15px;
+    }
+
+    img {
+      width: 15px;
+    }
+  }
+  .description {
+    margin-top: 0;
+    .span {
+      padding-top: 5px;
+      font-size: 12px;
+    }
+  }
+  .forms{
+    margin-top: 8px;
+    .form{
+      .input {
+        font-size: 15px;
+        height: 40px;
+        border: 2px solid white;
+      }
+      .button {
+        font-size: 15px;
+        height: 40px;
+      }
+    }
+  }
+  .modal_content {
+    width: 430px;
+    height: 500px;
+    padding: 20px 30px;
+  }
+  .modal_content_active {
+    width: 430px;
+    height: 500px;
+    padding: 20px 30px;
+  }
+  .info {
+    margin-top: 10px;
+    font-size: 11px;
   }
 }
