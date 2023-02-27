@@ -4,8 +4,7 @@ import s from "./Footer.module.scss"
 export const Footer = () => {
     return <footer className={s.footer}>
             <div className={s.footer_text}>
-                <span>© 2022 Copyright: Shorta.cc</span>
-                <span>Trustpilot</span>
+                <span>© 2023 Bitrox Mining</span>
             </div>
     </footer>
 }

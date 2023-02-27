@@ -3,13 +3,9 @@ import s from "./FaqPage.module.scss"
 import {questions} from "./faqData/faqData";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
+import AccountQuestions from "./faqData/components/AccountQuestions";
 
 const FaqPage = () => {
-
-    const [show, setShow] = useState(questions.account.show)
-
-    const showText = () => {
-    }
 
     return (
         <>
@@ -21,39 +17,33 @@ const FaqPage = () => {
                 <div className={s.account}>
                     <h2 className={s.title}>Account</h2>
                     <div className={s.questions_block}>
-                        {questions.account.map((items, index) =>
-                            <div className={s.items}>
-                                <span onClick={showText} className="text-white fw-bold fs-2 text-uppercase">{items.question}</span>
-                                {show ? <span className="text-white fs-4">{items.answer}</span> : null}
-                            </div>
-                        )}
+                        {questions.account.map(items => <AccountQuestions key={items.id} id={items.id}
+                                                                          answer={items.answer}
+                                                                          question={items.question}
+                                                                          show={items.show}/>)}
                     </div>
                 </div>
                 <div className={s.diposit}>
                     <h2 className={s.title}>Deposit and withdrawal of funds</h2>
                     <div className={s.questions_block}>
-                        {questions.deposit.map(items =>
-                            <div className={s.items}>
-                                <span className="text-white fw-bold fs-2 text-uppercase">{items.question}</span>
-                                <span className="text-white fs-4">{items.answer}</span>
-                            </div>
-                        )}
+                        {questions.deposit.map(items => <AccountQuestions key={items.id} id={items.id}
+                                                                          answer={items.answer}
+                                                                          question={items.question}
+                                                                          show={items.show}/>)}
                     </div>
                 </div>
                 <div className={s.accountLast}>
                     <h2 className={s.title}>Account</h2>
                     <div className={s.questions_block}>
-                        {questions.lastAccount.map(items =>
-                            <div className={s.items}>
-                                <span className="text-white fw-bold fs-2 text-uppercase">{items.question}</span>
-                                <span className="text-white fs-4">{items.answer}</span>
-                            </div>
-                        )}
+                        {questions.lastAccount.map(items => <AccountQuestions key={items.id} id={items.id}
+                                                                          answer={items.answer}
+                                                                          question={items.question}
+                                                                          show={items.show}/>)}
                     </div>
                 </div>
             </div>
             <footer>
-                <Footer />
+                <Footer/>
             </footer>
         </>
     )
