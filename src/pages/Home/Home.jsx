@@ -1,13 +1,11 @@
 import React from 'react';
 import s from "./Home.module.scss"
 import Title from "../../components/Title/Title";
-import {Video} from "../../components/Video/Video";
 import {Advantages} from "../../components/Advantages/Advantages";
 import {Transactions} from "../../components/Transactions/Transactions";
 import {Faq} from "../../components/Faq/Faq";
 import {Stats} from "../../components/Stats/Stats";
 import Header from "../../components/Header/Header";
-import {Footer} from "../../components/Footer/Footer";
 import Calc from "../../components/Calc/Calc";
 
 
@@ -28,9 +26,9 @@ const Home = () => {
                 <Calc />
                 <Stats />
             </div>
-            <footer>
-                <Footer/>
-            </footer>
+            {/*<footer>*/}
+            {/*    <Footer/>*/}
+            {/*</footer>*/}
         </>
     );
 }

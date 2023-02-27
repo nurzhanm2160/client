@@ -58,6 +58,7 @@ export const Stats = () => {
                             </div>
                         </div>
                     </div>
+
                     {/*<div className={`col-lg-4 ${s.trust}`}>*/}
                     {/*    <div className="row">*/}
                     {/*        <h2 className={`section-headline ${s.trust_title}`}>WE TRUST</h2>*/}
@@ -68,6 +69,15 @@ export const Stats = () => {
                     {/*        </div>*/}
                     {/*    </div>*/}
                     {/*</div>*/}
+
+                    <div className="col-lg-4">
+                        <div className="row">
+                            <div className={s.partners_items}>
+                                <img src={binance} alt="binance"/>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>

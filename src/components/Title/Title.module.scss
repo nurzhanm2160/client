@@ -96,6 +96,7 @@
   .items {
     width: 90%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 
     .item {
@@ -132,6 +133,10 @@
 @media screen and (max-width: 1200px){
   .title {
     display: block;
+    max-width: 400px;
+    height: 50px;
+    margin-right: 20px;
+  }
 
     .header {
       width: 100%;

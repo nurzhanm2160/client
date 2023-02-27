@@ -80,12 +80,13 @@
 
       .usd {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        width: 500px;
+        max-width: 500px;
 
         input {
           margin-left: 25px;
-          width: 100%;
+          max-width: 100%;
           height: 70px;
           background: none;
           color: #BABABA;
@@ -110,13 +111,14 @@
 
       .invest {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        width: 500px;
+        max-width: 500px;
       }
 
       input {
         margin-left: 25px;
-        width: 100%;
+        max-width: 100%;
         height: 70px;
         background: none;
         color: #BABABA;
