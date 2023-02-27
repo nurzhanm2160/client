@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from "./FaqPage.module.scss"
 import {questions} from "./faqData/faqData";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
 
 const FaqPage = () => {
+
+    const [show, setShow] = useState(questions.account.show)
+
+    const showText = () => {
+    }
+
     return (
         <>
             <header>
@@ -15,10 +21,10 @@ const FaqPage = () => {
                 <div className={s.account}>
                     <h2 className={s.title}>Account</h2>
                     <div className={s.questions_block}>
-                        {questions.account.map(items =>
+                        {questions.account.map((items, index) =>
                             <div className={s.items}>
-                                <span className="text-white fw-bold fs-2 text-uppercase">{items.question}</span>
-                                <span className="text-white fs-4">{items.answer}</span>
+                                <span onClick={showText} className="text-white fw-bold fs-2 text-uppercase">{items.question}</span>
+                                {show ? <span className="text-white fs-4">{items.answer}</span> : null}
                             </div>
                         )}
                     </div>

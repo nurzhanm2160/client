@@ -36,44 +36,36 @@ const ModalWithdraw = ({withdrowModalActive, setWithdrowModalActive, coin, syste
             <div className={withdrowModalActive ? s.modal_content_active : s.modal_content}
                  onClick={e => e.stopPropagation()}>
                 <div className={s.head}>
+                    <span className={`section-headline ${s.title}`}>Withdrow</span>
+                    <img src={close} alt="close" onClick={() => setWithdrowModalActive(false)}/>
+                </div>
+                <div className={s.description}>
+                    <span className={s.span}>Withdrow coin:<br/>TRX (TRС20)</span>
+                </div>
+                <div className={s.forms}>
                     <div>
-                        <span className="section-headline pt-4">WITHDRAW</span>
-                        <span className={`section-headline ${s.span}`}>WITHDRAW coin:<br/>{coin}</span>
+                        <span>WITHDRAW coin amount:</span>
+                        <div className={s.form}>
+                            <input className={s.input} onChange={e => setAmountValue(e.target.value)} value={amountValue}/>
+                            <button onClick={pasteAmountValue}
+                                    className={`btn-gradient ${s.button}`}>PASTE
+                            </button>
+                        </div>
                     </div>
-                    <div className={s.close}>
-                        <img onClick={() => setWithdrowModalActive(false)} src={close}/>
-                    </div>
-                </div>
-                <div className={`row pt-2 ${s.form}`}>
-                    <span className="section-headline">WITHDRAW coin amount:</span>
-                    <div className="col-lg-8">
-                        <input onChange={e => setAmountValue(e.target.value)} value={amountValue}/>
-                    </div>
-                    <div className="col-lg-4">
-                        <button onClick={pasteAmountValue}
-                                className="btn-gradient">PASTE
-                        </button>
+                    <div className="mt-3">
+                        <span>Payment address:</span>
+                        <div className={s.form}>
+                            <input className={s.input} onChange={e => setAddressValue(e.target.value)} value={addressValue}/>
+                            <button onClick={pasteAddressValue} className={`btn-gradient ${s.button}`}>PASTE</button>
+                        </div>
                     </div>
                 </div>
-                <div className={`row pt-4 ${s.form}`}>
-                    <span className="section-headline">Payment address:</span>
-                    <div className="col-lg-8">
-                        <input onChange={e => setAddressValue(e.target.value)} value={addressValue}/>
-                    </div>
-                    <div className="col-lg-4">
-                        <button onClick={pasteAddressValue} className="btn-gradient">PASTE</button>
-                    </div>
-                    <div className="col">
-                        <button onClick={() => withdrawHandler()}
-                                className="btn-gradient">WITHDRAW
-                        </button>
-                    </div>
+                <div className={s.withdrow}>
+                    <button className="btn-gradient" onClick={withdrawHandler}>Withdrow</button>
                 </div>
-                <div className={`row ${s.qr}`}>
-                        <span className={`section-headline`}>
-                            Blockchain transaction need time. Track the status of your transaction on the Checkout page.
-                            Our support ready to help you, but first of all we check explorer too.
-                        </span>
+                <div className={s.info}>
+                    Blockchain transaction need time. Track the status of your transaction on the Checkout page.
+                    Our support ready to help you, but first of all we check explorer too.
                 </div>
             </div>
         </div>

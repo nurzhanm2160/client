@@ -8,6 +8,7 @@
   }
 
   p {
+    padding-left: 40px;
     font-weight: bold;
     font-size: 32px;
     color: white;
@@ -23,8 +24,24 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-left: 40px;
   padding-top: 40px;
+  padding-right: 40px;
+
+  button {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
 }
 
 .item {
@@ -58,5 +75,13 @@
 
   &:hover {
     color: white;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .logo {
+    button{
+      display: none;
+    }
   }
 }

@@ -52,7 +52,6 @@ const LoginPage = () => {
                                     </div>
                                     <div className="d-flex justify-content-between align-items-center">
                                             <button className="btn-gradient w-1/2">SIGN IN</button>
-                                            <span className="w-1/2">Forgot password?</span>
                                     </div>
                                 </form>
                             </div>

@@ -13,6 +13,14 @@
     color: white;
     margin-top: 40px;
     font-size: 18px;
+
+    a {
+      color: mediumorchid;
+
+      &:hover {
+        color: purple;
+      }
+    }
   }
   
   .pl {

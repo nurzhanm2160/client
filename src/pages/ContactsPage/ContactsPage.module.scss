@@ -6,14 +6,44 @@
 .email {
   margin-bottom: 100px;
 
+  .email_inf {
+    display: flex;
+  }
+
+  .telegram_inf {
+    display: flex;
+  }
+
   a {
     margin-left: 15px;
-    display: flex;
     color: mediumorchid;
 
     &:hover {
       color: #720ADB;
       transition: 0.3s;
+    }
+  }
+}
+
+@media screen and (max-width: 589px) {
+  .email {
+    margin-bottom: 50px;
+
+    h2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    a{
+      margin-left: 0;
+    }
+    .email_inf {
+      display: block;
+    }
+
+    .telegram_inf {
+      display: block;
     }
   }
 }

@@ -53,7 +53,7 @@ const Affiliate = () => {
                             <div className="row d-flex">
                                 <div className="col-lg-10 p-2">
                                     <input ref={clipboard.target} className={s.link}
-                                           value={`http://localhost:3000/register?code=${referral_code}`}/>
+                                           value={`bitroxmining.com/register?code=${referral_code}`}/>
                                 </div>
                                 <div className="col-lg-2 d-flex justify-content-center p-2">
                                     <button onClick={clipboard.copy} className={`btn-gradient ${s.copy}`}>

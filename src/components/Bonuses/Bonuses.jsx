@@ -27,14 +27,14 @@ const Bonuses = () => {
                             <div>
                                 <h2 className="section-headline">BOUNTY:</h2>
                                 <span>
-                                YouTube review campaign <br/>Earn from 20VH/s to 8000 VH/s for each YouTube review of shorta!<br/><br/>
+                                YouTube review campaign <br/>Earn from 20VH/s to 8000 VH/s for each YouTube review of Bitrox Mining!<br/><br/>
                                     <p className={s.pl}>·  Your channel must be public.</p>
                                     <p className={s.pl}>·  You must have at least 100 subscribers.</p>
-                                    <p className={s.pl}>·  Somewhere in the title name use the word (shorta.cc)</p>
+                                    <p className={s.pl}>·  Somewhere in the title name use the word (Bitrox Mining)</p>
                                     <p className={s.pl}>·  Your review must be original. It’s forbidden to copy content, text, visuals etc. from  other reviews in any format.</p>
                                     <p className={s.pl}>·  We can reject your review for various reasons: bla bla bla</p>
-                                    <p className={s.pl}>·  Somewhere in the title name use the word (shorta.cc)</p>
-                                Telegram support: <br/>t.me/shortacc
+                                    <p className={s.pl}>·  Somewhere in the title name use the word (Bitrox Mining)</p>
+                                Telegram support: <br/><a href="https://t.me/bitroxmining" className="fs-5">t.me/bitroxmining</a>
                             </span>
                             </div>
                         </div>

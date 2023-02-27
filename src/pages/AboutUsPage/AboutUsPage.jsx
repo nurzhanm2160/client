@@ -13,14 +13,14 @@ const AboutUsPage = () => {
             <div className={`container ${s.about_us}`}>
                     <h2 className="section-headline">ABOUT US</h2>
                     <p className="section-subhead mt-5">
-                        Shorta is an advanced technology company specializing in cryptocurrency mining.
+                        Bitrox is an advanced technology company specializing in cryptocurrency mining.
                         We provide users with access to the most modern blockchain technologies and algorithms
                         for mining cryptocurrencies in the shortest possible time. Our company was founded by a team of
                         5 enthusiasts
                         on April 7, 2022, from that moment we began to expand and work to achieve a result of 6% profit
                         per day.<br/><br/>
 
-                        Shorta aims to provide the private consumer with the world's most advanced mining equipment and
+                        Bitrox aims to provide the private consumer with the world's most advanced mining equipment and
                         service 24/7,
                         with the highest level of service in the field. Together with our skilled and experienced team,
                         as well as

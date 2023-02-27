@@ -11,7 +11,8 @@ const initialState = {
     wallet: "",
     url: "",
     isDeposit: false,
-    days: 0
+    days: 0,
+    loading: false
 }
 
 export const getUsersCount = createAsyncThunk(
@@ -112,11 +113,15 @@ const depositSlice = createSlice({
         builder.addCase(getWithdrawsSum.fulfilled, (state, action) => {
             state.withDrawsSum = action.payload
         })
+        builder.addCase(deposit.pending, (state, action) => {
+            state.loading = true
+        })
         builder.addCase(deposit.fulfilled, (state, action) => {
             state.url = action.payload.url
             state.amount = action.payload.amount
             state.wallet = action.payload.wallet
             state.isDeposit = true
+            state.loading = false
         })
         builder.addCase(getAllTransaction.fulfilled, (state, action) => {
             state.transactions = action.payload.deposits

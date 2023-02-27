@@ -1,4 +1,6 @@
 .calc {
+  margin-bottom: 50px;
+  margin-top: 30px;
   display: flex;
 
   .calculator_block {
@@ -221,7 +223,6 @@
     }
 
     button {
-      margin-top: 50px;
       border-radius: 10px;
       height: 60px;
       width: 200px;
@@ -235,12 +236,28 @@
         color: white;
       }
     }
+
+    .contract {
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .disabled {
+        background: #4F4F4F;
+        cursor: default;
+      }
+      img {
+        width: 80px;
+      }
+    }
   }
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1200px) {
   .calc {
     display: block;
+    margin-top: 30px;
+    margin-bottom: 50px;
 
     .calculator_block {
       width: 100%;
@@ -267,9 +284,19 @@
           margin-top: 40px;
 
           .usd {
-            input {
+            width: 100%;
+            display: block;
+
+            img {
               margin-top: 10px;
-              width: auto;
+              margin-bottom: 10px;
+            }
+
+            input {
+              display: block;
+              margin-left: 0;
+              margin-top: 10px;
+              width: 100%;
             }
           }
         }
@@ -278,9 +305,19 @@
           margin-top: 40px;
 
           .invest {
-            input {
+            width: 100%;
+            display: block;
+
+            img {
               margin-top: 10px;
-              width: auto;
+              margin-bottom: 10px;
+            }
+
+            input {
+              margin-left: 0;
+              display: block;
+              margin-top: 10px;
+              width: 100%;
             }
           }
         }
@@ -290,6 +327,13 @@
     .count_block {
       margin-top: 20px;
       width: 100%;
+
+      .contract {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }

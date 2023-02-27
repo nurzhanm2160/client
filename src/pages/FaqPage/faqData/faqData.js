@@ -1,37 +1,51 @@
 export const questions = {
     account: [
         {
+            id: 1,
             question: "How to register?",
-            answer: "Open the registration form and fill in the blank fields, enter your email and click \"Register\" button."
+            answer: "Open the registration form and fill in the blank fields, enter your email and click \"Register\" button.",
+            show: false
         },
         {
+            id: 2,
             question: "How do I find out my password?",
-            answer: "The password and other data will be sent to the email address specified during registration, if you can't find the email, check the spam folder."
+            answer: "The password and other data will be sent to the email address specified during registration, if you can't find the email, check the spam folder.",
+            show: false
         },
         {
+            id: 3,
             question: "What if i forgot my password?",
-            answer: "Open the password recovery form, enter your current email address and you will receive an email with a link to reset your password."
+            answer: "Open the password recovery form, enter your current email address and you will receive an email with a link to reset your password.",
+            show: false
         },
         {
+            id: 4,
             question: "what crypto do you accept?",
-            answer: "We accept Binance Coin, Tron, Litecoin and Dogecoin."
+            answer: "We accept Binance Coin, Tron, Litecoin and Dogecoin.",
+            show: false
         },
         {
+            id: 5,
             question: "how to choose a coin?",
-            answer: "You don't have to choose anything. You can start mining all coins at the same time immediately after registration."
+            answer: "You don't have to choose anything. You can start mining all coins at the same time immediately after registration.",
+            show: false
         },
         {
+            id: 6,
             question: "can i have a multiple accounts?",
-            answer: "No, accounts made by one user will be automatically detected and blocked without explanation."
+            answer: "No, accounts made by one user will be automatically detected and blocked without explanation.",
+            show: false
         },
         {
+            id: 7,
             question: "in which cases my account can be blocked?",
-            answer: "Shorta takes a responsible approach to protect the personal data of " +
+            answer: "Bitrox takes a responsible approach to protect the personal data of " +
                 "its users, as well as the security of its site. Any attempts to collect users personal information, hacking " +
                 "of the site code, unfair use of the affiliate program, gaining access to user accounts through hacking, using " +
                 "third-party services to artificially increase the number of partners, as well as any " +
                 "insults to the administration of the site or its users may become a reason " +
-                "for suspension of the user account."
+                "for suspension of the user account.",
+            show: false
         },
     ],
     deposit: [

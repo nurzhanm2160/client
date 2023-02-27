@@ -32,12 +32,12 @@ const Header = () => {
                     </div>
                     <div className="col-lg-7">
                         <nav className="nav">
-                            <NavLink to="/about_us" className={navData => navData.isActive ? s.active : s.nav_link}>ABOUT
-                                US</NavLink>
+                            <NavLink to="/dashboard/mining"
+                                     className={navData => navData.isActive ? s.active : s.nav_link}>DASHBOARD
+                            </NavLink>
+                            <NavLink to="/about_us" className={navData => navData.isActive ? s.active : s.nav_link}>ABOUT US</NavLink>
                             <NavLink to="/contacts"
                                      className={navData => navData.isActive ? s.active : s.nav_link}>CONTACTS</NavLink>
-                            {/*<NavLink to="/specials"*/}
-                            {/*         className={navData => navData.isActive ? s.active : s.nav_link}>SPECIALS</NavLink>*/}
                             <NavLink to="/faq"
                                      className={navData => navData.isActive ? s.active : s.nav_link}>FAQ</NavLink>
                         </nav>

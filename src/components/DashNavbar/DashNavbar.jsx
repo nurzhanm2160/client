@@ -6,14 +6,27 @@ import miningImg from "../../assets/img/dashboardNav/maining.svg"
 import depositImg from "../../assets/img/dashboardNav/depositeLogo.png"
 import affiliateImg from "../../assets/img/dashboardNav/affiliateLogo.png"
 import bonusesImg from "../../assets/img/dashboardNav/bonusesLogo.png"
+import {logout} from "../../redux/user-slice";
+import {useDispatch} from "react-redux";
 
 const DashNavbar = () => {
 
+    const dispatch = useDispatch()
+
+    const handleLogout = () => {
+        dispatch(logout())
+    }
+
     return (
         <div className={s.navbar}>
-            <div className={s.logo}>
-                <img src={logo}/>
-                <p>Dashboard</p>
+            <div className={s.header}>
+                <div className={s.logo}>
+                    <NavLink to="/"><img src={logo} alt="dashLogo"/></NavLink>
+                    <button onClick={() => handleLogout()} className="btn-gradient">LOGOUT</button>
+                </div>
+                <div>
+                    <p>Dashboard</p>
+                </div>
             </div>
             <nav>
                 <NavLink to="/dashboard/mining"
