@@ -22,11 +22,11 @@ import {
 const Calc = () => {
     const isDeposit = useSelector(state => state.deposit.isDeposit)
     const loading = useSelector(state => state.deposit.loading)
+
     const bitcoinExchange = useSelector(state => state.exchange.bitcoinExchange)
     const litecoinExchange = useSelector(state => state.exchange.litecoinExchange)
     const dogecoinExchange = useSelector(state => state.exchange.dogeExchange)
     const tronExchange = useSelector(state => state.exchange.tronExchange)
-
 
     const [coin, setCoin] = useState(img1)
     const [coinIsActive, setCoinIsActive] = useState(1)
@@ -49,28 +49,42 @@ const Calc = () => {
         dispatch(getDogecoinExchange())
     }, [])
 
-    console.log(rate)
+// Listen to changes in coinName and update USD amount based on new coin rate
+    useEffect(() => {
+        if (coinName === "BTC") {
+            setRate(bitcoinExchange)
+        } else if (coinName === "LTC") {
+            setRate(litecoinExchange)
+        } else if (coinName === "TRX") {
+            setRate(tronExchange)
+        } else if (coinName === "DOGE") {
+            setRate(dogecoinExchange)
+        }
+        setUsdAmount(coinAmount * rate)
+    }, [coinName])
 
+// Listen to changes in USD amount and update coin amount based on new USD value
+    useEffect(() => {
+        setCoinAmount(usdAmount / rate)
+    }, [usdAmount])
 
     const depositHandler = () => {
         if (localStorage.getItem('access_token') === null) {
             navigate('/login')
         } else {
-            dispatch(deposit({amount: coinAmount, system, currency: coinName, term}))
+            dispatch(deposit({ amount: coinAmount, system, currency: coinName, term }))
             setDepositModalActive(true)
         }
     }
 
     const handleCoinAmountChange = (e) => {
         setCoinAmount(e.target.value)
-        console.log(e.target.value)
-        setUsdAmount(e.target.value * 2333)
+        setUsdAmount(e.target.value * rate)
     }
 
     const handleUsdAmountChange = (e) => {
         setUsdAmount(e.target.value)
-        console.log(coinAmount)
-        setCoinAmount(e.target.value / coinAmount)
+        setCoinAmount(e.target.value / rate)
     }
 
     const coinChangeHandler = (coinNumber, img, coinName, system) => {
@@ -78,18 +92,7 @@ const Calc = () => {
         setCoin(img)
         setCoinName(coinName)
         setSystem(system)
-
-        if(coinName === "BTC"){
-            setRate(bitcoinExchange)
-        }else if(coinName === "LTC") {
-            setRate(litecoinExchange)
-        }else if(coinName === "TRX"){
-            setRate(tronExchange)
-        }else if (coinName === "DOGE"){
-            setRate(dogecoinExchange)
-        }
     }
-
 
     return (
         <>
