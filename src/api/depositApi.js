@@ -14,14 +14,14 @@ export const depositApi = {
     withDraw: (number, amount, currency, system) => {
         return apiInstance.post('coin/cashout/', {number, amount, currency, system}, {
             headers: {
-                Authorization: 'Bearer '+ localStorage.getItem('access_token')
+                Authorization: 'Bearer ' + localStorage.getItem('access_token')
             }
         })
     },
-    deposit: (amount, currency, system, term, comment='test') => {
+    deposit: (amount, currency, system, term, comment = 'test') => {
         return apiInstance.post('coin/generate_address/', {amount, currency, system, term, comment}, {
             headers: {
-                Authorization: 'Bearer '+ localStorage.getItem('access_token')
+                Authorization: 'Bearer ' + localStorage.getItem('access_token')
             }
         })
     },
@@ -30,5 +30,6 @@ export const depositApi = {
     },
     getDays: () => {
         return axios.get('http://66.29.139.175:8000/coin/get_days/', {headers: {'Content-Type': 'application/json'}})
-    }
+    },
 }
+

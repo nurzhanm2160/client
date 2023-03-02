@@ -1,17 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import s from "./Mining.module.scss"
 import DashHeader from "../DashHeader/DashHeader";
 import {useDispatch, useSelector} from "react-redux";
 import {getUserWallets} from "../../redux/user-slice";
 import {convertWalletData} from "../../utils/convertWalletData";
 import ModalWithdraw from "../ModalWithdrow/ModalWithdrow";
-
+import {Range, getTrackBackground} from "react-range";
 
 const Mining = () => {
     const [depositModalActive, setDepositModalActive] = useState(false)
     const [withdrawModalActive, setWithdrawModalActive] = useState(false)
     const [withdrawCoin, setWithdrawCoin] = useState('')
     const [system, setSystem] = useState("")
+    const [range, setRange] = useState(0)
+    const ref = useRef(null);
 
 
     const dispatch = useDispatch()
@@ -37,6 +39,9 @@ const Mining = () => {
         setSystem(system)
         setWithdrawModalActive(true)
     }
+    const getRange = (event) => {
+        setRange(event.target.value);
+    };
 
 
     return (
@@ -65,7 +70,8 @@ const Mining = () => {
                                 {/*    <button onClick={()=> setDepositModalActive(true)} className="btn-gradient">DEPOSIT</button>*/}
                                 {/*</div>*/}
                                 <div className={s.withdrow}>
-                                    <button onClick={()=> withDrawModelHandler(item.coin, item.system)}>WITHDRAW</button>
+                                    <button onClick={() => withDrawModelHandler(item.coin, item.system)}>WITHDRAW
+                                    </button>
                                 </div>
                             </div>
                         </div>

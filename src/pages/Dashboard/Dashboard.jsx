@@ -16,8 +16,8 @@ function Dashboard() {
         if (localStorage.getItem('access_token') === null) {
             navigate('/login')
         }
-        // TODO: сделать try catch. И слать запрос за данными для dashboard
-    }, [])
+    }, [navigate])
+
     return (
         <div className={s.dashboard}>
             <div className="row">
@@ -35,7 +35,7 @@ function Dashboard() {
             </div>
             <div className="row align-items-end">
                 <footer>
-                    <Footer />
+                    <Footer/>
                 </footer>
             </div>
         </div>

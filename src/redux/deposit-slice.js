@@ -12,7 +12,7 @@ const initialState = {
     url: "",
     isDeposit: false,
     days: 0,
-    loading: false
+    loading: false,
 }
 
 export const getUsersCount = createAsyncThunk(
@@ -56,7 +56,7 @@ export const withdraw = createAsyncThunk(
     'withdraw',
     async ({number, amount, currency, system}, {rejectWithValue}) => {
         try {
-            const response = await depositApi.withDraw(number, amount, currency, system)
+            await depositApi.withDraw(number, amount, currency, system)
         } catch (e) {
             return rejectWithValue('Не удалось вывести сресдтва')
         }
@@ -91,13 +91,14 @@ export const getDays = createAsyncThunk(
     'getDays',
     async (_, {rejectWithValue}) => {
         try {
-            const response =  await depositApi.getDays()
+            const response = await depositApi.getDays()
             return response.data.days_since_opened
         } catch {
             return rejectWithValue('Произошла ошибка, во время получение дней')
         }
     }
 )
+
 
 const depositSlice = createSlice({
     name: 'depositSlice',

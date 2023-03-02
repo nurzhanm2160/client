@@ -1,7 +1,6 @@
 import React from 'react';
 import s from "./Title.module.scss";
 import {headerItems} from "./itemsData/ItemsData";
-import {Nav} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 
 

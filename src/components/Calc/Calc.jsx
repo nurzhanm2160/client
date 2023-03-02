@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import s from "./Calc.module.scss"
 import img1 from "../../assets/img/coins/1.svg"
 import img2 from "../../assets/img/coins/2.svg"
@@ -11,32 +11,66 @@ import {deposit} from "../../redux/deposit-slice";
 import ModalDeposit from "../ModalDeposit/ModalDeposit";
 import {useNavigate} from "react-router-dom";
 import loadingImg from "../../assets/img/spinner.svg"
-import {useForm} from "react-hook-form";
+import {
+    getBitcoinExchange,
+    getDogecoinExchange,
+    getLitecoinExchange,
+    getTronExchange
+} from "../../redux/exchange-slice";
+
 
 const Calc = () => {
+    const isDeposit = useSelector(state => state.deposit.isDeposit)
+    const loading = useSelector(state => state.deposit.loading)
+    const bitcoinExchange = useSelector(state => state.exchange.bitcoinExchange)
+    const litecoinExchange = useSelector(state => state.exchange.litecoinExchange)
+    const dogecoinExchange = useSelector(state => state.exchange.dogeExchange)
+    const tronExchange = useSelector(state => state.exchange.tronExchange)
+
+
     const [coin, setCoin] = useState(img1)
     const [coinIsActive, setCoinIsActive] = useState(1)
     const [amountIsActive, setAmountIsActive] = useState(1)
-    const [usdAmount, setUSDAmount] = useState("")
-    const [coinAmount, setCoinAmount] = useState("")
-    const [coinName, setCoinName] = useState("DOGE")
-    const [system, setSystem] = useState("DOGECOIN")
+    const [usdAmount, setUsdAmount] = useState(0)
+    const [coinAmount, setCoinAmount] = useState(0)
+    const [coinName, setCoinName] = useState("BTC")
+    const [system, setSystem] = useState("BITCOIN")
+    const [rate, setRate] = useState(bitcoinExchange)
     const [term, setTerm] = useState(30)
-
-
-    const isDeposit = useSelector(state => state.deposit.isDeposit)
-    const loading = useSelector(state => state.deposit.loading)
-
     const [depositModalActive, setDepositModalActive] = useState(false)
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const {register, formState: {isValid, isDirty}} = useForm()
+    useEffect(() => {
+        dispatch(getBitcoinExchange())
+        dispatch(getTronExchange())
+        dispatch(getLitecoinExchange())
+        dispatch(getDogecoinExchange())
+    }, [])
+
+    console.log(rate)
 
 
     const depositHandler = () => {
-        dispatch(deposit({amount: coinAmount, system, currency: coinName, term}))
-        setDepositModalActive(true)
+        if (localStorage.getItem('access_token') === null) {
+            navigate('/login')
+        } else {
+            dispatch(deposit({amount: coinAmount, system, currency: coinName, term}))
+            setDepositModalActive(true)
+        }
+    }
+
+    const handleCoinAmountChange = (e) => {
+        setCoinAmount(e.target.value)
+        console.log(e.target.value)
+        setUsdAmount(e.target.value * 2333)
+    }
+
+    const handleUsdAmountChange = (e) => {
+        setUsdAmount(e.target.value)
+        console.log(coinAmount)
+        setCoinAmount(e.target.value / coinAmount)
     }
 
     const coinChangeHandler = (coinNumber, img, coinName, system) => {
@@ -44,35 +78,47 @@ const Calc = () => {
         setCoin(img)
         setCoinName(coinName)
         setSystem(system)
+
+        if(coinName === "BTC"){
+            setRate(bitcoinExchange)
+        }else if(coinName === "LTC") {
+            setRate(litecoinExchange)
+        }else if(coinName === "TRX"){
+            setRate(tronExchange)
+        }else if (coinName === "DOGE"){
+            setRate(dogecoinExchange)
+        }
     }
+
 
     return (
         <>
             <div className={`container ${s.calc}`}>
                 <div className={s.calculator_block}>
+                    {system}
                     <h2 className="section-headline">create your contract</h2>
                     <div className={s.coins_block}>
                         <div className="d-flex align-items-center"><span>select coin:</span></div>
                         <div className={s.coins}>
                             <div className={s.coin}
                                  style={coinIsActive === 1 ? {background: "white"} : null}
-                                 onClick={() => coinChangeHandler(1, img1, "BNB", "BITCOIN")}>
-                                <img src={img1}/>
+                                 onClick={() => coinChangeHandler(1, img1, "BTC", "BITCOIN")}>
+                                <img src={img1} alt="coin"/>
                             </div>
                             <div className={s.coin}
                                  style={coinIsActive === 2 ? {background: "white"} : null}
                                  onClick={() => coinChangeHandler(2, img2, "DOGE", "DOGECOIN")}>
-                                <img src={img2}/>
+                                <img src={img2} alt="coin"/>
                             </div>
                             <div className={s.coin}
                                  style={coinIsActive === 3 ? {background: "white"} : null}
-                                 onClick={() => coinChangeHandler(3, img3, "LTC", "BITCOIN")}>
-                                <img src={img3}/>
+                                 onClick={() => coinChangeHandler(3, img3, "LTC", "LITECOIN")}>
+                                <img src={img3} alt="coin"/>
                             </div>
                             <div className={s.coin}
                                  style={coinIsActive === 4 ? {background: "white"} : null}
-                                 onClick={() => coinChangeHandler(4, img4, "TRX", "BITCOIN")}>
-                                <img src={img4}/>
+                                 onClick={() => coinChangeHandler(4, img4, "TRX", "TRON")}>
+                                <img src={img4} alt="coin"/>
                             </div>
                         </div>
                     </div>
@@ -121,23 +167,25 @@ const Calc = () => {
                         <div className="d-flex align-items-center"><span>Coins to invest:</span></div>
                         <div className={s.invest}>
                             <img src={coin} alt="coinImage"/>
-                            <input
-                                {...register("coinInput", {required: true})}
-                                type="number"
-                                value={`${coinAmount}`}
-                                onChange={(e) => setCoinAmount(e.target.value)}
-                            />
+                            {/*<input*/}
+                            {/*    {...register("coinInput", {required: true})}*/}
+                            {/*    type="number"*/}
+                            {/*    value={`${coinAmount}`}*/}
+                            {/*    onChange={(e) => setCoinAmount(e.target.value)}*/}
+                            {/*/>*/}
+                            <input type="text" value={coinAmount} onChange={handleCoinAmountChange}/>
                         </div>
                     </div>
                     <div className={s.usd_block}>
                         <div className="d-flex align-items-center"><span>usd to invest:</span></div>
                         <div className={s.usd}>
-                            <img src={usd}/>
-                            <input
-                                {...register("usdInput", {required: true})}
-                                type="number"
-                                value={`${usdAmount}`}
-                                onChange={(e) => setUSDAmount(e.target.value)}/>
+                            <img src={usd} alt="usd"/>
+                            {/*<input*/}
+                            {/*    {...register("usdInput", {required: true})}*/}
+                            {/*    type="number"*/}
+                            {/*    value={`${usdAmount}`}*/}
+                            {/*    onChange={e => setUsdAmount(e.target.value)}/>*/}
+                            <input value={usdAmount} onChange={handleUsdAmountChange}/>
                         </div>
                     </div>
                 </div>
@@ -158,7 +206,7 @@ const Calc = () => {
                                 disabled={!coinAmount}
                                 className={!coinAmount ? s.disabled : "btn-gradient"}
                                 onClick={() => depositHandler()}>
-                                REGISTER CONTRACT
+                                DEPOSIT
                             </button>}
                     </div>
                 </div>

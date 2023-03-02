@@ -89,3 +89,13 @@
 .img {
   width: 450px;
 }
+
+
+@media  (max-width: 992px) {
+  .register {
+    min-height: 500px;
+    .img {
+      display: none;
+    }
+  }
+}

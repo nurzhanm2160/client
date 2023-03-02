@@ -70,10 +70,12 @@ export const Stats = () => {
                     {/*    </div>*/}
                     {/*</div>*/}
 
-                    <div className="col-lg-4">
+                    <div>
                         <div className="row">
                             <div className={s.partners_items}>
                                 <img src={binance} alt="binance"/>
+                                <img src={paykassa} alt="binance"/>
+                                <img src={trustpilot} alt="binance"/>
                             </div>
                         </div>
                     </div>
