@@ -61,7 +61,7 @@ const Calc = () => {
             setRate(dogecoinExchange)
         }
         setUsdAmount(coinAmount * rate)
-    }, [coinName])
+    }, [coinName, coinAmount])
 
 // Listen to changes in USD amount and update coin amount based on new USD value
     useEffect(() => {
@@ -79,12 +79,12 @@ const Calc = () => {
 
     const handleCoinAmountChange = (e) => {
         setCoinAmount(e.target.value)
-        setUsdAmount(e.target.value * rate)
+        // setUsdAmount(parseFloat(e.target.value) * rate)
     }
 
     const handleUsdAmountChange = (e) => {
         setUsdAmount(e.target.value)
-        setCoinAmount(e.target.value / rate)
+        // setCoinAmount(parseFloat(e.target.value) / rate)
     }
 
     const coinChangeHandler = (coinNumber, img, coinName, system) => {
@@ -176,7 +176,7 @@ const Calc = () => {
                             {/*    value={`${coinAmount}`}*/}
                             {/*    onChange={(e) => setCoinAmount(e.target.value)}*/}
                             {/*/>*/}
-                            <input type="text" value={coinAmount} onChange={handleCoinAmountChange}/>
+                            <input type="number" value={coinAmount} onChange={handleCoinAmountChange}/>
                         </div>
                     </div>
                     <div className={s.usd_block}>
@@ -188,7 +188,7 @@ const Calc = () => {
                             {/*    type="number"*/}
                             {/*    value={`${usdAmount}`}*/}
                             {/*    onChange={e => setUsdAmount(e.target.value)}/>*/}
-                            <input value={usdAmount} onChange={handleUsdAmountChange}/>
+                            <input type="number" value={usdAmount} onChange={handleUsdAmountChange}/>
                         </div>
                     </div>
                 </div>
