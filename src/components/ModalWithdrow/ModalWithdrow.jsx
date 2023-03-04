@@ -1,20 +1,34 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from "./ModalWithdrow.module.scss"
 import close from "../../assets/img/Vector.png";
 import {useDispatch} from "react-redux";
 import {withdraw} from "../../redux/deposit-slice";
 
 const ModalWithdraw = ({withdrowModalActive, setWithdrowModalActive, coin, system}) => {
+    const [coinName, setCoinName] = useState("")
 
     const dispatch = useDispatch()
 
     const [amountValue, setAmountValue] = useState("");
     const [addressValue, setAddressValue] = useState("");
 
+    useEffect(() => {
+        if(system === 11){
+            setCoinName("BTC")
+        }else if(system === 14){
+            setCoinName("LTC")
+        }else if(system === 27){
+            setCoinName("TRX")
+        }else if(system === 15){
+            setCoinName("DOGE")
+        }
+    },[withdrowModalActive])
+
     const withdrawHandler = () => {
         const amount = parseInt(amountValue)
         dispatch(withdraw({number: addressValue, amount, system, currency: coin}))
     }
+
 
     const pasteAmountValue = () => {
         navigator.clipboard.readText()
@@ -40,7 +54,7 @@ const ModalWithdraw = ({withdrowModalActive, setWithdrowModalActive, coin, syste
                     <img src={close} alt="close" onClick={() => setWithdrowModalActive(false)}/>
                 </div>
                 <div className={s.description}>
-                    <span className={s.span}>Withdrow coin:<br/>TRX (TRС20)</span>
+                    <span className={s.span}>Withdrow coin:<br/>{coinName}</span>
                 </div>
                 <div className={s.forms}>
                     <div>

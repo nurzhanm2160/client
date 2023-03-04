@@ -1,6 +1,7 @@
 import React from 'react'
 import maining from '../../../assets/img/icons/maining.svg'
 import s from "./CardPlan.module.scss"
+import {NavLink} from "react-router-dom";
 
 
 export const CardPlan = ({plan}) => {
@@ -18,8 +19,11 @@ export const CardPlan = ({plan}) => {
             </div>
             <div className={s.card_body}>
                 {plan.description.map(desc => <p>{desc}</p>)}
-                {plan.free && <button type="button" className="btn-gradient d-flex justify-content-center">Start free</button>}
-                {!plan.free && <button type="button" className="btn-gradient"><span>{plan.price}$</span>Buy</button>}
+                <NavLink to="/register">
+                    {plan.free && <button type="button" className="btn-gradient d-flex justify-content-center">Start free</button>}
+                    {!plan.free && <button type="button" className="btn-gradient"><span>{plan.price}$</span>Buy</button>}
+                </NavLink>
+
             </div>
             {/* <!-- /.card-body --> */}
         </div>

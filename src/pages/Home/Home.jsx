@@ -8,6 +8,7 @@ import {Stats} from "../../components/Stats/Stats";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
 import Calc from "../../components/Calc/Calc";
+import {Price} from "../../components/Price/Price";
 
 
 const Home = () => {
@@ -20,7 +21,7 @@ const Home = () => {
             <div className={s.home}>
                 <Title/>
                 {/*<Video/>*/}
-                {/*<Price/>*/}
+                <Price/>
                 <Advantages/>
                 <Transactions />
                 <Faq />

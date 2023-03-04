@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {userApi} from "../api/userApi";
-import data from "bootstrap/js/src/dom/data";
 
 
 export const registerThunk = createAsyncThunk(
@@ -93,6 +92,19 @@ export const getUserWallets = createAsyncThunk(
     }
 )
 
+export const getServerTime = createAsyncThunk(
+    'getServerTime',
+    async (_, {rejectWithValue}) => {
+        try {
+            const response = await userApi.getServerTime()
+            return response.data.year
+        } catch (e) {
+            return rejectWithValue('Не удалось получить текушее время сервера')
+        }
+    }
+)
+
+
 
 
 const initialState = {
@@ -106,7 +118,7 @@ const initialState = {
     userWallets: [],
     loading: false,
     error: false,
-    success: false
+    success: false,
 }
 
 export const userSlice = createSlice({

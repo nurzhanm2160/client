@@ -10,7 +10,7 @@ import {
 } from "../DepositMessages/DepositMessages/DepositMessages";
 import {useSelector} from "react-redux";
 
-const ModalDeposit = ({depositModalActive, setDepositModalActive, coin}) => {
+const ModalDeposit = ({coinAmount, coinName, depositModalActive, setDepositModalActive, coin}) => {
 
     const [copyAmount, setCopyAmount] = useState(false)
     const [copyAddress, setCopyAddress] = useState(false)
@@ -44,14 +44,14 @@ const ModalDeposit = ({depositModalActive, setDepositModalActive, coin}) => {
                     <img src={close} alt="close" onClick={() => setDepositModalActive(false)}/>
                 </div>
                 <div className={s.description}>
-                    <span className={s.span}>Payment coin:<br/>TRX (TRС20)</span>
+                    <span className={s.span}>Payment coin:<br/>{coinName}</span>
                     <span className={s.span}>Get power (with current exchange rate):<br/>1 000 VH/s</span>
                 </div>
                 <div className={s.forms}>
                     <div>
                         <span>Payment coin amount:</span>
                         <div className={s.form}>
-                            <input className={s.input} ref={clipboardAmount.target} value={amount}/>
+                            <input className={s.input} ref={clipboardAmount.target} value={coinAmount}/>
                             <button className={`btn-gradient ${s.button}`}
                                     onClick={clipboardAmount.copy}>{copyAmount ? "COPIED" : "COPY"}</button>
                         </div>

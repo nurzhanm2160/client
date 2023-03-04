@@ -16,7 +16,7 @@ function Dashboard() {
         if (localStorage.getItem('access_token') === null) {
             navigate('/login')
         }
-    }, [navigate])
+    }, [])
 
     return (
         <div className={s.dashboard}>

@@ -94,6 +94,17 @@
 @media  (max-width: 992px) {
   .register {
     min-height: 500px;
+    @media (max-width: 400px){
+      .form {
+        width: 100%;
+
+        button {
+          height: 60px;
+          margin-top: 20px;
+          width: 100%;
+        }
+      }
+    }
     .img {
       display: none;
     }
