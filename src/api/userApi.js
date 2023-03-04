@@ -19,7 +19,7 @@ export const userApi = {
         return apiInstance.post('auth/logout/', {refresh: refresh_token}, {headers: {'Content-Type': 'application/json'}})
     },
     checkAuth: (refresh) => {
-        return apiInstance.post('auth/token/refresh/', { refresh }, {
+        return apiInstance.post('auth/token/refresh/', {refresh}, {
             withCredentials: true
         });
     },

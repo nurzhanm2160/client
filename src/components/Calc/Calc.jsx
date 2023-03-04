@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import s from "./Calc.module.scss"
-import img1 from "../../assets/img/coins/1.svg"
+import img1 from "../../assets/img/coins/bitcoin-btc-logo.png"
 import img2 from "../../assets/img/coins/2.svg"
 import img3 from "../../assets/img/coins/3.svg"
 import img4 from "../../assets/img/coins/4.svg"
@@ -38,6 +38,7 @@ const Calc = () => {
     const [rate, setRate] = useState(bitcoinExchange)
     const [term, setTerm] = useState(30)
     const [depositModalActive, setDepositModalActive] = useState(false)
+    const [plan, setPlan] = useState(0)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -60,13 +61,33 @@ const Calc = () => {
         } else if (coinName === "DOGE") {
             setRate(dogecoinExchange)
         }
-        setUsdAmount(coinAmount * rate)
-    }, [coinName, coinAmount])
+    }, [coinName])
 
-// Listen to changes in USD amount and update coin amount based on new USD value
     useEffect(() => {
-        setCoinAmount(usdAmount / rate)
-    }, [usdAmount])
+        let plan = String(coinAmount)
+        if(plan.length === 1){
+            setPlan(2)
+        }else if (plan.length === 2) {
+            setPlan(2)
+        }else if (plan.length === 3) {
+            setPlan(3)
+        }else if (plan.length === 4) {
+            setPlan(5)
+        }else if (plan.length === 5) {
+            setPlan(5)
+        }else if (plan.length === 0) {
+            setPlan(0)
+        }
+        else {
+            setPlan(6)
+        }
+    }, [coinAmount])
+
+    useEffect(() => {
+        setUsdAmount(coinAmount * rate)
+    }, [coinAmount])
+
+
 
     const depositHandler = () => {
         if (localStorage.getItem('access_token') === null) {
@@ -82,10 +103,10 @@ const Calc = () => {
         // setUsdAmount(parseFloat(e.target.value) * rate)
     }
 
-    const handleUsdAmountChange = (e) => {
-        setUsdAmount(e.target.value)
-        // setCoinAmount(parseFloat(e.target.value) / rate)
-    }
+    // const handleUsdAmountChange = (e) => {
+    //     setUsdAmount(e.target.value)
+    //     // setCoinAmount(parseFloat(e.target.value) / rate)
+    // }
 
     const coinChangeHandler = (coinNumber, img, coinName, system) => {
         setCoinIsActive(coinNumber)
@@ -98,7 +119,6 @@ const Calc = () => {
         <>
             <div className={`container ${s.calc}`}>
                 <div className={s.calculator_block}>
-                    {system}
                     <h2 className="section-headline">create your contract</h2>
                     <div className={s.coins_block}>
                         <div className="d-flex align-items-center"><span>select coin:</span></div>
@@ -188,7 +208,7 @@ const Calc = () => {
                             {/*    type="number"*/}
                             {/*    value={`${usdAmount}`}*/}
                             {/*    onChange={e => setUsdAmount(e.target.value)}/>*/}
-                            <input type="number" value={usdAmount} onChange={handleUsdAmountChange}/>
+                            <input value={usdAmount}/>
                         </div>
                     </div>
                 </div>
@@ -196,12 +216,12 @@ const Calc = () => {
                     <h2 className="section-headline">You will earn:</h2>
                     <div className={s.plan}>
                         <span className={`fw-bold ${s.count_titles}`}>PLAN</span>
-                        <span className={s.badge}>6% per day</span>
+                        <span className={s.badge}>{plan} % per day</span>
                         <span className={s.badgeImg}><img src={mining} alt="mining"/></span>
                     </div>
                     <div className={s.power}>
                         <span className={`fw-bold ${s.count_titles}`}>POWER</span>
-                        <span className={s.badge}>1 000 000 VH/s</span>
+                        <span className={s.badge}>{usdAmount} VH/s</span>
                     </div>
                     <div className={s.contract}>
                         {loading ? <img src={loadingImg} alt="loading"/> :
@@ -215,6 +235,8 @@ const Calc = () => {
                 </div>
             </div>
             {isDeposit && <ModalDeposit
+                coinAmount={coinAmount}
+                coinName={coinName}
                 depositModalActive={depositModalActive}
                 setDepositModalActive={setDepositModalActive}
                 coin={coinName}

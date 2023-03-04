@@ -1,20 +1,16 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from "./Mining.module.scss"
 import DashHeader from "../DashHeader/DashHeader";
 import {useDispatch, useSelector} from "react-redux";
 import {getUserWallets} from "../../redux/user-slice";
 import {convertWalletData} from "../../utils/convertWalletData";
 import ModalWithdraw from "../ModalWithdrow/ModalWithdrow";
-import {Range, getTrackBackground} from "react-range";
 
 const Mining = () => {
     const [depositModalActive, setDepositModalActive] = useState(false)
     const [withdrawModalActive, setWithdrawModalActive] = useState(false)
     const [withdrawCoin, setWithdrawCoin] = useState('')
     const [system, setSystem] = useState("")
-    const [range, setRange] = useState(0)
-    const ref = useRef(null);
-
 
     const dispatch = useDispatch()
     const userWallets = useSelector(state => state.user.userWallets)
@@ -39,9 +35,6 @@ const Mining = () => {
         setSystem(system)
         setWithdrawModalActive(true)
     }
-    const getRange = (event) => {
-        setRange(event.target.value);
-    };
 
 
     return (

@@ -1,4 +1,4 @@
-import coin1 from "../../../assets/img/coins/1.svg"
+import coin1 from "../../../assets/img/coins/bitcoin-btc-logo.png"
 import coin2 from "../../../assets/img/coins/3.svg"
 import coin3 from "../../../assets/img/coins/4.svg"
 import coin4 from "../../../assets/img/coins/2.svg"
