@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://66.29.139.175:8000/';
+const url = 'https://backend.bitroxmining.com/';
 
 export const apiInstance = axios.create({
     baseURL: url,

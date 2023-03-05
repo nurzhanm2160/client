@@ -26,10 +26,10 @@ export const depositApi = {
         })
     },
     getTransactions: () => {
-        return axios.get('http://66.29.139.175:8000/coin/transactions/', {headers: {'Content-Type': 'application/json'}})
+        return axios.get('https://backend.bitroxmining.com/coin/transactions/', {headers: {'Content-Type': 'application/json'}})
     },
     getDays: () => {
-        return axios.get('http://66.29.139.175:8000/coin/get_days/', {headers: {'Content-Type': 'application/json'}})
+        return axios.get('https://backend.bitroxmining.com/coin/get_days/', {headers: {'Content-Type': 'application/json'}})
     },
 }
 
