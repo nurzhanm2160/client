@@ -125,7 +125,7 @@ const Calc = () => {
                         <div className={s.coins}>
                             <div className={s.coin}
                                  style={coinIsActive === 1 ? {background: "white"} : null}
-                                 onClick={() => coinChangeHandler(1, img1, "BTC", "BITCOIN")}>
+                                 onClick={() => coinChangeHandler(1, img1, "BTC", "BTC")}>
                                 <img src={img1} alt="coin"/>
                             </div>
                             <div className={s.coin}
