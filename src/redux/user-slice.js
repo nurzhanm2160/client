@@ -92,20 +92,6 @@ export const getUserWallets = createAsyncThunk(
     }
 )
 
-export const getServerTime = createAsyncThunk(
-    'getServerTime',
-    async (_, {rejectWithValue}) => {
-        try {
-            const response = await userApi.getServerTime()
-            return response.data.year
-        } catch (e) {
-            return rejectWithValue('Не удалось получить текушее время сервера')
-        }
-    }
-)
-
-
-
 
 const initialState = {
     isAuth: false,
