@@ -124,6 +124,9 @@ const depositSlice = createSlice({
             state.isDeposit = true
             state.loading = false
         })
+        builder.addCase(deposit.rejected, (state, action) => {
+            state.loading = false
+        })
         builder.addCase(getAllTransaction.fulfilled, (state, action) => {
             state.transactions = action.payload.deposits
         })
