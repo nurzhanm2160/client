@@ -27,7 +27,11 @@ const Mining = () => {
     const miningItems = [].concat(BTC, LTC, TRX, DOGE)
 
     useEffect(() => {
-        dispatch(getUserWallets())
+        const timer = setInterval(() => {
+            dispatch(getUserWallets())
+        }, 10000)
+
+        return () => clearInterval(timer)
     }, [])
 
     const withDrawModelHandler = (coin, system) => {
