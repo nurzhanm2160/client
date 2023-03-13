@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import s from "./Transactions.module.scss"
 
-import coin1 from '../../assets/img/coins/1.svg'
+import coin1 from '../../assets/img/coins/bitcoin-btc-logo.png'
 import coin2 from '../../assets/img/coins/2.svg'
 import coin3 from '../../assets/img/coins/3.svg'
 import coin4 from '../../assets/img/coins/4.svg'
@@ -12,23 +12,24 @@ export const Transactions = () => {
 
     const transactions = useSelector(state => state.deposit.transactions)
     const dispatch = useDispatch()
+    const [coinImg, setCoinImg] = useState(null)
 
     useEffect(() => {
         dispatch(getAllTransaction())
     },[])
 
+    if(transactions.currency === "BTC"){
+        setCoinImg(coin1)
+    } else if(transactions.currency === "DOGE"){
+        setCoinImg(coin2)
+    } else if(transactions.currency === "LTC") {
+        setCoinImg(coin3)
+    } else if(transactions.currency === "TRX"){
+        setCoinImg(coin4)
+    }
 
-    const coinImg = transactions.map(t => {
-        if(t.currency ==="DOGE"){
-            return coin1
-        }else if (t.currency ==="BTC"){
-            return coin2
-        }else if (t.currency ==="LTC"){
-            return coin3
-        }else if (t.currency ==="TRX"){
-            return coin4
-        }
-    })
+
+    console.log(transactions.currency)
 
 
     return <div className={s.transactions}>

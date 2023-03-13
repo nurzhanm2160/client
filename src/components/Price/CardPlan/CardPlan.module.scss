@@ -1,5 +1,4 @@
 .card {
-  height: 380px;
   color: white;
   border-radius: 23px;
   border: 2px solid #4F4F4F;
@@ -17,19 +16,21 @@
   h4 {
     font-size: 32px;
   }
+
   span {
     font-size: 24px;
   }
 }
 
-.badge{
+.badge {
+  display: inline-flex;
   padding: 7px 15px;
   border-radius: 10px;
   text-align: center;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   background: white;
+  gap: 8px;
 }
 
 .card_body {
@@ -37,7 +38,7 @@
   height: auto;
   padding: 30px;
 
-  a{
+  a {
     text-decoration: none;
   }
 
@@ -49,5 +50,45 @@
     width: 191px;
     height: 65px;
     border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 1315px) {
+  .card {
+    height: 430px;
+
+    .badge {
+      display: block;
+
+      span {
+        display: block;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1070px){
+  .card {
+    height: 450px;
+
+    .card_body {
+
+      button {
+        width: 150px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .card {
+    .badge {
+      display: flex;
+    }
+    .card_body{
+      button {
+        width: 191px;
+      }
+    }
   }
 }
