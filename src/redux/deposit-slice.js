@@ -13,6 +13,7 @@ const initialState = {
     isDeposit: false,
     days: 0,
     loading: false,
+    userTransactions: []
 }
 
 export const getUsersCount = createAsyncThunk(
@@ -99,6 +100,18 @@ export const getDays = createAsyncThunk(
     }
 )
 
+export const getUserTransactions = createAsyncThunk(
+    'getUserTransactions',
+    async (_, {rejectWithValue}) => {
+        try {
+            const response = await depositApi.getUserTransactions()
+            return response.data
+        } catch (e) {
+            return rejectWithValue('Не удалось получить транзакции пользователя')
+        }
+    }
+)
+
 
 const depositSlice = createSlice({
     name: 'depositSlice',
@@ -133,6 +146,9 @@ const depositSlice = createSlice({
         builder.addCase(getDays.fulfilled, (state, action) => {
             state.days = action.payload
             console.log('days', action.payload)
+        })
+        builder.addCase(getUserTransactions.fulfilled, (state, action) => {
+            state.userTransactions = action.payload
         })
         // TODO: если удалось вывести средства, то добавить сюда логику
         // builder.addCase(withdraw.fulfilled, (state, action) => {

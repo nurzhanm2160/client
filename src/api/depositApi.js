@@ -31,5 +31,12 @@ export const depositApi = {
     getDays: () => {
         return axios.get('https://backend.bitroxmining.com/coin/get_days/', {headers: {'Content-Type': 'application/json'}})
     },
+    getUserTransactions: () => {
+        return apiInstance.get('https://backend.bitroxmining.com/coin/user_transactions/', {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('access_token')
+            }
+        })
+    }
 }
 
